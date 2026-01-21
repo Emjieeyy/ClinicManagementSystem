@@ -1,3 +1,5 @@
+using System.Data;
+
 namespace ClinicManagementSystem
 {
     public partial class UC_AuditLogs : UserControl
@@ -5,20 +7,25 @@ namespace ClinicManagementSystem
         public UC_AuditLogs()
         {
             InitializeComponent();
+            filterComboBox.SelectedIndex = 0;
             LoadAuditLogs();
         }
 
         private void LoadAuditLogs()
         {
-            // Add sample audit log data
-            dataGridView1.Rows.Add("2026-01-20 10:30:25", "john.doe", "Login", "User logged in successfully", "Success");
-            dataGridView1.Rows.Add("2026-01-20 10:35:12", "jane.smith", "User Management", "Added new user: Mike Johnson", "Success");
-            dataGridView1.Rows.Add("2026-01-20 11:15:45", "mike.johnson", "Inventory", "Updated inventory item: Bandages", "Success");
-            dataGridView1.Rows.Add("2026-01-20 11:20:33", "john.doe", "Settings", "Modified system settings", "Success");
-            dataGridView1.Rows.Add("2026-01-20 12:05:18", "jane.smith", "Backup", "Initiated system backup", "Success");
-            dataGridView1.Rows.Add("2026-01-20 13:45:22", "admin", "Login", "Failed login attempt", "Failed");
-            dataGridView1.Rows.Add("2026-01-20 14:10:55", "john.doe", "Reports", "Generated monthly report", "Success");
-            dataGridView1.Rows.Add("2026-01-20 15:30:41", "mike.johnson", "Inventory", "Deleted inventory item", "Success");
+            dataGridView1.Rows.Clear();
+            DataTable dt = DatabaseHelper.GetAuditLogs();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                dataGridView1.Rows.Add(
+                    Convert.ToDateTime(row["Timestamp"]).ToString("yyyy-MM-dd HH:mm:ss"),
+                    row["Username"],
+                    row["Activity"],
+                    row["Description"],
+                    row["Status"]
+                );
+            }
         }
 
         private void filterComboBox_SelectedIndexChanged(object sender, EventArgs e)
