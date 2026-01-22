@@ -8,16 +8,11 @@ using System.Windows.Forms;
 
 namespace ClinicManagementSystem
 {
-    public partial class UpdateInformation : Form
+    public partial class UC_StudentRecords : UserControl
     {
-        public UpdateInformation()
+        public UC_StudentRecords()
         {
             InitializeComponent();
-        }
-
-        private void exit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

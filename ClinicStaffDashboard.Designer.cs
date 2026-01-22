@@ -38,7 +38,7 @@
             reportbt = new ReaLTaiizor.Controls.HopeRoundButton();
             inventorybt = new ReaLTaiizor.Controls.HopeRoundButton();
             pictureBox2 = new PictureBox();
-            hopeRoundButton1 = new ReaLTaiizor.Controls.HopeRoundButton();
+            ClinicStaffStudentRecordsbt = new ReaLTaiizor.Controls.HopeRoundButton();
             mainPanel = new Panel();
             navbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
@@ -59,12 +59,12 @@
             navbar.Controls.Add(reportbt);
             navbar.Controls.Add(inventorybt);
             navbar.Controls.Add(pictureBox2);
-            navbar.Controls.Add(hopeRoundButton1);
+            navbar.Controls.Add(ClinicStaffStudentRecordsbt);
             navbar.Dock = DockStyle.Left;
             navbar.Location = new Point(0, 0);
             navbar.Margin = new Padding(3, 3, 3, 2);
             navbar.Name = "navbar";
-            navbar.Size = new Size(307, 701);
+            navbar.Size = new Size(307, 723);
             navbar.TabIndex = 0;
             // 
             // pictureBox7
@@ -147,7 +147,7 @@
             reportbt.ForeColor = Color.DodgerBlue;
             reportbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             reportbt.InfoColor = Color.FromArgb(144, 147, 153);
-            reportbt.Location = new Point(13, 423);
+            reportbt.Location = new Point(13, 414);
             reportbt.Name = "reportbt";
             reportbt.PrimaryColor = Color.FromArgb(189, 233, 255);
             reportbt.Size = new Size(276, 56);
@@ -169,7 +169,7 @@
             inventorybt.ForeColor = Color.DodgerBlue;
             inventorybt.HoverTextColor = Color.FromArgb(48, 49, 51);
             inventorybt.InfoColor = Color.FromArgb(144, 147, 153);
-            inventorybt.Location = new Point(13, 312);
+            inventorybt.Location = new Point(13, 309);
             inventorybt.Name = "inventorybt";
             inventorybt.PrimaryColor = Color.FromArgb(189, 233, 255);
             inventorybt.Size = new Size(276, 59);
@@ -190,34 +190,35 @@
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
             // 
-            // hopeRoundButton1
+            // ClinicStaffStudentRecordsbt
             // 
-            hopeRoundButton1.BackColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton1.BorderColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton1.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton1.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton1.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton1.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton1.ForeColor = Color.DodgerBlue;
-            hopeRoundButton1.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton1.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton1.Location = new Point(13, 197);
-            hopeRoundButton1.Name = "hopeRoundButton1";
-            hopeRoundButton1.PrimaryColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton1.Size = new Size(276, 63);
-            hopeRoundButton1.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton1.TabIndex = 0;
-            hopeRoundButton1.Text = "          Student Records";
-            hopeRoundButton1.TextColor = Color.DeepSkyBlue;
-            hopeRoundButton1.WarningColor = Color.FromArgb(230, 162, 60);
-            hopeRoundButton1.Click += hopeRoundButton1_Click;
+            ClinicStaffStudentRecordsbt.BackColor = Color.FromArgb(189, 233, 255);
+            ClinicStaffStudentRecordsbt.BorderColor = Color.FromArgb(189, 233, 255);
+            ClinicStaffStudentRecordsbt.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            ClinicStaffStudentRecordsbt.DangerColor = Color.FromArgb(245, 108, 108);
+            ClinicStaffStudentRecordsbt.DefaultColor = Color.FromArgb(255, 255, 255);
+            ClinicStaffStudentRecordsbt.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ClinicStaffStudentRecordsbt.ForeColor = Color.DodgerBlue;
+            ClinicStaffStudentRecordsbt.HoverTextColor = Color.FromArgb(48, 49, 51);
+            ClinicStaffStudentRecordsbt.InfoColor = Color.FromArgb(144, 147, 153);
+            ClinicStaffStudentRecordsbt.Location = new Point(13, 197);
+            ClinicStaffStudentRecordsbt.Name = "ClinicStaffStudentRecordsbt";
+            ClinicStaffStudentRecordsbt.PrimaryColor = Color.FromArgb(189, 233, 255);
+            ClinicStaffStudentRecordsbt.Size = new Size(276, 63);
+            ClinicStaffStudentRecordsbt.SuccessColor = Color.FromArgb(103, 194, 58);
+            ClinicStaffStudentRecordsbt.TabIndex = 0;
+            ClinicStaffStudentRecordsbt.Text = "          Student Records";
+            ClinicStaffStudentRecordsbt.TextColor = Color.DeepSkyBlue;
+            ClinicStaffStudentRecordsbt.WarningColor = Color.FromArgb(230, 162, 60);
+            ClinicStaffStudentRecordsbt.Click += hopeRoundButton1_Click;
             // 
             // mainPanel
             // 
+            mainPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(307, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(970, 701);
+            mainPanel.Size = new Size(836, 723);
             mainPanel.TabIndex = 1;
             // 
             // ClinicStaffDashboard
@@ -225,7 +226,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1277, 701);
+            ClientSize = new Size(1143, 723);
             ControlBox = false;
             Controls.Add(mainPanel);
             Controls.Add(navbar);
@@ -247,7 +248,7 @@
         #endregion
 
         private Panel navbar;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton1;
+        private ReaLTaiizor.Controls.HopeRoundButton ClinicStaffStudentRecordsbt;
         private PictureBox pictureBox2;
         private ReaLTaiizor.Controls.HopeRoundButton reportbt;
         private ReaLTaiizor.Controls.HopeRoundButton inventorybt;

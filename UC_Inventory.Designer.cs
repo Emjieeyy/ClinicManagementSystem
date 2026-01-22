@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Inventory));
             pictureBox9 = new PictureBox();
             hopeButton2 = new ReaLTaiizor.Controls.HopeButton();
-            pictureBox8 = new PictureBox();
-            hopeButton1 = new ReaLTaiizor.Controls.HopeButton();
             hopeRoundButton8 = new ReaLTaiizor.Controls.HopeRoundButton();
             hopeRoundButton7 = new ReaLTaiizor.Controls.HopeRoundButton();
             ItemID = new DataGridViewTextBoxColumn();
@@ -46,11 +44,15 @@
             hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
+            label2 = new Label();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            bigLabel3 = new ReaLTaiizor.Controls.BigLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dtginventory).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // pictureBox9
@@ -58,7 +60,7 @@
             pictureBox9.BackColor = Color.FromArgb(64, 158, 255);
             pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
             pictureBox9.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox9.Location = new Point(306, 155);
+            pictureBox9.Location = new Point(318, 152);
             pictureBox9.Margin = new Padding(3, 3, 3, 2);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(44, 30);
@@ -74,7 +76,7 @@
             hopeButton2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hopeButton2.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeButton2.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton2.Location = new Point(303, 144);
+            hopeButton2.Location = new Point(311, 141);
             hopeButton2.Name = "hopeButton2";
             hopeButton2.PrimaryColor = Color.FromArgb(64, 158, 255);
             hopeButton2.Size = new Size(247, 50);
@@ -83,37 +85,6 @@
             hopeButton2.Text = "     Low inventory alert";
             hopeButton2.TextColor = Color.White;
             hopeButton2.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
-            // pictureBox8
-            // 
-            pictureBox8.BackColor = Color.FromArgb(64, 158, 255);
-            pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
-            pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox8.Location = new Point(37, 152);
-            pictureBox8.Margin = new Padding(3, 3, 3, 2);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(40, 31);
-            pictureBox8.TabIndex = 38;
-            pictureBox8.TabStop = false;
-            // 
-            // hopeButton1
-            // 
-            hopeButton1.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton1.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton1.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton1.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton1.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton1.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton1.Location = new Point(23, 144);
-            hopeButton1.Name = "hopeButton1";
-            hopeButton1.PrimaryColor = Color.FromArgb(64, 158, 255);
-            hopeButton1.Size = new Size(274, 50);
-            hopeButton1.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton1.TabIndex = 37;
-            hopeButton1.Text = "  Total Stock today";
-            hopeButton1.TextColor = Color.White;
-            hopeButton1.WarningColor = Color.FromArgb(230, 162, 60);
             // 
             // hopeRoundButton8
             // 
@@ -126,7 +97,7 @@
             hopeRoundButton8.ForeColor = Color.White;
             hopeRoundButton8.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton8.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton8.Location = new Point(628, 603);
+            hopeRoundButton8.Location = new Point(628, 632);
             hopeRoundButton8.Name = "hopeRoundButton8";
             hopeRoundButton8.PrimaryColor = Color.FromArgb(96, 125, 139);
             hopeRoundButton8.Size = new Size(171, 50);
@@ -147,7 +118,7 @@
             hopeRoundButton7.ForeColor = Color.White;
             hopeRoundButton7.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton7.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton7.Location = new Point(432, 603);
+            hopeRoundButton7.Location = new Point(432, 632);
             hopeRoundButton7.Name = "hopeRoundButton7";
             hopeRoundButton7.PrimaryColor = Color.FromArgb(255, 152, 0);
             hopeRoundButton7.Size = new Size(170, 50);
@@ -185,7 +156,7 @@
             hopeRoundButton6.ForeColor = Color.White;
             hopeRoundButton6.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton6.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton6.Location = new Point(235, 603);
+            hopeRoundButton6.Location = new Point(235, 632);
             hopeRoundButton6.Name = "hopeRoundButton6";
             hopeRoundButton6.PrimaryColor = Color.FromArgb(33, 150, 243);
             hopeRoundButton6.Size = new Size(170, 50);
@@ -213,7 +184,7 @@
             hopeRoundButton5.ForeColor = Color.White;
             hopeRoundButton5.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton5.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton5.Location = new Point(31, 603);
+            hopeRoundButton5.Location = new Point(31, 632);
             hopeRoundButton5.Name = "hopeRoundButton5";
             hopeRoundButton5.PrimaryColor = Color.FromArgb(76, 175, 80);
             hopeRoundButton5.Size = new Size(170, 50);
@@ -234,7 +205,7 @@
             hopeRoundButton9.ForeColor = Color.White;
             hopeRoundButton9.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton9.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton9.Location = new Point(597, 28);
+            hopeRoundButton9.Location = new Point(625, 34);
             hopeRoundButton9.Name = "hopeRoundButton9";
             hopeRoundButton9.PrimaryColor = Color.FromArgb(64, 158, 255);
             hopeRoundButton9.Size = new Size(106, 41);
@@ -261,14 +232,14 @@
             dtginventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtginventory.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Quantity, ExpiryDate });
             dtginventory.GridColor = SystemColors.InactiveCaptionText;
-            dtginventory.Location = new Point(26, 214);
+            dtginventory.Location = new Point(26, 212);
             dtginventory.MultiSelect = false;
             dtginventory.Name = "dtginventory";
             dtginventory.ReadOnly = true;
             dtginventory.RowHeadersVisible = false;
             dtginventory.RowHeadersWidth = 51;
             dtginventory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtginventory.Size = new Size(773, 371);
+            dtginventory.Size = new Size(773, 396);
             dtginventory.TabIndex = 31;
             // 
             // hopeTextBox1
@@ -280,7 +251,7 @@
             hopeTextBox1.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             hopeTextBox1.ForeColor = Color.FromArgb(48, 49, 51);
             hopeTextBox1.Hint = "";
-            hopeTextBox1.Location = new Point(356, 31);
+            hopeTextBox1.Location = new Point(403, 37);
             hopeTextBox1.MaxLength = 32767;
             hopeTextBox1.Multiline = false;
             hopeTextBox1.Name = "hopeTextBox1";
@@ -289,7 +260,7 @@
             hopeTextBox1.SelectedText = "";
             hopeTextBox1.SelectionLength = 0;
             hopeTextBox1.SelectionStart = 0;
-            hopeTextBox1.Size = new Size(233, 35);
+            hopeTextBox1.Size = new Size(217, 35);
             hopeTextBox1.TabIndex = 29;
             hopeTextBox1.TabStop = false;
             hopeTextBox1.Text = "Search Records...";
@@ -301,7 +272,7 @@
             bigLabel1.BackColor = Color.Transparent;
             bigLabel1.Font = new Font("Century Gothic", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bigLabel1.ForeColor = Color.DodgerBlue;
-            bigLabel1.Location = new Point(15, 27);
+            bigLabel1.Location = new Point(15, 26);
             bigLabel1.Name = "bigLabel1";
             bigLabel1.Size = new Size(235, 56);
             bigLabel1.TabIndex = 27;
@@ -311,32 +282,69 @@
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(709, 18);
+            pictureBox1.Location = new Point(721, 24);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(103, 62);
             pictureBox1.TabIndex = 26;
             pictureBox1.TabStop = false;
             // 
-            // label1
+            // label2
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 7.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(25, 91);
-            label1.Name = "label1";
-            label1.Size = new Size(305, 16);
-            label1.TabIndex = 41;
-            label1.Text = "Ensuring Availability of Essential Clinic Supplies.";
+            label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(74, 155, 250);
+            label2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(77, 153);
+            label2.Name = "label2";
+            label2.Size = new Size(209, 19);
+            label2.TabIndex = 64;
+            label2.Text = "Total consultations today";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.FromArgb(64, 158, 255);
+            pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
+            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox2.Location = new Point(32, 146);
+            pictureBox2.Margin = new Padding(3, 3, 3, 2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(40, 31);
+            pictureBox2.TabIndex = 62;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
+            pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox3.Location = new Point(15, 112);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(290, 87);
+            pictureBox3.TabIndex = 63;
+            pictureBox3.TabStop = false;
+            // 
+            // bigLabel3
+            // 
+            bigLabel3.AutoSize = true;
+            bigLabel3.BackColor = Color.Transparent;
+            bigLabel3.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            bigLabel3.ForeColor = SystemColors.ActiveCaptionText;
+            bigLabel3.Location = new Point(28, 86);
+            bigLabel3.Name = "bigLabel3";
+            bigLabel3.Size = new Size(352, 18);
+            bigLabel3.TabIndex = 65;
+            bigLabel3.Text = "Ensuring Availability of Essential Clinic Supplies.";
             // 
             // UC_Inventory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(label1);
+            Controls.Add(bigLabel3);
+            Controls.Add(label2);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox3);
             Controls.Add(pictureBox9);
             Controls.Add(hopeButton2);
-            Controls.Add(pictureBox8);
-            Controls.Add(hopeButton1);
             Controls.Add(hopeRoundButton8);
             Controls.Add(hopeRoundButton7);
             Controls.Add(hopeRoundButton6);
@@ -347,11 +355,12 @@
             Controls.Add(bigLabel1);
             Controls.Add(pictureBox1);
             Name = "UC_Inventory";
-            Size = new Size(835, 690);
+            Size = new Size(828, 705);
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)dtginventory).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -359,8 +368,6 @@
         #endregion
         private PictureBox pictureBox9;
         private ReaLTaiizor.Controls.HopeButton hopeButton2;
-        private PictureBox pictureBox8;
-        private ReaLTaiizor.Controls.HopeButton hopeButton1;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton8;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton7;
         private DataGridViewTextBoxColumn ItemID;
@@ -374,6 +381,9 @@
         private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
         private ReaLTaiizor.Controls.BigLabel bigLabel1;
         private PictureBox pictureBox1;
-        private Label label1;
+        private Label label2;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private ReaLTaiizor.Controls.BigLabel bigLabel3;
     }
 }

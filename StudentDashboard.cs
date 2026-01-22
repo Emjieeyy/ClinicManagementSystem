@@ -13,18 +13,29 @@ namespace ClinicManagementSystem
         public StudentDashboard()
         {
             InitializeComponent();
+            ShowPage(new UC_StudentRecords());
+        }
+
+        public void ShowPage(UserControl page)
+        {
+            student_UC_container.Controls.Clear();      // remove current page
+            page.Dock = DockStyle.Fill;      // make it fill the panel
+            student_UC_container.Controls.Add(page);    // show new page
         }
 
         private void hopeRoundButton3_Click(object sender, EventArgs e)
         {
-            AddInformation addInfo = new AddInformation();
-            addInfo.ShowDialog();
+            ShowPage(new UC_AddInformation1());
         }
 
         private void hopeRoundButton2_Click(object sender, EventArgs e)
         {
-            UpdateInformation updateinfo = new UpdateInformation();
-            updateinfo.ShowDialog();
+            ShowPage(new UC_UpdateInfomation());
+        }
+
+        private void myRecordsbt_Click(object sender, EventArgs e)
+        {
+            ShowPage(new UC_StudentRecords());
         }
     }
 }
