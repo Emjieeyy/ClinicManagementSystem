@@ -32,8 +32,6 @@
             loginform = new Panel();
             pictureBox5 = new PictureBox();
             pictureBox8 = new PictureBox();
-            hopeRadioButton2 = new ReaLTaiizor.Controls.HopeRadioButton();
-            hopeRadioButton1 = new ReaLTaiizor.Controls.HopeRadioButton();
             loginbt = new ReaLTaiizor.Controls.HopeRoundButton();
             passwordtb = new ReaLTaiizor.Controls.HopeTextBox();
             exit = new Label();
@@ -59,8 +57,6 @@
             loginform.BackColor = Color.White;
             loginform.Controls.Add(pictureBox5);
             loginform.Controls.Add(pictureBox8);
-            loginform.Controls.Add(hopeRadioButton2);
-            loginform.Controls.Add(hopeRadioButton1);
             loginform.Controls.Add(loginbt);
             loginform.Controls.Add(passwordtb);
             loginform.Controls.Add(exit);
@@ -82,7 +78,7 @@
             pictureBox5.BackColor = Color.FromArgb(189, 233, 255);
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
             pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox5.Location = new Point(685, 303);
+            pictureBox5.Location = new Point(685, 321);
             pictureBox5.Margin = new Padding(3, 3, 3, 2);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(40, 31);
@@ -94,53 +90,12 @@
             pictureBox8.BackColor = Color.FromArgb(189, 233, 255);
             pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
             pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox8.Location = new Point(683, 228);
+            pictureBox8.Location = new Point(683, 246);
             pictureBox8.Margin = new Padding(3, 3, 3, 2);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(40, 31);
             pictureBox8.TabIndex = 20;
             pictureBox8.TabStop = false;
-            // 
-            // hopeRadioButton2
-            // 
-            hopeRadioButton2.AutoSize = true;
-            hopeRadioButton2.CheckedColor = Color.FromArgb(64, 158, 255);
-            hopeRadioButton2.DisabledColor = Color.FromArgb(196, 198, 202);
-            hopeRadioButton2.DisabledStringColor = Color.FromArgb(186, 187, 189);
-            hopeRadioButton2.Enable = true;
-            hopeRadioButton2.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
-            hopeRadioButton2.EnabledStringColor = Color.FromArgb(146, 146, 146);
-            hopeRadioButton2.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
-            hopeRadioButton2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            hopeRadioButton2.ForeColor = Color.Black;
-            hopeRadioButton2.Location = new Point(848, 368);
-            hopeRadioButton2.Name = "hopeRadioButton2";
-            hopeRadioButton2.Size = new Size(110, 20);
-            hopeRadioButton2.TabIndex = 19;
-            hopeRadioButton2.TabStop = true;
-            hopeRadioButton2.Text = "Clinic Staff";
-            hopeRadioButton2.UseVisualStyleBackColor = true;
-            // 
-            // hopeRadioButton1
-            // 
-            hopeRadioButton1.AutoSize = true;
-            hopeRadioButton1.CheckedColor = Color.FromArgb(64, 158, 255);
-            hopeRadioButton1.DisabledColor = Color.FromArgb(196, 198, 202);
-            hopeRadioButton1.DisabledStringColor = Color.FromArgb(186, 187, 189);
-            hopeRadioButton1.Enable = true;
-            hopeRadioButton1.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
-            hopeRadioButton1.EnabledStringColor = Color.FromArgb(146, 146, 146);
-            hopeRadioButton1.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
-            hopeRadioButton1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            hopeRadioButton1.ForeColor = Color.Black;
-            hopeRadioButton1.Location = new Point(746, 368);
-            hopeRadioButton1.Name = "hopeRadioButton1";
-            hopeRadioButton1.Size = new Size(89, 20);
-            hopeRadioButton1.TabIndex = 18;
-            hopeRadioButton1.TabStop = true;
-            hopeRadioButton1.Text = "Student";
-            hopeRadioButton1.UseVisualStyleBackColor = true;
-            hopeRadioButton1.CheckedChanged += hopeRadioButton1_CheckedChanged;
             // 
             // loginbt
             // 
@@ -151,7 +106,7 @@
             loginbt.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             loginbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             loginbt.InfoColor = Color.FromArgb(144, 147, 153);
-            loginbt.Location = new Point(826, 431);
+            loginbt.Location = new Point(826, 424);
             loginbt.Name = "loginbt";
             loginbt.PrimaryColor = Color.FromArgb(64, 158, 255);
             loginbt.Size = new Size(137, 45);
@@ -171,7 +126,7 @@
             passwordtb.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             passwordtb.ForeColor = Color.FromArgb(48, 49, 51);
             passwordtb.Hint = "";
-            passwordtb.Location = new Point(720, 300);
+            passwordtb.Location = new Point(720, 318);
             passwordtb.MaxLength = 32767;
             passwordtb.Multiline = false;
             passwordtb.Name = "passwordtb";
@@ -191,7 +146,7 @@
             exit.AutoSize = true;
             exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             exit.ForeColor = Color.Red;
-            exit.Location = new Point(1041, 8);
+            exit.Location = new Point(1041, 12);
             exit.Name = "exit";
             exit.Size = new Size(21, 23);
             exit.TabIndex = 15;
@@ -207,7 +162,7 @@
             usernametb.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             usernametb.ForeColor = Color.FromArgb(48, 49, 51);
             usernametb.Hint = "";
-            usernametb.Location = new Point(718, 224);
+            usernametb.Location = new Point(718, 242);
             usernametb.MaxLength = 32767;
             usernametb.Multiline = false;
             usernametb.Name = "usernametb";
@@ -235,7 +190,7 @@
             showpasswordcb.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
             showpasswordcb.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             showpasswordcb.ForeColor = Color.FromArgb(48, 49, 51);
-            showpasswordcb.Location = new Point(667, 404);
+            showpasswordcb.Location = new Point(671, 389);
             showpasswordcb.Name = "showpasswordcb";
             showpasswordcb.Size = new Size(148, 20);
             showpasswordcb.TabIndex = 13;
@@ -247,7 +202,7 @@
             // 
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox4.Location = new Point(638, 277);
+            pictureBox4.Location = new Point(638, 295);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(347, 83);
             pictureBox4.TabIndex = 5;
@@ -257,7 +212,7 @@
             // 
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Location = new Point(637, 200);
+            pictureBox3.Location = new Point(637, 218);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(347, 83);
             pictureBox3.TabIndex = 4;
@@ -277,7 +232,7 @@
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(766, 77);
+            pictureBox2.Location = new Point(764, 76);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(114, 75);
             pictureBox2.TabIndex = 1;
@@ -329,8 +284,6 @@
         private ReaLTaiizor.Controls.HopeTextBox usernametb;
         private ReaLTaiizor.Controls.HopeTextBox passwordtb;
         private ReaLTaiizor.Controls.HopeRoundButton loginbt;
-        private ReaLTaiizor.Controls.HopeRadioButton hopeRadioButton2;
-        private ReaLTaiizor.Controls.HopeRadioButton hopeRadioButton1;
         private PictureBox pictureBox8;
         private PictureBox pictureBox5;
     }
