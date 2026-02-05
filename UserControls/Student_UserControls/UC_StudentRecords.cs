@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicManagementSystem.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,14 @@ namespace ClinicManagementSystem
         public UC_StudentRecords()
         {
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.DataSource = ClinicData.StudentRecords;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
         }
     }
 }

@@ -135,6 +135,7 @@
             hopeRoundButton4.Text = "Logout";
             hopeRoundButton4.TextColor = Color.DeepSkyBlue;
             hopeRoundButton4.WarningColor = Color.FromArgb(230, 162, 60);
+            hopeRoundButton4.Click += hopeRoundButton4_Click;
             // 
             // AddInformationbt
             // 

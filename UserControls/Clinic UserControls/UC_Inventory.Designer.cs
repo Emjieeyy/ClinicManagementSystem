@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Inventory));
             pictureBox9 = new PictureBox();
             hopeButton2 = new ReaLTaiizor.Controls.HopeButton();
-            hopeRoundButton8 = new ReaLTaiizor.Controls.HopeRoundButton();
-            hopeRoundButton7 = new ReaLTaiizor.Controls.HopeRoundButton();
+            SaveBtn = new ReaLTaiizor.Controls.HopeRoundButton();
+            DeductStockBtn = new ReaLTaiizor.Controls.HopeRoundButton();
+            UpdateStockBtn = new ReaLTaiizor.Controls.HopeRoundButton();
+            AddItemBtn = new ReaLTaiizor.Controls.HopeRoundButton();
+            SearchBtn = new ReaLTaiizor.Controls.HopeRoundButton();
+            dtgInventory = new DataGridView();
             ItemID = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
-            hopeRoundButton6 = new ReaLTaiizor.Controls.HopeRoundButton();
-            ExpiryDate = new DataGridViewTextBoxColumn();
-            hopeRoundButton5 = new ReaLTaiizor.Controls.HopeRoundButton();
-            hopeRoundButton9 = new ReaLTaiizor.Controls.HopeRoundButton();
             Quantity = new DataGridViewTextBoxColumn();
-            dtginventory = new DataGridView();
-            hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
+            ExpiryDate = new DataGridViewTextBoxColumn();
+            SearchTxt = new ReaLTaiizor.Controls.HopeTextBox();
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
             pictureBox1 = new PictureBox();
             label2 = new Label();
@@ -49,7 +49,7 @@
             pictureBox3 = new PictureBox();
             bigLabel3 = new ReaLTaiizor.Controls.BigLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtginventory).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgInventory).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -86,185 +86,189 @@
             hopeButton2.TextColor = Color.White;
             hopeButton2.WarningColor = Color.FromArgb(230, 162, 60);
             // 
-            // hopeRoundButton8
+            // SaveBtn
             // 
-            hopeRoundButton8.BackColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton8.BorderColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton8.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton8.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton8.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton8.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton8.ForeColor = Color.White;
-            hopeRoundButton8.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton8.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton8.Location = new Point(628, 632);
-            hopeRoundButton8.Name = "hopeRoundButton8";
-            hopeRoundButton8.PrimaryColor = Color.FromArgb(96, 125, 139);
-            hopeRoundButton8.Size = new Size(171, 50);
-            hopeRoundButton8.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton8.TabIndex = 35;
-            hopeRoundButton8.Text = "View ";
-            hopeRoundButton8.TextColor = Color.White;
-            hopeRoundButton8.WarningColor = Color.FromArgb(230, 162, 60);
+            SaveBtn.BackColor = Color.FromArgb(64, 158, 255);
+            SaveBtn.BorderColor = Color.FromArgb(64, 158, 255);
+            SaveBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            SaveBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            SaveBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            SaveBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaveBtn.ForeColor = Color.White;
+            SaveBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            SaveBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            SaveBtn.Location = new Point(628, 632);
+            SaveBtn.Name = "SaveBtn";
+            SaveBtn.PrimaryColor = Color.FromArgb(96, 125, 139);
+            SaveBtn.Size = new Size(171, 50);
+            SaveBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            SaveBtn.TabIndex = 35;
+            SaveBtn.Text = "Save";
+            SaveBtn.TextColor = Color.White;
+            SaveBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            SaveBtn.Click += SaveBtn_Click;
             // 
-            // hopeRoundButton7
+            // DeductStockBtn
             // 
-            hopeRoundButton7.BackColor = Color.FromArgb(255, 152, 0);
-            hopeRoundButton7.BorderColor = Color.FromArgb(255, 152, 0);
-            hopeRoundButton7.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton7.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton7.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton7.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton7.ForeColor = Color.White;
-            hopeRoundButton7.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton7.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton7.Location = new Point(432, 632);
-            hopeRoundButton7.Name = "hopeRoundButton7";
-            hopeRoundButton7.PrimaryColor = Color.FromArgb(255, 152, 0);
-            hopeRoundButton7.Size = new Size(170, 50);
-            hopeRoundButton7.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton7.TabIndex = 34;
-            hopeRoundButton7.Text = "Deduct Stock";
-            hopeRoundButton7.TextColor = Color.White;
-            hopeRoundButton7.WarningColor = Color.FromArgb(230, 162, 60);
-            hopeRoundButton7.Click += hopeRoundButton7_Click;
+            DeductStockBtn.BackColor = Color.FromArgb(255, 152, 0);
+            DeductStockBtn.BorderColor = Color.FromArgb(255, 152, 0);
+            DeductStockBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            DeductStockBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            DeductStockBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            DeductStockBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DeductStockBtn.ForeColor = Color.White;
+            DeductStockBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            DeductStockBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            DeductStockBtn.Location = new Point(432, 632);
+            DeductStockBtn.Name = "DeductStockBtn";
+            DeductStockBtn.PrimaryColor = Color.FromArgb(255, 152, 0);
+            DeductStockBtn.Size = new Size(170, 50);
+            DeductStockBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            DeductStockBtn.TabIndex = 34;
+            DeductStockBtn.Text = "Deduct Stock";
+            DeductStockBtn.TextColor = Color.White;
+            DeductStockBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            DeductStockBtn.Click += DeductStockBtn_Click;
+            // 
+            // UpdateStockBtn
+            // 
+            UpdateStockBtn.BackColor = Color.FromArgb(64, 158, 255);
+            UpdateStockBtn.BorderColor = Color.FromArgb(64, 158, 255);
+            UpdateStockBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            UpdateStockBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            UpdateStockBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            UpdateStockBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UpdateStockBtn.ForeColor = Color.White;
+            UpdateStockBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            UpdateStockBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            UpdateStockBtn.Location = new Point(235, 632);
+            UpdateStockBtn.Name = "UpdateStockBtn";
+            UpdateStockBtn.PrimaryColor = Color.FromArgb(33, 150, 243);
+            UpdateStockBtn.Size = new Size(170, 50);
+            UpdateStockBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            UpdateStockBtn.TabIndex = 33;
+            UpdateStockBtn.Text = "Update Stock";
+            UpdateStockBtn.TextColor = Color.White;
+            UpdateStockBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            UpdateStockBtn.Click += UpdateStockBtn_Click;
+            // 
+            // AddItemBtn
+            // 
+            AddItemBtn.BackColor = Color.FromArgb(76, 175, 80);
+            AddItemBtn.BorderColor = Color.FromArgb(76, 175, 80);
+            AddItemBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            AddItemBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            AddItemBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            AddItemBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddItemBtn.ForeColor = Color.White;
+            AddItemBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            AddItemBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            AddItemBtn.Location = new Point(31, 632);
+            AddItemBtn.Name = "AddItemBtn";
+            AddItemBtn.PrimaryColor = Color.FromArgb(76, 175, 80);
+            AddItemBtn.Size = new Size(170, 50);
+            AddItemBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            AddItemBtn.TabIndex = 32;
+            AddItemBtn.Text = "Add Item";
+            AddItemBtn.TextColor = Color.White;
+            AddItemBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            AddItemBtn.Click += AddItemBtn_Click;
+            // 
+            // SearchBtn
+            // 
+            SearchBtn.BackColor = Color.FromArgb(64, 158, 255);
+            SearchBtn.BorderColor = Color.FromArgb(64, 158, 255);
+            SearchBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            SearchBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            SearchBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            SearchBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchBtn.ForeColor = Color.White;
+            SearchBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            SearchBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            SearchBtn.Location = new Point(625, 34);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.PrimaryColor = Color.FromArgb(64, 158, 255);
+            SearchBtn.Size = new Size(106, 41);
+            SearchBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            SearchBtn.TabIndex = 30;
+            SearchBtn.Text = "Search";
+            SearchBtn.TextColor = Color.White;
+            SearchBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            SearchBtn.Click += hopeRoundButton9_Click;
+            // 
+            // dtgInventory
+            // 
+            dtgInventory.AllowUserToOrderColumns = true;
+            dtgInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgInventory.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dtgInventory.BackgroundColor = SystemColors.ControlLightLight;
+            dtgInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgInventory.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Quantity, ExpiryDate });
+            dtgInventory.GridColor = SystemColors.InactiveCaptionText;
+            dtgInventory.Location = new Point(26, 212);
+            dtgInventory.MultiSelect = false;
+            dtgInventory.Name = "dtgInventory";
+            dtgInventory.RowHeadersVisible = false;
+            dtgInventory.RowHeadersWidth = 51;
+            dtgInventory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgInventory.Size = new Size(773, 396);
+            dtgInventory.TabIndex = 31;
+            dtgInventory.DataError += dtgInventory_DataError;
             // 
             // ItemID
             // 
             ItemID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ItemID.DataPropertyName = "ItemID";
             ItemID.HeaderText = "ItemID";
             ItemID.MinimumWidth = 6;
             ItemID.Name = "ItemID";
-            ItemID.ReadOnly = true;
             ItemID.Width = 83;
             // 
             // ItemName
             // 
+            ItemName.DataPropertyName = "ItemName";
             ItemName.HeaderText = "ItemName";
             ItemName.MinimumWidth = 6;
             ItemName.Name = "ItemName";
-            ItemName.ReadOnly = true;
-            // 
-            // hopeRoundButton6
-            // 
-            hopeRoundButton6.BackColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton6.BorderColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton6.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton6.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton6.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton6.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton6.ForeColor = Color.White;
-            hopeRoundButton6.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton6.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton6.Location = new Point(235, 632);
-            hopeRoundButton6.Name = "hopeRoundButton6";
-            hopeRoundButton6.PrimaryColor = Color.FromArgb(33, 150, 243);
-            hopeRoundButton6.Size = new Size(170, 50);
-            hopeRoundButton6.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton6.TabIndex = 33;
-            hopeRoundButton6.Text = "Update Stock";
-            hopeRoundButton6.TextColor = Color.White;
-            hopeRoundButton6.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
-            // ExpiryDate
-            // 
-            ExpiryDate.HeaderText = "ExpiryDate";
-            ExpiryDate.MinimumWidth = 6;
-            ExpiryDate.Name = "ExpiryDate";
-            ExpiryDate.ReadOnly = true;
-            // 
-            // hopeRoundButton5
-            // 
-            hopeRoundButton5.BackColor = Color.FromArgb(76, 175, 80);
-            hopeRoundButton5.BorderColor = Color.FromArgb(76, 175, 80);
-            hopeRoundButton5.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton5.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton5.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton5.ForeColor = Color.White;
-            hopeRoundButton5.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton5.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton5.Location = new Point(31, 632);
-            hopeRoundButton5.Name = "hopeRoundButton5";
-            hopeRoundButton5.PrimaryColor = Color.FromArgb(76, 175, 80);
-            hopeRoundButton5.Size = new Size(170, 50);
-            hopeRoundButton5.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton5.TabIndex = 32;
-            hopeRoundButton5.Text = "Add Item";
-            hopeRoundButton5.TextColor = Color.White;
-            hopeRoundButton5.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
-            // hopeRoundButton9
-            // 
-            hopeRoundButton9.BackColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.BorderColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton9.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton9.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton9.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton9.ForeColor = Color.White;
-            hopeRoundButton9.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton9.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton9.Location = new Point(625, 34);
-            hopeRoundButton9.Name = "hopeRoundButton9";
-            hopeRoundButton9.PrimaryColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.Size = new Size(106, 41);
-            hopeRoundButton9.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton9.TabIndex = 30;
-            hopeRoundButton9.Text = "Search";
-            hopeRoundButton9.TextColor = Color.White;
-            hopeRoundButton9.WarningColor = Color.FromArgb(230, 162, 60);
-            hopeRoundButton9.Click += hopeRoundButton9_Click;
             // 
             // Quantity
             // 
+            Quantity.DataPropertyName = "Quantity";
             Quantity.HeaderText = "Quantity";
             Quantity.MinimumWidth = 6;
             Quantity.Name = "Quantity";
-            Quantity.ReadOnly = true;
             // 
-            // dtginventory
+            // ExpiryDate
             // 
-            dtginventory.AllowUserToOrderColumns = true;
-            dtginventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtginventory.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dtginventory.BackgroundColor = SystemColors.ControlLightLight;
-            dtginventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtginventory.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Quantity, ExpiryDate });
-            dtginventory.GridColor = SystemColors.InactiveCaptionText;
-            dtginventory.Location = new Point(26, 212);
-            dtginventory.MultiSelect = false;
-            dtginventory.Name = "dtginventory";
-            dtginventory.ReadOnly = true;
-            dtginventory.RowHeadersVisible = false;
-            dtginventory.RowHeadersWidth = 51;
-            dtginventory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtginventory.Size = new Size(773, 396);
-            dtginventory.TabIndex = 31;
+            ExpiryDate.DataPropertyName = "ExpiryDate";
+            ExpiryDate.HeaderText = "ExpiryDate";
+            ExpiryDate.MinimumWidth = 6;
+            ExpiryDate.Name = "ExpiryDate";
             // 
-            // hopeTextBox1
+            // SearchTxt
             // 
-            hopeTextBox1.BackColor = Color.White;
-            hopeTextBox1.BaseColor = Color.White;
-            hopeTextBox1.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox1.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox1.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            hopeTextBox1.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox1.Hint = "";
-            hopeTextBox1.Location = new Point(403, 37);
-            hopeTextBox1.MaxLength = 32767;
-            hopeTextBox1.Multiline = false;
-            hopeTextBox1.Name = "hopeTextBox1";
-            hopeTextBox1.PasswordChar = '\0';
-            hopeTextBox1.ScrollBars = ScrollBars.None;
-            hopeTextBox1.SelectedText = "";
-            hopeTextBox1.SelectionLength = 0;
-            hopeTextBox1.SelectionStart = 0;
-            hopeTextBox1.Size = new Size(217, 35);
-            hopeTextBox1.TabIndex = 29;
-            hopeTextBox1.TabStop = false;
-            hopeTextBox1.Text = "Search Records...";
-            hopeTextBox1.UseSystemPasswordChar = false;
+            SearchTxt.BackColor = Color.White;
+            SearchTxt.BaseColor = Color.White;
+            SearchTxt.BorderColorA = Color.FromArgb(64, 158, 255);
+            SearchTxt.BorderColorB = Color.FromArgb(220, 223, 230);
+            SearchTxt.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            SearchTxt.ForeColor = Color.FromArgb(48, 49, 51);
+            SearchTxt.Hint = "";
+            SearchTxt.Location = new Point(403, 37);
+            SearchTxt.MaxLength = 32767;
+            SearchTxt.Multiline = false;
+            SearchTxt.Name = "SearchTxt";
+            SearchTxt.PasswordChar = '\0';
+            SearchTxt.ScrollBars = ScrollBars.None;
+            SearchTxt.SelectedText = "";
+            SearchTxt.SelectionLength = 0;
+            SearchTxt.SelectionStart = 0;
+            SearchTxt.Size = new Size(217, 35);
+            SearchTxt.TabIndex = 29;
+            SearchTxt.TabStop = false;
+            SearchTxt.Text = "Search Records...";
+            SearchTxt.UseSystemPasswordChar = false;
+            SearchTxt.Click += SearchTxt_Click;
             // 
             // bigLabel1
             // 
@@ -345,19 +349,20 @@
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox9);
             Controls.Add(hopeButton2);
-            Controls.Add(hopeRoundButton8);
-            Controls.Add(hopeRoundButton7);
-            Controls.Add(hopeRoundButton6);
-            Controls.Add(hopeRoundButton5);
-            Controls.Add(hopeRoundButton9);
-            Controls.Add(dtginventory);
-            Controls.Add(hopeTextBox1);
+            Controls.Add(SaveBtn);
+            Controls.Add(DeductStockBtn);
+            Controls.Add(UpdateStockBtn);
+            Controls.Add(AddItemBtn);
+            Controls.Add(SearchBtn);
+            Controls.Add(dtgInventory);
+            Controls.Add(SearchTxt);
             Controls.Add(bigLabel1);
             Controls.Add(pictureBox1);
             Name = "UC_Inventory";
             Size = new Size(828, 705);
+            Load += UC_Inventory_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtginventory).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgInventory).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -368,22 +373,22 @@
         #endregion
         private PictureBox pictureBox9;
         private ReaLTaiizor.Controls.HopeButton hopeButton2;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton8;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton7;
-        private DataGridViewTextBoxColumn ItemID;
-        private DataGridViewTextBoxColumn ItemName;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton6;
-        private DataGridViewTextBoxColumn ExpiryDate;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton5;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton9;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridView dtginventory;
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
+        private ReaLTaiizor.Controls.HopeRoundButton SaveBtn;
+        private ReaLTaiizor.Controls.HopeRoundButton DeductStockBtn;
+        private ReaLTaiizor.Controls.HopeRoundButton UpdateStockBtn;
+        private ReaLTaiizor.Controls.HopeRoundButton AddItemBtn;
+        private ReaLTaiizor.Controls.HopeRoundButton SearchBtn;
+        private DataGridView dtgInventory;
+        private ReaLTaiizor.Controls.HopeTextBox SearchTxt;
         private ReaLTaiizor.Controls.BigLabel bigLabel1;
         private PictureBox pictureBox1;
         private Label label2;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private ReaLTaiizor.Controls.BigLabel bigLabel3;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn ItemName;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn ExpiryDate;
     }
 }

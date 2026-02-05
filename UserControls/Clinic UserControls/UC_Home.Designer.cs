@@ -31,29 +31,31 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
             hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
             pictureBox1 = new PictureBox();
-            Quantity = new DataGridViewTextBoxColumn();
             hopeRoundButton5 = new ReaLTaiizor.Controls.HopeRoundButton();
             hopeRoundButton9 = new ReaLTaiizor.Controls.HopeRoundButton();
-            ExpiryDate = new DataGridViewTextBoxColumn();
             hopeRoundButton6 = new ReaLTaiizor.Controls.HopeRoundButton();
-            ItemName = new DataGridViewTextBoxColumn();
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
-            ItemID = new DataGridViewTextBoxColumn();
             pictureBox9 = new PictureBox();
             hopeButton2 = new ReaLTaiizor.Controls.HopeButton();
             pictureBox8 = new PictureBox();
             hopeRoundButton8 = new ReaLTaiizor.Controls.HopeRoundButton();
             hopeRoundButton7 = new ReaLTaiizor.Controls.HopeRoundButton();
-            dtginventory = new DataGridView();
             bigLabel2 = new ReaLTaiizor.Controls.BigLabel();
             bigLabel3 = new ReaLTaiizor.Controls.BigLabel();
             pictureBox2 = new PictureBox();
             label1 = new Label();
+            dataGridView1 = new DataGridView();
+            StudentID = new DataGridViewTextBoxColumn();
+            StudentName = new DataGridViewTextBoxColumn();
+            Course = new DataGridViewTextBoxColumn();
+            Symptoms = new DataGridViewTextBoxColumn();
+            Medicine = new DataGridViewTextBoxColumn();
+            DateVisited = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtginventory).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // hopeTextBox1
@@ -90,13 +92,6 @@
             pictureBox1.TabIndex = 43;
             pictureBox1.TabStop = false;
             // 
-            // Quantity
-            // 
-            Quantity.HeaderText = "Quantity";
-            Quantity.MinimumWidth = 6;
-            Quantity.Name = "Quantity";
-            Quantity.ReadOnly = true;
-            // 
             // hopeRoundButton5
             // 
             hopeRoundButton5.BackColor = Color.FromArgb(76, 175, 80);
@@ -108,7 +103,7 @@
             hopeRoundButton5.ForeColor = Color.White;
             hopeRoundButton5.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton5.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton5.Location = new Point(27, 633);
+            hopeRoundButton5.Location = new Point(27, 641);
             hopeRoundButton5.Name = "hopeRoundButton5";
             hopeRoundButton5.PrimaryColor = Color.FromArgb(76, 175, 80);
             hopeRoundButton5.Size = new Size(170, 50);
@@ -139,13 +134,6 @@
             hopeRoundButton9.TextColor = Color.White;
             hopeRoundButton9.WarningColor = Color.FromArgb(230, 162, 60);
             // 
-            // ExpiryDate
-            // 
-            ExpiryDate.HeaderText = "ExpiryDate";
-            ExpiryDate.MinimumWidth = 6;
-            ExpiryDate.Name = "ExpiryDate";
-            ExpiryDate.ReadOnly = true;
-            // 
             // hopeRoundButton6
             // 
             hopeRoundButton6.BackColor = Color.FromArgb(64, 158, 255);
@@ -157,7 +145,7 @@
             hopeRoundButton6.ForeColor = Color.White;
             hopeRoundButton6.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton6.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton6.Location = new Point(227, 633);
+            hopeRoundButton6.Location = new Point(227, 641);
             hopeRoundButton6.Name = "hopeRoundButton6";
             hopeRoundButton6.PrimaryColor = Color.FromArgb(33, 150, 243);
             hopeRoundButton6.Size = new Size(170, 50);
@@ -166,13 +154,6 @@
             hopeRoundButton6.Text = "Update";
             hopeRoundButton6.TextColor = Color.White;
             hopeRoundButton6.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
-            // ItemName
-            // 
-            ItemName.HeaderText = "ItemName";
-            ItemName.MinimumWidth = 6;
-            ItemName.Name = "ItemName";
-            ItemName.ReadOnly = true;
             // 
             // bigLabel1
             // 
@@ -185,15 +166,6 @@
             bigLabel1.Size = new Size(383, 56);
             bigLabel1.TabIndex = 44;
             bigLabel1.Text = "Staff Dashboard";
-            // 
-            // ItemID
-            // 
-            ItemID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            ItemID.HeaderText = "ItemID";
-            ItemID.MinimumWidth = 6;
-            ItemID.Name = "ItemID";
-            ItemID.ReadOnly = true;
-            ItemID.Width = 83;
             // 
             // pictureBox9
             // 
@@ -250,7 +222,7 @@
             hopeRoundButton8.ForeColor = Color.White;
             hopeRoundButton8.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton8.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton8.Location = new Point(635, 633);
+            hopeRoundButton8.Location = new Point(635, 641);
             hopeRoundButton8.Name = "hopeRoundButton8";
             hopeRoundButton8.PrimaryColor = Color.FromArgb(96, 125, 139);
             hopeRoundButton8.Size = new Size(171, 50);
@@ -271,7 +243,7 @@
             hopeRoundButton7.ForeColor = Color.White;
             hopeRoundButton7.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton7.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton7.Location = new Point(437, 633);
+            hopeRoundButton7.Location = new Point(437, 641);
             hopeRoundButton7.Name = "hopeRoundButton7";
             hopeRoundButton7.PrimaryColor = Color.Red;
             hopeRoundButton7.Size = new Size(170, 50);
@@ -280,25 +252,6 @@
             hopeRoundButton7.Text = "Delete";
             hopeRoundButton7.TextColor = Color.White;
             hopeRoundButton7.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
-            // dtginventory
-            // 
-            dtginventory.AllowUserToOrderColumns = true;
-            dtginventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtginventory.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dtginventory.BackgroundColor = SystemColors.ControlLightLight;
-            dtginventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtginventory.Columns.AddRange(new DataGridViewColumn[] { ItemID, ItemName, Quantity, ExpiryDate });
-            dtginventory.GridColor = SystemColors.InactiveCaptionText;
-            dtginventory.Location = new Point(28, 279);
-            dtginventory.MultiSelect = false;
-            dtginventory.Name = "dtginventory";
-            dtginventory.ReadOnly = true;
-            dtginventory.RowHeadersVisible = false;
-            dtginventory.RowHeadersWidth = 51;
-            dtginventory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtginventory.Size = new Size(777, 336);
-            dtginventory.TabIndex = 47;
             // 
             // bigLabel2
             // 
@@ -346,11 +299,81 @@
             label1.TabIndex = 61;
             label1.Text = "Total consultations today";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.BackgroundColor = SystemColors.ControlLightLight;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { StudentID, StudentName, Course, Symptoms, Medicine, DateVisited });
+            dataGridView1.GridColor = SystemColors.InactiveCaptionText;
+            dataGridView1.Location = new Point(35, 285);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(761, 340);
+            dataGridView1.TabIndex = 62;
+            // 
+            // StudentID
+            // 
+            StudentID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            StudentID.DataPropertyName = "StudentID";
+            StudentID.HeaderText = "StudentID";
+            StudentID.MinimumWidth = 6;
+            StudentID.Name = "StudentID";
+            StudentID.ReadOnly = true;
+            StudentID.Width = 104;
+            // 
+            // StudentName
+            // 
+            StudentName.DataPropertyName = "StudentName";
+            StudentName.HeaderText = "StudentName";
+            StudentName.MinimumWidth = 6;
+            StudentName.Name = "StudentName";
+            StudentName.ReadOnly = true;
+            // 
+            // Course
+            // 
+            Course.DataPropertyName = "Course";
+            Course.HeaderText = "Course";
+            Course.MinimumWidth = 6;
+            Course.Name = "Course";
+            Course.ReadOnly = true;
+            // 
+            // Symptoms
+            // 
+            Symptoms.DataPropertyName = "Symptoms";
+            Symptoms.HeaderText = "Symptoms";
+            Symptoms.MinimumWidth = 6;
+            Symptoms.Name = "Symptoms";
+            Symptoms.ReadOnly = true;
+            // 
+            // Medicine
+            // 
+            Medicine.DataPropertyName = "Medicine";
+            Medicine.HeaderText = "Medicine";
+            Medicine.MinimumWidth = 6;
+            Medicine.Name = "Medicine";
+            Medicine.ReadOnly = true;
+            // 
+            // DateVisited
+            // 
+            DateVisited.DataPropertyName = "DateVisited";
+            DateVisited.HeaderText = "DateVisited";
+            DateVisited.MinimumWidth = 6;
+            DateVisited.Name = "DateVisited";
+            DateVisited.ReadOnly = true;
+            // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(dataGridView1);
             Controls.Add(label1);
             Controls.Add(bigLabel3);
             Controls.Add(bigLabel2);
@@ -365,15 +388,14 @@
             Controls.Add(pictureBox8);
             Controls.Add(hopeRoundButton8);
             Controls.Add(hopeRoundButton7);
-            Controls.Add(dtginventory);
             Controls.Add(pictureBox2);
             Name = "UC_Home";
             Size = new Size(831, 704);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtginventory).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -382,24 +404,26 @@
 
         private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
         private PictureBox pictureBox1;
-        private DataGridViewTextBoxColumn Quantity;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton5;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton9;
-        private DataGridViewTextBoxColumn ExpiryDate;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton6;
-        private DataGridViewTextBoxColumn ItemName;
         private ReaLTaiizor.Controls.BigLabel bigLabel1;
-        private DataGridViewTextBoxColumn ItemID;
         private PictureBox pictureBox9;
         private ReaLTaiizor.Controls.HopeButton hopeButton2;
         private PictureBox pictureBox8;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton8;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton7;
-        private DataGridView dtginventory;
         private ReaLTaiizor.Controls.BigLabel bigLabel2;
         private Label label2;
         private ReaLTaiizor.Controls.BigLabel bigLabel3;
         private PictureBox pictureBox2;
         private Label label1;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn StudentID;
+        private DataGridViewTextBoxColumn StudentName;
+        private DataGridViewTextBoxColumn Course;
+        private DataGridViewTextBoxColumn Symptoms;
+        private DataGridViewTextBoxColumn Medicine;
+        private DataGridViewTextBoxColumn DateVisited;
     }
 }

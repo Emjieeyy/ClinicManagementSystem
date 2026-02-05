@@ -33,7 +33,7 @@
             pictureBox6 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox8 = new PictureBox();
-            hopeRoundButton4 = new ReaLTaiizor.Controls.HopeRoundButton();
+            LogOutbtn = new ReaLTaiizor.Controls.HopeRoundButton();
             AuditLogsbtn = new ReaLTaiizor.Controls.HopeRoundButton();
             pictureBox2 = new PictureBox();
             UserManagementbtn = new ReaLTaiizor.Controls.HopeRoundButton();
@@ -41,18 +41,18 @@
             tabPage1 = new TabPage();
             pictureBox1 = new PictureBox();
             Searchbtn = new ReaLTaiizor.Controls.HopeRoundButton();
-            Searchtxtbx = new TextBox();
-            dataGridView1 = new DataGridView();
+            txtSearchTab1 = new TextBox();
+            dgvUsers = new DataGridView();
             UserID_clmn = new DataGridViewTextBoxColumn();
             Name_clmn = new DataGridViewTextBoxColumn();
             Role_clmn = new DataGridViewTextBoxColumn();
             Email_clmn = new DataGridViewTextBoxColumn();
             Status_clmn = new DataGridViewTextBoxColumn();
             RecentLogPnl = new Panel();
-            label4 = new Label();
+            RecentLogs_label_0 = new Label();
             label5 = new Label();
             TotalUserPnl = new Panel();
-            label3 = new Label();
+            TotalUserlabel_0 = new Label();
             label2 = new Label();
             DeleteUserbtn = new ReaLTaiizor.Controls.HopeRoundButton();
             UpdateUserbtn = new ReaLTaiizor.Controls.HopeRoundButton();
@@ -66,15 +66,15 @@
             Filterlabel = new Label();
             Tab2_Seachbtn = new ReaLTaiizor.Controls.HopeRoundButton();
             Tab2_Searchtxtbx = new TextBox();
-            dataGridViewTab2 = new DataGridView();
+            dgvAuditLogs = new DataGridView();
             Tab2Timestamp_clmn = new DataGridViewTextBoxColumn();
-            Tab2Username_clmn = new DataGridViewTextBoxColumn();
+            Tab2Email_clmn = new DataGridViewTextBoxColumn();
             Tab2Activity_clmn = new DataGridViewTextBoxColumn();
             Tab2Description_clmn = new DataGridViewTextBoxColumn();
             Tab2Status_clmn = new DataGridViewTextBoxColumn();
             Tab2_Exportbtn = new ReaLTaiizor.Controls.HopeRoundButton();
-            Tab2_Refreshbtn = new ReaLTaiizor.Controls.HopeRoundButton();
-            comboBox1 = new ComboBox();
+            Refreshbt = new ReaLTaiizor.Controls.HopeRoundButton();
+            cmbFilterActivity = new ComboBox();
             bigLabel2 = new ReaLTaiizor.Controls.BigLabel();
             student_navbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
@@ -84,12 +84,12 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             RecentLogPnl.SuspendLayout();
             TotalUserPnl.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTab2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAuditLogs).BeginInit();
             SuspendLayout();
             // 
             // student_navbar
@@ -98,7 +98,7 @@
             student_navbar.Controls.Add(pictureBox6);
             student_navbar.Controls.Add(pictureBox3);
             student_navbar.Controls.Add(pictureBox8);
-            student_navbar.Controls.Add(hopeRoundButton4);
+            student_navbar.Controls.Add(LogOutbtn);
             student_navbar.Controls.Add(AuditLogsbtn);
             student_navbar.Controls.Add(pictureBox2);
             student_navbar.Controls.Add(UserManagementbtn);
@@ -144,26 +144,27 @@
             pictureBox8.TabIndex = 14;
             pictureBox8.TabStop = false;
             // 
-            // hopeRoundButton4
+            // LogOutbtn
             // 
-            hopeRoundButton4.BackColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton4.BorderColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton4.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton4.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton4.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton4.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton4.ForeColor = Color.DodgerBlue;
-            hopeRoundButton4.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton4.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton4.Location = new Point(26, 372);
-            hopeRoundButton4.Name = "hopeRoundButton4";
-            hopeRoundButton4.PrimaryColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton4.Size = new Size(250, 50);
-            hopeRoundButton4.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton4.TabIndex = 5;
-            hopeRoundButton4.Text = "Logout";
-            hopeRoundButton4.TextColor = Color.DeepSkyBlue;
-            hopeRoundButton4.WarningColor = Color.FromArgb(230, 162, 60);
+            LogOutbtn.BackColor = Color.FromArgb(189, 233, 255);
+            LogOutbtn.BorderColor = Color.FromArgb(189, 233, 255);
+            LogOutbtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            LogOutbtn.DangerColor = Color.FromArgb(245, 108, 108);
+            LogOutbtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            LogOutbtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LogOutbtn.ForeColor = Color.DodgerBlue;
+            LogOutbtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            LogOutbtn.InfoColor = Color.FromArgb(144, 147, 153);
+            LogOutbtn.Location = new Point(26, 372);
+            LogOutbtn.Name = "LogOutbtn";
+            LogOutbtn.PrimaryColor = Color.FromArgb(189, 233, 255);
+            LogOutbtn.Size = new Size(250, 50);
+            LogOutbtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            LogOutbtn.TabIndex = 5;
+            LogOutbtn.Text = "Logout";
+            LogOutbtn.TextColor = Color.DeepSkyBlue;
+            LogOutbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            LogOutbtn.Click += hopeRoundButton4_Click;
             // 
             // AuditLogsbtn
             // 
@@ -238,8 +239,8 @@
             tabPage1.BackColor = Color.White;
             tabPage1.Controls.Add(pictureBox1);
             tabPage1.Controls.Add(Searchbtn);
-            tabPage1.Controls.Add(Searchtxtbx);
-            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Controls.Add(txtSearchTab1);
+            tabPage1.Controls.Add(dgvUsers);
             tabPage1.Controls.Add(RecentLogPnl);
             tabPage1.Controls.Add(TotalUserPnl);
             tabPage1.Controls.Add(DeleteUserbtn);
@@ -282,54 +283,61 @@
             Searchbtn.Text = "Search";
             Searchbtn.TextColor = Color.White;
             Searchbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            Searchbtn.Click += Searchbtn_Click;
             // 
-            // Searchtxtbx
+            // txtSearchTab1
             // 
-            Searchtxtbx.Location = new Point(535, 181);
-            Searchtxtbx.Name = "Searchtxtbx";
-            Searchtxtbx.Size = new Size(210, 27);
-            Searchtxtbx.TabIndex = 8;
+            txtSearchTab1.Location = new Point(535, 181);
+            txtSearchTab1.Name = "txtSearchTab1";
+            txtSearchTab1.Size = new Size(210, 27);
+            txtSearchTab1.TabIndex = 8;
+            txtSearchTab1.TextChanged += txtSearchTab1_TextChanged_1;
             // 
-            // dataGridView1
+            // dgvUsers
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { UserID_clmn, Name_clmn, Role_clmn, Email_clmn, Status_clmn });
-            dataGridView1.GridColor = Color.Black;
-            dataGridView1.Location = new Point(36, 238);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(838, 290);
-            dataGridView1.TabIndex = 7;
+            dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUsers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvUsers.BackgroundColor = Color.White;
+            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { UserID_clmn, Name_clmn, Role_clmn, Email_clmn, Status_clmn });
+            dgvUsers.GridColor = Color.Black;
+            dgvUsers.Location = new Point(36, 238);
+            dgvUsers.Name = "dgvUsers";
+            dgvUsers.RowHeadersWidth = 51;
+            dgvUsers.Size = new Size(838, 290);
+            dgvUsers.TabIndex = 7;
             // 
             // UserID_clmn
             // 
+            UserID_clmn.DataPropertyName = "UserID";
             UserID_clmn.HeaderText = "User ID";
             UserID_clmn.MinimumWidth = 6;
             UserID_clmn.Name = "UserID_clmn";
             // 
             // Name_clmn
             // 
+            Name_clmn.DataPropertyName = "Name";
             Name_clmn.HeaderText = "Name";
             Name_clmn.MinimumWidth = 6;
             Name_clmn.Name = "Name_clmn";
             // 
             // Role_clmn
             // 
+            Role_clmn.DataPropertyName = "Role";
             Role_clmn.HeaderText = "Role";
             Role_clmn.MinimumWidth = 6;
             Role_clmn.Name = "Role_clmn";
             // 
             // Email_clmn
             // 
+            Email_clmn.DataPropertyName = "Email";
             Email_clmn.HeaderText = "Email";
             Email_clmn.MinimumWidth = 6;
             Email_clmn.Name = "Email_clmn";
             // 
             // Status_clmn
             // 
+            Status_clmn.DataPropertyName = "Status";
             Status_clmn.HeaderText = "Status";
             Status_clmn.MinimumWidth = 6;
             Status_clmn.Name = "Status_clmn";
@@ -338,7 +346,7 @@
             // 
             RecentLogPnl.BackColor = Color.DodgerBlue;
             RecentLogPnl.BackgroundImageLayout = ImageLayout.Zoom;
-            RecentLogPnl.Controls.Add(label4);
+            RecentLogPnl.Controls.Add(RecentLogs_label_0);
             RecentLogPnl.Controls.Add(label5);
             RecentLogPnl.ForeColor = Color.DodgerBlue;
             RecentLogPnl.Location = new Point(230, 139);
@@ -347,16 +355,16 @@
             RecentLogPnl.TabIndex = 6;
             RecentLogPnl.Tag = "";
             // 
-            // label4
+            // RecentLogs_label_0
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(76, 11);
-            label4.Name = "label4";
-            label4.Size = new Size(25, 27);
-            label4.TabIndex = 1;
-            label4.Text = "0";
+            RecentLogs_label_0.AutoSize = true;
+            RecentLogs_label_0.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RecentLogs_label_0.ForeColor = Color.White;
+            RecentLogs_label_0.Location = new Point(76, 11);
+            RecentLogs_label_0.Name = "RecentLogs_label_0";
+            RecentLogs_label_0.Size = new Size(25, 27);
+            RecentLogs_label_0.TabIndex = 1;
+            RecentLogs_label_0.Text = "0";
             // 
             // label5
             // 
@@ -373,7 +381,7 @@
             // 
             TotalUserPnl.BackColor = Color.DodgerBlue;
             TotalUserPnl.BackgroundImageLayout = ImageLayout.Zoom;
-            TotalUserPnl.Controls.Add(label3);
+            TotalUserPnl.Controls.Add(TotalUserlabel_0);
             TotalUserPnl.Controls.Add(label2);
             TotalUserPnl.ForeColor = Color.DodgerBlue;
             TotalUserPnl.Location = new Point(36, 139);
@@ -382,16 +390,16 @@
             TotalUserPnl.TabIndex = 5;
             TotalUserPnl.Tag = "";
             // 
-            // label3
+            // TotalUserlabel_0
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(76, 11);
-            label3.Name = "label3";
-            label3.Size = new Size(25, 27);
-            label3.TabIndex = 1;
-            label3.Text = "0";
+            TotalUserlabel_0.AutoSize = true;
+            TotalUserlabel_0.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TotalUserlabel_0.ForeColor = Color.White;
+            TotalUserlabel_0.Location = new Point(76, 11);
+            TotalUserlabel_0.Name = "TotalUserlabel_0";
+            TotalUserlabel_0.Size = new Size(25, 27);
+            TotalUserlabel_0.TabIndex = 1;
+            TotalUserlabel_0.Text = "0";
             // 
             // label2
             // 
@@ -492,10 +500,10 @@
             tabPage2.Controls.Add(Filterlabel);
             tabPage2.Controls.Add(Tab2_Seachbtn);
             tabPage2.Controls.Add(Tab2_Searchtxtbx);
-            tabPage2.Controls.Add(dataGridViewTab2);
+            tabPage2.Controls.Add(dgvAuditLogs);
             tabPage2.Controls.Add(Tab2_Exportbtn);
-            tabPage2.Controls.Add(Tab2_Refreshbtn);
-            tabPage2.Controls.Add(comboBox1);
+            tabPage2.Controls.Add(Refreshbt);
+            tabPage2.Controls.Add(cmbFilterActivity);
             tabPage2.Controls.Add(bigLabel2);
             tabPage2.Location = new Point(4, 5);
             tabPage2.Name = "tabPage2";
@@ -533,6 +541,7 @@
             Tab2_ClearLogsbt.Text = "Clear Logs";
             Tab2_ClearLogsbt.TextColor = Color.DodgerBlue;
             Tab2_ClearLogsbt.WarningColor = Color.FromArgb(230, 162, 60);
+            Tab2_ClearLogsbt.Click += Tab2_ClearLogsbt_Click;
             // 
             // pictureBox4
             // 
@@ -572,6 +581,7 @@
             Tab2_Seachbtn.Text = "Search";
             Tab2_Seachbtn.TextColor = Color.White;
             Tab2_Seachbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            Tab2_Seachbtn.Click += Tab2_Seachbtn_Click;
             // 
             // Tab2_Searchtxtbx
             // 
@@ -579,46 +589,52 @@
             Tab2_Searchtxtbx.Name = "Tab2_Searchtxtbx";
             Tab2_Searchtxtbx.Size = new Size(225, 27);
             Tab2_Searchtxtbx.TabIndex = 7;
+            Tab2_Searchtxtbx.TextChanged += Tab2_Searchtxtbx_TextChanged_1;
             // 
-            // dataGridViewTab2
+            // dgvAuditLogs
             // 
-            dataGridViewTab2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewTab2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewTab2.BackgroundColor = Color.White;
-            dataGridViewTab2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTab2.Columns.AddRange(new DataGridViewColumn[] { Tab2Timestamp_clmn, Tab2Username_clmn, Tab2Activity_clmn, Tab2Description_clmn, Tab2Status_clmn });
-            dataGridViewTab2.Location = new Point(40, 194);
-            dataGridViewTab2.Name = "dataGridViewTab2";
-            dataGridViewTab2.RowHeadersWidth = 51;
-            dataGridViewTab2.Size = new Size(847, 333);
-            dataGridViewTab2.TabIndex = 6;
+            dgvAuditLogs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAuditLogs.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvAuditLogs.BackgroundColor = Color.White;
+            dgvAuditLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAuditLogs.Columns.AddRange(new DataGridViewColumn[] { Tab2Timestamp_clmn, Tab2Email_clmn, Tab2Activity_clmn, Tab2Description_clmn, Tab2Status_clmn });
+            dgvAuditLogs.Location = new Point(40, 194);
+            dgvAuditLogs.Name = "dgvAuditLogs";
+            dgvAuditLogs.RowHeadersWidth = 51;
+            dgvAuditLogs.Size = new Size(847, 333);
+            dgvAuditLogs.TabIndex = 6;
             // 
             // Tab2Timestamp_clmn
             // 
+            Tab2Timestamp_clmn.DataPropertyName = "Timestamp";
             Tab2Timestamp_clmn.HeaderText = "Timestamp";
             Tab2Timestamp_clmn.MinimumWidth = 6;
             Tab2Timestamp_clmn.Name = "Tab2Timestamp_clmn";
             // 
-            // Tab2Username_clmn
+            // Tab2Email_clmn
             // 
-            Tab2Username_clmn.HeaderText = "Username";
-            Tab2Username_clmn.MinimumWidth = 6;
-            Tab2Username_clmn.Name = "Tab2Username_clmn";
+            Tab2Email_clmn.DataPropertyName = "Email";
+            Tab2Email_clmn.HeaderText = "Email";
+            Tab2Email_clmn.MinimumWidth = 6;
+            Tab2Email_clmn.Name = "Tab2Email_clmn";
             // 
             // Tab2Activity_clmn
             // 
+            Tab2Activity_clmn.DataPropertyName = "Activity";
             Tab2Activity_clmn.HeaderText = "Activity";
             Tab2Activity_clmn.MinimumWidth = 6;
             Tab2Activity_clmn.Name = "Tab2Activity_clmn";
             // 
             // Tab2Description_clmn
             // 
+            Tab2Description_clmn.DataPropertyName = "Description";
             Tab2Description_clmn.HeaderText = "Description";
             Tab2Description_clmn.MinimumWidth = 6;
             Tab2Description_clmn.Name = "Tab2Description_clmn";
             // 
             // Tab2Status_clmn
             // 
+            Tab2Status_clmn.DataPropertyName = "Status";
             Tab2Status_clmn.HeaderText = "Status";
             Tab2Status_clmn.MinimumWidth = 6;
             Tab2Status_clmn.Name = "Tab2Status_clmn";
@@ -642,35 +658,37 @@
             Tab2_Exportbtn.TextColor = Color.White;
             Tab2_Exportbtn.WarningColor = Color.FromArgb(230, 162, 60);
             // 
-            // Tab2_Refreshbtn
+            // Refreshbt
             // 
-            Tab2_Refreshbtn.BackColor = Color.FromArgb(76, 175, 80);
-            Tab2_Refreshbtn.BorderColor = Color.FromArgb(220, 223, 230);
-            Tab2_Refreshbtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            Tab2_Refreshbtn.DangerColor = Color.FromArgb(245, 108, 108);
-            Tab2_Refreshbtn.DefaultColor = Color.FromArgb(255, 255, 255);
-            Tab2_Refreshbtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Tab2_Refreshbtn.HoverTextColor = Color.FromArgb(48, 49, 51);
-            Tab2_Refreshbtn.InfoColor = Color.FromArgb(144, 147, 153);
-            Tab2_Refreshbtn.Location = new Point(266, 128);
-            Tab2_Refreshbtn.Name = "Tab2_Refreshbtn";
-            Tab2_Refreshbtn.PrimaryColor = Color.FromArgb(76, 175, 80);
-            Tab2_Refreshbtn.Size = new Size(126, 50);
-            Tab2_Refreshbtn.SuccessColor = Color.FromArgb(103, 194, 58);
-            Tab2_Refreshbtn.TabIndex = 3;
-            Tab2_Refreshbtn.Text = "Refresh";
-            Tab2_Refreshbtn.TextColor = Color.White;
-            Tab2_Refreshbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            Refreshbt.BackColor = Color.FromArgb(76, 175, 80);
+            Refreshbt.BorderColor = Color.FromArgb(220, 223, 230);
+            Refreshbt.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            Refreshbt.DangerColor = Color.FromArgb(245, 108, 108);
+            Refreshbt.DefaultColor = Color.FromArgb(255, 255, 255);
+            Refreshbt.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Refreshbt.HoverTextColor = Color.FromArgb(48, 49, 51);
+            Refreshbt.InfoColor = Color.FromArgb(144, 147, 153);
+            Refreshbt.Location = new Point(266, 128);
+            Refreshbt.Name = "Refreshbt";
+            Refreshbt.PrimaryColor = Color.FromArgb(76, 175, 80);
+            Refreshbt.Size = new Size(126, 50);
+            Refreshbt.SuccessColor = Color.FromArgb(103, 194, 58);
+            Refreshbt.TabIndex = 3;
+            Refreshbt.Text = "Refresh";
+            Refreshbt.TextColor = Color.White;
+            Refreshbt.WarningColor = Color.FromArgb(230, 162, 60);
+            Refreshbt.Click += Refreshbt_Click;
             // 
-            // comboBox1
+            // cmbFilterActivity
             // 
-            comboBox1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "All Acivities", "User Management", "Authentication" });
-            comboBox1.Location = new Point(40, 143);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(211, 28);
-            comboBox1.TabIndex = 2;
+            cmbFilterActivity.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbFilterActivity.FormattingEnabled = true;
+            cmbFilterActivity.Items.AddRange(new object[] { "All Activities", "User Management", "Authentication" });
+            cmbFilterActivity.Location = new Point(40, 143);
+            cmbFilterActivity.Name = "cmbFilterActivity";
+            cmbFilterActivity.Size = new Size(211, 28);
+            cmbFilterActivity.TabIndex = 2;
+            cmbFilterActivity.SelectedIndexChanged += cmbFilterActivity_SelectedIndexChanged_1;
             // 
             // bigLabel2
             // 
@@ -705,7 +723,7 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
             RecentLogPnl.ResumeLayout(false);
             RecentLogPnl.PerformLayout();
             TotalUserPnl.ResumeLayout(false);
@@ -713,7 +731,7 @@
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTab2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAuditLogs).EndInit();
             ResumeLayout(false);
         }
 
@@ -723,7 +741,7 @@
         private PictureBox pictureBox6;
         private PictureBox pictureBox3;
         private PictureBox pictureBox8;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton4;
+        private ReaLTaiizor.Controls.HopeRoundButton LogOutbtn;
         private ReaLTaiizor.Controls.HopeRoundButton AuditLogsbtn;
         private PictureBox pictureBox2;
         private ReaLTaiizor.Controls.HopeRoundButton UserManagementbtn;
@@ -736,35 +754,35 @@
         private ReaLTaiizor.Controls.HopeRoundButton DeleteUserbtn;
         private ReaLTaiizor.Controls.HopeRoundButton UpdateUserbtn;
         private ReaLTaiizor.Controls.HopeRoundButton AddUserbtn;
-        private Label label3;
+        private Label TotalUserlabel_0;
         private Label label2;
-        private DataGridView dataGridView1;
+        private DataGridView dgvUsers;
         private Panel RecentLogPnl;
-        private Label label4;
+        private Label RecentLogs_label_0;
         private Label label5;
         private ReaLTaiizor.Controls.HopeRoundButton Searchbtn;
-        private TextBox Searchtxtbx;
+        private TextBox txtSearchTab1;
+        private PictureBox pictureBox1;
+        private DataGridView dgvAuditLogs;
+        private ReaLTaiizor.Controls.HopeRoundButton Tab2_Exportbtn;
+        private ReaLTaiizor.Controls.HopeRoundButton Refreshbt;
+        private ComboBox cmbFilterActivity;
+        private ReaLTaiizor.Controls.BigLabel bigLabel2;
+        private ReaLTaiizor.Controls.HopeRoundButton Tab2_Seachbtn;
+        private TextBox Tab2_Searchtxtbx;
+        private Label Filterlabel;
+        private PictureBox pictureBox4;
+        private ReaLTaiizor.Controls.HopeRoundButton Tab2_ClearLogsbt;
+        private Label label6;
         private DataGridViewTextBoxColumn UserID_clmn;
         private DataGridViewTextBoxColumn Name_clmn;
         private DataGridViewTextBoxColumn Role_clmn;
         private DataGridViewTextBoxColumn Email_clmn;
         private DataGridViewTextBoxColumn Status_clmn;
-        private PictureBox pictureBox1;
-        private DataGridView dataGridViewTab2;
-        private ReaLTaiizor.Controls.HopeRoundButton Tab2_Exportbtn;
-        private ReaLTaiizor.Controls.HopeRoundButton Tab2_Refreshbtn;
-        private ComboBox comboBox1;
-        private ReaLTaiizor.Controls.BigLabel bigLabel2;
-        private ReaLTaiizor.Controls.HopeRoundButton Tab2_Seachbtn;
-        private TextBox Tab2_Searchtxtbx;
-        private Label Filterlabel;
         private DataGridViewTextBoxColumn Tab2Timestamp_clmn;
-        private DataGridViewTextBoxColumn Tab2Username_clmn;
+        private DataGridViewTextBoxColumn Tab2Email_clmn;
         private DataGridViewTextBoxColumn Tab2Activity_clmn;
         private DataGridViewTextBoxColumn Tab2Description_clmn;
         private DataGridViewTextBoxColumn Tab2Status_clmn;
-        private PictureBox pictureBox4;
-        private ReaLTaiizor.Controls.HopeRoundButton Tab2_ClearLogsbt;
-        private Label label6;
     }
 }

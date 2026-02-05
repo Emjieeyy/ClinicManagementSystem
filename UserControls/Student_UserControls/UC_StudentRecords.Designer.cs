@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_StudentRecords));
             label1 = new Label();
             dataGridView1 = new DataGridView();
-            StudentID = new DataGridViewTextBoxColumn();
-            StudentName = new DataGridViewTextBoxColumn();
-            Course = new DataGridViewTextBoxColumn();
-            Symptoms = new DataGridViewTextBoxColumn();
-            Treatment = new DataGridViewTextBoxColumn();
-            DateVisited = new DataGridViewTextBoxColumn();
             bigLabel2 = new ReaLTaiizor.Controls.BigLabel();
             hopeRoundButton9 = new ReaLTaiizor.Controls.HopeRoundButton();
             hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
             pictureBox1 = new PictureBox();
             sDasboard = new ReaLTaiizor.Controls.BigLabel();
+            StudentID = new DataGridViewTextBoxColumn();
+            StudentName = new DataGridViewTextBoxColumn();
+            Course = new DataGridViewTextBoxColumn();
+            Symptoms = new DataGridViewTextBoxColumn();
+            Medicine = new DataGridViewTextBoxColumn();
+            DateVisited = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -63,7 +63,7 @@
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.BackgroundColor = SystemColors.ControlLightLight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { StudentID, StudentName, Course, Symptoms, Treatment, DateVisited });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { StudentID, StudentName, Course, Symptoms, Medicine, DateVisited });
             dataGridView1.GridColor = SystemColors.InactiveCaptionText;
             dataGridView1.Location = new Point(23, 216);
             dataGridView1.MultiSelect = false;
@@ -74,50 +74,7 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(761, 355);
             dataGridView1.TabIndex = 23;
-            // 
-            // StudentID
-            // 
-            StudentID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            StudentID.HeaderText = "StudentID";
-            StudentID.MinimumWidth = 6;
-            StudentID.Name = "StudentID";
-            StudentID.ReadOnly = true;
-            StudentID.Width = 104;
-            // 
-            // StudentName
-            // 
-            StudentName.HeaderText = "StudentName";
-            StudentName.MinimumWidth = 6;
-            StudentName.Name = "StudentName";
-            StudentName.ReadOnly = true;
-            // 
-            // Course
-            // 
-            Course.HeaderText = "Course";
-            Course.MinimumWidth = 6;
-            Course.Name = "Course";
-            Course.ReadOnly = true;
-            // 
-            // Symptoms
-            // 
-            Symptoms.HeaderText = "Symptoms";
-            Symptoms.MinimumWidth = 6;
-            Symptoms.Name = "Symptoms";
-            Symptoms.ReadOnly = true;
-            // 
-            // Treatment
-            // 
-            Treatment.HeaderText = "Treatment";
-            Treatment.MinimumWidth = 6;
-            Treatment.Name = "Treatment";
-            Treatment.ReadOnly = true;
-            // 
-            // DateVisited
-            // 
-            DateVisited.HeaderText = "DateVisited";
-            DateVisited.MinimumWidth = 6;
-            DateVisited.Name = "DateVisited";
-            DateVisited.ReadOnly = true;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // bigLabel2
             // 
@@ -198,6 +155,56 @@
             sDasboard.TabIndex = 18;
             sDasboard.Text = "Student Dashboard";
             // 
+            // StudentID
+            // 
+            StudentID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            StudentID.DataPropertyName = "StudentID";
+            StudentID.HeaderText = "StudentID";
+            StudentID.MinimumWidth = 6;
+            StudentID.Name = "StudentID";
+            StudentID.ReadOnly = true;
+            StudentID.Width = 104;
+            // 
+            // StudentName
+            // 
+            StudentName.DataPropertyName = "StudentName";
+            StudentName.HeaderText = "StudentName";
+            StudentName.MinimumWidth = 6;
+            StudentName.Name = "StudentName";
+            StudentName.ReadOnly = true;
+            // 
+            // Course
+            // 
+            Course.DataPropertyName = "Course";
+            Course.HeaderText = "Course";
+            Course.MinimumWidth = 6;
+            Course.Name = "Course";
+            Course.ReadOnly = true;
+            // 
+            // Symptoms
+            // 
+            Symptoms.DataPropertyName = "Symptoms";
+            Symptoms.HeaderText = "Symptoms";
+            Symptoms.MinimumWidth = 6;
+            Symptoms.Name = "Symptoms";
+            Symptoms.ReadOnly = true;
+            // 
+            // Medicine
+            // 
+            Medicine.DataPropertyName = "Medicine";
+            Medicine.HeaderText = "Medicine";
+            Medicine.MinimumWidth = 6;
+            Medicine.Name = "Medicine";
+            Medicine.ReadOnly = true;
+            // 
+            // DateVisited
+            // 
+            DateVisited.DataPropertyName = "DateVisited";
+            DateVisited.HeaderText = "DateVisited";
+            DateVisited.MinimumWidth = 6;
+            DateVisited.Name = "DateVisited";
+            DateVisited.ReadOnly = true;
+            // 
             // UC_StudentRecords
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -222,16 +229,16 @@
 
         private Label label1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn StudentID;
-        private DataGridViewTextBoxColumn StudentName;
-        private DataGridViewTextBoxColumn Course;
-        private DataGridViewTextBoxColumn Symptoms;
-        private DataGridViewTextBoxColumn Treatment;
-        private DataGridViewTextBoxColumn DateVisited;
         private ReaLTaiizor.Controls.BigLabel bigLabel2;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton9;
         private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
         private PictureBox pictureBox1;
         private ReaLTaiizor.Controls.BigLabel sDasboard;
+        private DataGridViewTextBoxColumn StudentID;
+        private DataGridViewTextBoxColumn StudentName;
+        private DataGridViewTextBoxColumn Course;
+        private DataGridViewTextBoxColumn Symptoms;
+        private DataGridViewTextBoxColumn Medicine;
+        private DataGridViewTextBoxColumn DateVisited;
     }
 }

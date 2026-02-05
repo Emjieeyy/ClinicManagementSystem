@@ -36,12 +36,12 @@
             hopeRoundButton9 = new ReaLTaiizor.Controls.HopeRoundButton();
             pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
-            hopeRoundButton1 = new ReaLTaiizor.Controls.HopeRoundButton();
             StudentID = new DataGridViewTextBoxColumn();
             StudentName = new DataGridViewTextBoxColumn();
             Course = new DataGridViewTextBoxColumn();
             Symptoms = new DataGridViewTextBoxColumn();
             DateVisited = new DataGridViewTextBoxColumn();
+            hopeRoundButton1 = new ReaLTaiizor.Controls.HopeRoundButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -57,7 +57,6 @@
             sDasboard.Size = new Size(536, 56);
             sDasboard.TabIndex = 19;
             sDasboard.Text = "Modify Student Record";
-            sDasboard.Click += sDasboard_Click;
             // 
             // label1
             // 
@@ -140,27 +139,7 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(754, 355);
             dataGridView1.TabIndex = 40;
-            // 
-            // hopeRoundButton1
-            // 
-            hopeRoundButton1.BackColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton1.BorderColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton1.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton1.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton1.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton1.ForeColor = Color.White;
-            hopeRoundButton1.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton1.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton1.Location = new Point(619, 582);
-            hopeRoundButton1.Name = "hopeRoundButton1";
-            hopeRoundButton1.PrimaryColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton1.Size = new Size(167, 41);
-            hopeRoundButton1.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton1.TabIndex = 41;
-            hopeRoundButton1.Text = "Apply Changes";
-            hopeRoundButton1.TextColor = Color.White;
-            hopeRoundButton1.WarningColor = Color.FromArgb(230, 162, 60);
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // StudentID
             // 
@@ -198,6 +177,27 @@
             DateVisited.MinimumWidth = 6;
             DateVisited.Name = "DateVisited";
             DateVisited.ReadOnly = true;
+            // 
+            // hopeRoundButton1
+            // 
+            hopeRoundButton1.BackColor = Color.FromArgb(64, 158, 255);
+            hopeRoundButton1.BorderColor = Color.FromArgb(64, 158, 255);
+            hopeRoundButton1.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            hopeRoundButton1.DangerColor = Color.FromArgb(245, 108, 108);
+            hopeRoundButton1.DefaultColor = Color.FromArgb(255, 255, 255);
+            hopeRoundButton1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            hopeRoundButton1.ForeColor = Color.White;
+            hopeRoundButton1.HoverTextColor = Color.FromArgb(48, 49, 51);
+            hopeRoundButton1.InfoColor = Color.FromArgb(144, 147, 153);
+            hopeRoundButton1.Location = new Point(619, 582);
+            hopeRoundButton1.Name = "hopeRoundButton1";
+            hopeRoundButton1.PrimaryColor = Color.FromArgb(64, 158, 255);
+            hopeRoundButton1.Size = new Size(167, 41);
+            hopeRoundButton1.SuccessColor = Color.FromArgb(103, 194, 58);
+            hopeRoundButton1.TabIndex = 41;
+            hopeRoundButton1.Text = "Apply Changes";
+            hopeRoundButton1.TextColor = Color.White;
+            hopeRoundButton1.WarningColor = Color.FromArgb(230, 162, 60);
             // 
             // UC_UpdateInfomation
             // 

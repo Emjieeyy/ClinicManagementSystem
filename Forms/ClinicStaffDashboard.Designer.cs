@@ -34,7 +34,7 @@
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
-            hopeRoundButton4 = new ReaLTaiizor.Controls.HopeRoundButton();
+            ClinicLogOutbtn = new ReaLTaiizor.Controls.HopeRoundButton();
             reportbt = new ReaLTaiizor.Controls.HopeRoundButton();
             inventorybt = new ReaLTaiizor.Controls.HopeRoundButton();
             pictureBox2 = new PictureBox();
@@ -55,7 +55,7 @@
             navbar.Controls.Add(pictureBox5);
             navbar.Controls.Add(pictureBox4);
             navbar.Controls.Add(pictureBox3);
-            navbar.Controls.Add(hopeRoundButton4);
+            navbar.Controls.Add(ClinicLogOutbtn);
             navbar.Controls.Add(reportbt);
             navbar.Controls.Add(inventorybt);
             navbar.Controls.Add(pictureBox2);
@@ -115,26 +115,27 @@
             pictureBox3.TabIndex = 8;
             pictureBox3.TabStop = false;
             // 
-            // hopeRoundButton4
+            // ClinicLogOutbtn
             // 
-            hopeRoundButton4.BackColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton4.BorderColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton4.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton4.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton4.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton4.ForeColor = Color.DodgerBlue;
-            hopeRoundButton4.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton4.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton4.Location = new Point(13, 517);
-            hopeRoundButton4.Name = "hopeRoundButton4";
-            hopeRoundButton4.PrimaryColor = Color.FromArgb(189, 233, 255);
-            hopeRoundButton4.Size = new Size(272, 63);
-            hopeRoundButton4.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton4.TabIndex = 5;
-            hopeRoundButton4.Text = "Logout";
-            hopeRoundButton4.TextColor = Color.DeepSkyBlue;
-            hopeRoundButton4.WarningColor = Color.FromArgb(230, 162, 60);
+            ClinicLogOutbtn.BackColor = Color.FromArgb(189, 233, 255);
+            ClinicLogOutbtn.BorderColor = Color.FromArgb(189, 233, 255);
+            ClinicLogOutbtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            ClinicLogOutbtn.DangerColor = Color.FromArgb(245, 108, 108);
+            ClinicLogOutbtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            ClinicLogOutbtn.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ClinicLogOutbtn.ForeColor = Color.DodgerBlue;
+            ClinicLogOutbtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            ClinicLogOutbtn.InfoColor = Color.FromArgb(144, 147, 153);
+            ClinicLogOutbtn.Location = new Point(13, 517);
+            ClinicLogOutbtn.Name = "ClinicLogOutbtn";
+            ClinicLogOutbtn.PrimaryColor = Color.FromArgb(189, 233, 255);
+            ClinicLogOutbtn.Size = new Size(272, 63);
+            ClinicLogOutbtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            ClinicLogOutbtn.TabIndex = 5;
+            ClinicLogOutbtn.Text = "Logout";
+            ClinicLogOutbtn.TextColor = Color.DeepSkyBlue;
+            ClinicLogOutbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            ClinicLogOutbtn.Click += hopeRoundButton4_Click;
             // 
             // reportbt
             // 
@@ -252,7 +253,7 @@
         private PictureBox pictureBox2;
         private ReaLTaiizor.Controls.HopeRoundButton reportbt;
         private ReaLTaiizor.Controls.HopeRoundButton inventorybt;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton4;
+        private ReaLTaiizor.Controls.HopeRoundButton ClinicLogOutbtn;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;

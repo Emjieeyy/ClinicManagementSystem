@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_AddInformation1));
             SaveRecordsbt = new ReaLTaiizor.Controls.HopeRoundButton();
             label6 = new Label();
-            textBox4 = new TextBox();
+            SymptomsTxt = new TextBox();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            textBox2 = new TextBox();
+            StudentNametxt = new TextBox();
             label1 = new Label();
-            textBox1 = new TextBox();
+            StudentID = new TextBox();
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
             label5 = new Label();
             pictureBox1 = new PictureBox();
@@ -66,6 +66,7 @@
             SaveRecordsbt.Text = "Save Records";
             SaveRecordsbt.TextColor = Color.White;
             SaveRecordsbt.WarningColor = Color.FromArgb(230, 162, 60);
+            SaveRecordsbt.Click += SaveRecordsbt_Click;
             // 
             // label6
             // 
@@ -77,13 +78,13 @@
             label6.TabIndex = 32;
             label6.Text = "DateVisited:";
             // 
-            // textBox4
+            // SymptomsTxt
             // 
-            textBox4.BackColor = Color.White;
-            textBox4.Location = new Point(284, 367);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(360, 27);
-            textBox4.TabIndex = 31;
+            SymptomsTxt.BackColor = Color.White;
+            SymptomsTxt.Location = new Point(284, 367);
+            SymptomsTxt.Name = "SymptomsTxt";
+            SymptomsTxt.Size = new Size(360, 27);
+            SymptomsTxt.TabIndex = 31;
             // 
             // label4
             // 
@@ -115,13 +116,13 @@
             label2.TabIndex = 27;
             label2.Text = " StudentName:";
             // 
-            // textBox2
+            // StudentNametxt
             // 
-            textBox2.BackColor = Color.White;
-            textBox2.Location = new Point(284, 247);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(360, 27);
-            textBox2.TabIndex = 26;
+            StudentNametxt.BackColor = Color.White;
+            StudentNametxt.Location = new Point(284, 247);
+            StudentNametxt.Name = "StudentNametxt";
+            StudentNametxt.Size = new Size(360, 27);
+            StudentNametxt.TabIndex = 26;
             // 
             // label1
             // 
@@ -133,13 +134,13 @@
             label1.TabIndex = 25;
             label1.Text = "StudentID:";
             // 
-            // textBox1
+            // StudentID
             // 
-            textBox1.BackColor = Color.White;
-            textBox1.Location = new Point(284, 188);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(360, 27);
-            textBox1.TabIndex = 24;
+            StudentID.BackColor = Color.White;
+            StudentID.Location = new Point(284, 188);
+            StudentID.Name = "StudentID";
+            StudentID.Size = new Size(360, 27);
+            StudentID.TabIndex = 24;
             // 
             // bigLabel1
             // 
@@ -199,6 +200,7 @@
             Clearbt.Text = "Clear";
             Clearbt.TextColor = Color.DodgerBlue;
             Clearbt.WarningColor = Color.FromArgb(230, 162, 60);
+            Clearbt.Click += Clearbt_Click;
             // 
             // label7
             // 
@@ -214,7 +216,7 @@
             // CourseComboBox
             // 
             CourseComboBox.FormattingEnabled = true;
-            CourseComboBox.Items.AddRange(new object[] { "BSIT ", "BSHM ", "BSTM ", "BSBA ", "BSE", "SHS" });
+            CourseComboBox.Items.AddRange(new object[] { "BSIT ", "BSHM ", "BSTM ", "BSBA ", "BSED", "SHS" });
             CourseComboBox.Location = new Point(284, 307);
             CourseComboBox.Name = "CourseComboBox";
             CourseComboBox.Size = new Size(360, 28);
@@ -234,13 +236,13 @@
             Controls.Add(bigLabel1);
             Controls.Add(SaveRecordsbt);
             Controls.Add(label6);
-            Controls.Add(textBox4);
+            Controls.Add(SymptomsTxt);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox2);
+            Controls.Add(StudentNametxt);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(StudentID);
             Name = "UC_AddInformation1";
             Size = new Size(786, 588);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -252,13 +254,13 @@
 
         private ReaLTaiizor.Controls.HopeRoundButton SaveRecordsbt;
         private Label label6;
-        private TextBox textBox4;
+        private TextBox SymptomsTxt;
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox StudentNametxt;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox StudentID;
         private ReaLTaiizor.Controls.BigLabel bigLabel1;
         private Label label5;
         private PictureBox pictureBox1;

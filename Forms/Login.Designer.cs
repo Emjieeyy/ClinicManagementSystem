@@ -33,9 +33,9 @@
             pictureBox5 = new PictureBox();
             pictureBox8 = new PictureBox();
             loginbt = new ReaLTaiizor.Controls.HopeRoundButton();
-            passwordtb = new ReaLTaiizor.Controls.HopeTextBox();
+            txtPassword = new ReaLTaiizor.Controls.HopeTextBox();
             exit = new Label();
-            usernametb = new ReaLTaiizor.Controls.HopeTextBox();
+            txtEmail = new ReaLTaiizor.Controls.HopeTextBox();
             showpasswordcb = new ReaLTaiizor.Controls.HopeCheckBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -58,9 +58,9 @@
             loginform.Controls.Add(pictureBox5);
             loginform.Controls.Add(pictureBox8);
             loginform.Controls.Add(loginbt);
-            loginform.Controls.Add(passwordtb);
+            loginform.Controls.Add(txtPassword);
             loginform.Controls.Add(exit);
-            loginform.Controls.Add(usernametb);
+            loginform.Controls.Add(txtEmail);
             loginform.Controls.Add(showpasswordcb);
             loginform.Controls.Add(pictureBox4);
             loginform.Controls.Add(pictureBox3);
@@ -117,29 +117,31 @@
             loginbt.WarningColor = Color.FromArgb(230, 162, 60);
             loginbt.Click += loginbt_Click;
             // 
-            // passwordtb
+            // txtPassword
             // 
-            passwordtb.BackColor = Color.FromArgb(189, 233, 255);
-            passwordtb.BaseColor = Color.FromArgb(189, 233, 255);
-            passwordtb.BorderColorA = Color.FromArgb(189, 233, 255);
-            passwordtb.BorderColorB = Color.FromArgb(189, 233, 255);
-            passwordtb.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            passwordtb.ForeColor = Color.FromArgb(48, 49, 51);
-            passwordtb.Hint = "";
-            passwordtb.Location = new Point(720, 318);
-            passwordtb.MaxLength = 32767;
-            passwordtb.Multiline = false;
-            passwordtb.Name = "passwordtb";
-            passwordtb.PasswordChar = '\0';
-            passwordtb.ScrollBars = ScrollBars.None;
-            passwordtb.SelectedText = "";
-            passwordtb.SelectionLength = 0;
-            passwordtb.SelectionStart = 0;
-            passwordtb.Size = new Size(221, 37);
-            passwordtb.TabIndex = 16;
-            passwordtb.TabStop = false;
-            passwordtb.Text = "Please enter Password";
-            passwordtb.UseSystemPasswordChar = true;
+            txtPassword.BackColor = Color.FromArgb(189, 233, 255);
+            txtPassword.BaseColor = Color.FromArgb(189, 233, 255);
+            txtPassword.BorderColorA = Color.FromArgb(189, 233, 255);
+            txtPassword.BorderColorB = Color.FromArgb(189, 233, 255);
+            txtPassword.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword.ForeColor = Color.FromArgb(48, 49, 51);
+            txtPassword.Hint = "";
+            txtPassword.Location = new Point(720, 318);
+            txtPassword.MaxLength = 32767;
+            txtPassword.Multiline = false;
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '\0';
+            txtPassword.ScrollBars = ScrollBars.None;
+            txtPassword.SelectedText = "";
+            txtPassword.SelectionLength = 0;
+            txtPassword.SelectionStart = 0;
+            txtPassword.Size = new Size(221, 37);
+            txtPassword.TabIndex = 16;
+            txtPassword.TabStop = false;
+            txtPassword.Text = "Please enter Password";
+            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.Enter += txtPassword_Enter;
+            txtPassword.Leave += txtPassword_Leave;
             // 
             // exit
             // 
@@ -153,29 +155,31 @@
             exit.Text = "x";
             exit.Click += exit_Click;
             // 
-            // usernametb
+            // txtEmail
             // 
-            usernametb.BackColor = Color.FromArgb(189, 233, 255);
-            usernametb.BaseColor = Color.FromArgb(189, 233, 255);
-            usernametb.BorderColorA = Color.FromArgb(189, 233, 255);
-            usernametb.BorderColorB = Color.FromArgb(189, 233, 255);
-            usernametb.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            usernametb.ForeColor = Color.FromArgb(48, 49, 51);
-            usernametb.Hint = "";
-            usernametb.Location = new Point(718, 242);
-            usernametb.MaxLength = 32767;
-            usernametb.Multiline = false;
-            usernametb.Name = "usernametb";
-            usernametb.PasswordChar = '\0';
-            usernametb.ScrollBars = ScrollBars.None;
-            usernametb.SelectedText = "";
-            usernametb.SelectionLength = 0;
-            usernametb.SelectionStart = 0;
-            usernametb.Size = new Size(223, 37);
-            usernametb.TabIndex = 14;
-            usernametb.TabStop = false;
-            usernametb.Text = "Please enter Username";
-            usernametb.UseSystemPasswordChar = false;
+            txtEmail.BackColor = Color.FromArgb(189, 233, 255);
+            txtEmail.BaseColor = Color.FromArgb(189, 233, 255);
+            txtEmail.BorderColorA = Color.FromArgb(189, 233, 255);
+            txtEmail.BorderColorB = Color.FromArgb(189, 233, 255);
+            txtEmail.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmail.ForeColor = Color.FromArgb(48, 49, 51);
+            txtEmail.Hint = "";
+            txtEmail.Location = new Point(718, 242);
+            txtEmail.MaxLength = 32767;
+            txtEmail.Multiline = false;
+            txtEmail.Name = "txtEmail";
+            txtEmail.PasswordChar = '\0';
+            txtEmail.ScrollBars = ScrollBars.None;
+            txtEmail.SelectedText = "";
+            txtEmail.SelectionLength = 0;
+            txtEmail.SelectionStart = 0;
+            txtEmail.Size = new Size(223, 37);
+            txtEmail.TabIndex = 14;
+            txtEmail.TabStop = false;
+            txtEmail.Text = "Please enter Username";
+            txtEmail.UseSystemPasswordChar = false;
+            txtEmail.Enter += txtEmail_Enter;
+            txtEmail.Leave += txtEmail_Leave;
             // 
             // showpasswordcb
             // 
@@ -281,8 +285,8 @@
         private PictureBox pictureBox4;
         private ReaLTaiizor.Controls.HopeCheckBox showpasswordcb;
         private Label exit;
-        private ReaLTaiizor.Controls.HopeTextBox usernametb;
-        private ReaLTaiizor.Controls.HopeTextBox passwordtb;
+        private ReaLTaiizor.Controls.HopeTextBox txtEmail;
+        private ReaLTaiizor.Controls.HopeTextBox txtPassword;
         private ReaLTaiizor.Controls.HopeRoundButton loginbt;
         private PictureBox pictureBox8;
         private PictureBox pictureBox5;
