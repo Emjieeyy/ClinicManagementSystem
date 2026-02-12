@@ -34,7 +34,6 @@
             pictureBox8 = new PictureBox();
             loginbt = new ReaLTaiizor.Controls.HopeRoundButton();
             txtPassword = new ReaLTaiizor.Controls.HopeTextBox();
-            exit = new Label();
             txtEmail = new ReaLTaiizor.Controls.HopeTextBox();
             showpasswordcb = new ReaLTaiizor.Controls.HopeCheckBox();
             pictureBox4 = new PictureBox();
@@ -59,7 +58,6 @@
             loginform.Controls.Add(pictureBox8);
             loginform.Controls.Add(loginbt);
             loginform.Controls.Add(txtPassword);
-            loginform.Controls.Add(exit);
             loginform.Controls.Add(txtEmail);
             loginform.Controls.Add(showpasswordcb);
             loginform.Controls.Add(pictureBox4);
@@ -142,18 +140,6 @@
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.Enter += txtPassword_Enter;
             txtPassword.Leave += txtPassword_Leave;
-            // 
-            // exit
-            // 
-            exit.AutoSize = true;
-            exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            exit.ForeColor = Color.Red;
-            exit.Location = new Point(1041, 12);
-            exit.Name = "exit";
-            exit.Size = new Size(21, 23);
-            exit.TabIndex = 15;
-            exit.Text = "x";
-            exit.Click += exit_Click;
             // 
             // txtEmail
             // 
@@ -284,7 +270,6 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private ReaLTaiizor.Controls.HopeCheckBox showpasswordcb;
-        private Label exit;
         private ReaLTaiizor.Controls.HopeTextBox txtEmail;
         private ReaLTaiizor.Controls.HopeTextBox txtPassword;
         private ReaLTaiizor.Controls.HopeRoundButton loginbt;

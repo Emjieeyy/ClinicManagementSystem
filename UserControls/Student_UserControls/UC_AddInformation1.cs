@@ -1,11 +1,6 @@
 ﻿using ClinicManagementSystem.Data;
 using ClinicManagementSystem.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ClinicManagementSystem
@@ -15,13 +10,11 @@ namespace ClinicManagementSystem
         public UC_AddInformation1()
         {
             InitializeComponent();
-            // Note: Ensure SaveRecordsbt and Clearbt have their 'Click' events 
-            // linked to these methods in the Visual Studio Properties window.
         }
 
         private void SaveRecordsbt_Click(object sender, EventArgs e)
         {
-            // 1. Validation Logic
+            // --- VALIDATIONS ---
             if (string.IsNullOrWhiteSpace(StudentID.Text))
             {
                 MessageBox.Show("Student ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -57,30 +50,21 @@ namespace ClinicManagementSystem
                 return;
             }
 
-            if (dateTimePicker1.Value.Date > DateTime.Now.Date)
-            {
-                MessageBox.Show("Date Visited cannot be in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dateTimePicker1.Focus();
-                return;
-            }
-
+            // --- SAVING DATA ---
             try
             {
-                var record = new StudentRecord
-                {
-                    StudentID = StudentID.Text.Trim(),
-                    StudentName = StudentNametxt.Text.Trim(),
-                    Course = CourseComboBox.SelectedItem?.ToString() ?? "N/A",
-                    Symptoms = SymptomsTxt.Text.Trim(),
-                    DateVisited = dateTimePicker1.Value.Date
-                };
-
-                ClinicData.StudentRecords.Add(record);
-                ClinicData.SaveData();
+                // We no longer create the StudentRecord object manually here.
+                // We call ClinicService, which handles the running time and logic.
+                ClinicService.AddOrUpdateConsultation(
+                    StudentID.Text.Trim(),
+                    StudentNametxt.Text.Trim(),
+                    CourseComboBox.SelectedItem?.ToString() ?? "N/A",
+                    SymptomsTxt.Text.Trim(),
+                    "",      // Medicine (blank for now)
+                    "Staff"   // Role
+                );
 
                 MessageBox.Show("Medical record saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Clear the form for the next entry
                 ClearForm();
             }
             catch (Exception ex)
@@ -96,7 +80,6 @@ namespace ClinicManagementSystem
 
         private void ClearForm()
         {
-            // Reset all input fields
             StudentID.Clear();
             StudentNametxt.Clear();
             SymptomsTxt.Clear();
@@ -104,9 +87,6 @@ namespace ClinicManagementSystem
             if (CourseComboBox.Items.Count > 0)
                 CourseComboBox.SelectedIndex = -1;
 
-            dateTimePicker1.Value = DateTime.Now;
-
-            // Set focus back to the first field
             StudentID.Focus();
         }
     }

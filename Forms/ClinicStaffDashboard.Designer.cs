@@ -135,7 +135,7 @@
             ClinicLogOutbtn.Text = "Logout";
             ClinicLogOutbtn.TextColor = Color.DeepSkyBlue;
             ClinicLogOutbtn.WarningColor = Color.FromArgb(230, 162, 60);
-            ClinicLogOutbtn.Click += hopeRoundButton4_Click;
+            ClinicLogOutbtn.Click += ClinicLogOutbtn_Click;
             // 
             // reportbt
             // 
@@ -157,7 +157,7 @@
             reportbt.Text = "Reports";
             reportbt.TextColor = Color.DeepSkyBlue;
             reportbt.WarningColor = Color.FromArgb(230, 162, 60);
-            reportbt.Click += hopeRoundButton3_Click;
+            reportbt.Click += reportbt_Click;
             // 
             // inventorybt
             // 
@@ -211,7 +211,7 @@
             ClinicStaffStudentRecordsbt.Text = "          Student Records";
             ClinicStaffStudentRecordsbt.TextColor = Color.DeepSkyBlue;
             ClinicStaffStudentRecordsbt.WarningColor = Color.FromArgb(230, 162, 60);
-            ClinicStaffStudentRecordsbt.Click += hopeRoundButton1_Click;
+            ClinicStaffStudentRecordsbt.Click += ClinicStaffStudentRecordsbt_Click;
             // 
             // mainPanel
             // 

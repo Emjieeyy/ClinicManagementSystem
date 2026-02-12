@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClinicManagementSystem.Models
+﻿namespace ClinicManagementSystem.Models
 {
     public class StudentRecord
     {
-        // Student Info
-        public string StudentID { get; set; }
-        public string StudentName { get; set; }
-        public string Course { get; set; }
+        public string StudentID { get; set; } = string.Empty;
+        public string StudentName { get; set; } = string.Empty;
+        public string Course { get; set; } = string.Empty;
+        public string Symptoms { get; set; } = string.Empty;
 
-        // Consultation Info
-        public string Symptoms { get; set; }
         public string Medicine { get; set; }
+
+        // Add this missing property
         public DateTime DateVisited { get; set; }
 
-        public StudentRecord()
+        // Add this missing method
+        public void UpdateMedicine(string medicine)
         {
-            DateVisited = DateTime.Now;
-
+            // Logic for what happens when medicine is updated
+            // For example, if you have a Medicine property:
+            // this.Medicine = medicine;
         }
     }
 }
-
-

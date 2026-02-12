@@ -430,6 +430,7 @@
             DeleteUserbtn.Text = "Delete User";
             DeleteUserbtn.TextColor = Color.White;
             DeleteUserbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            DeleteUserbtn.Click += DeleteUserbtn_Click;
             // 
             // UpdateUserbtn
             // 
@@ -449,6 +450,7 @@
             UpdateUserbtn.Text = "Update User";
             UpdateUserbtn.TextColor = Color.White;
             UpdateUserbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            UpdateUserbtn.Click += UpdateUserbtn_Click;
             // 
             // AddUserbtn
             // 
@@ -468,6 +470,7 @@
             AddUserbtn.Text = "Add User";
             AddUserbtn.TextColor = Color.White;
             AddUserbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            AddUserbtn.Click += AddUserbtn_Click;
             // 
             // label1
             // 
@@ -657,6 +660,7 @@
             Tab2_Exportbtn.Text = "Export";
             Tab2_Exportbtn.TextColor = Color.White;
             Tab2_Exportbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            Tab2_Exportbtn.Click += Tab2_Exportbtn_Click;
             // 
             // Refreshbt
             // 

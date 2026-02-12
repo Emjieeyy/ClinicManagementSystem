@@ -135,9 +135,7 @@ namespace ClinicManagementSystem.Forms
             LoadAuditLogs(Tab2_Searchtxtbx.Text, cmbFilterActivity.Text);
         }
 
-        // -------------------------------
-        // AUTO RESET WHEN SEARCH CLEARED
-        // -------------------------------
+
         private void Tab2_Searchtxtbx_TextChanged_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(Tab2_Searchtxtbx.Text))
@@ -146,9 +144,7 @@ namespace ClinicManagementSystem.Forms
             }
         }
 
-        // -------------------------------
-        // REFRESH BUTTON
-        // -------------------------------
+
         private void Refreshbt_Click(object sender, EventArgs e)
         {
             Tab2_Searchtxtbx.Clear();
@@ -156,13 +152,9 @@ namespace ClinicManagementSystem.Forms
             LoadAuditLogs();
             UpdateRecentLogsCount();
 
-            MessageBox.Show("Logs updated successfully!",
-                "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // -------------------------------
-        // CLEAR LOGS
-        // -------------------------------
+
         private void Tab2_ClearLogsbt_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Clear history?", "Warning",
@@ -174,9 +166,7 @@ namespace ClinicManagementSystem.Forms
             }
         }
 
-        // -------------------------------
-        // NAVIGATION
-        // -------------------------------
+
         private void UserManagementbtn_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabPage1;
@@ -189,19 +179,14 @@ namespace ClinicManagementSystem.Forms
             RecordAction("Navigation", "Admin viewed Audit Logs", "Success");
         }
 
-        // -------------------------------
-        // LOGOUT
-        // -------------------------------
+
         private void hopeRoundButton4_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Logout?", "Confirm",
-                MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
                 RecordAction("Authentication", "Admin logged out", "Success");
                 this.Hide();
                 new Login().Show();
-            }
-        }
+         }
+        
 
         private void Searchbtn_Click(object sender, EventArgs e)
         {
@@ -214,7 +199,7 @@ namespace ClinicManagementSystem.Forms
 
             if (string.IsNullOrWhiteSpace(term))
             {
-                // Show all users when search is empty
+
                 dgvUsers.DataSource = null;
                 dgvUsers.DataSource = userList;
                 return;
@@ -246,5 +231,133 @@ namespace ClinicManagementSystem.Forms
                 "Refresh", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void AddUserbtn_Click(object sender, EventArgs e)
+        {
+            var users = repo.LoadUsers();
+            int newIdInt = users.Any() ? users.Max(u => int.Parse(u.UserID)) + 1 : 1001;
+            string nextId = newIdInt.ToString();
+
+            string newName = Microsoft.VisualBasic.Interaction.InputBox("Enter Name:", "Add User " + nextId);
+            if (string.IsNullOrEmpty(newName)) return;
+
+            string newEmail = Microsoft.VisualBasic.Interaction.InputBox("Enter Email:", "Add User " + nextId);
+            if (string.IsNullOrEmpty(newEmail)) return;
+
+            string autoPassword = "User" + nextId;
+
+            User newUser = new User
+            {
+                UserID = nextId,
+                Name = newName,
+                Email = newEmail,
+                Role = "Student",
+                Password = autoPassword,
+                Status = "Offline"
+            };
+
+            users.Add(newUser);
+            repo.SaveUsers(users);
+
+            RecordAction("Add User", $"Created student: {newName} ({newEmail})", "Success");
+
+            RefreshUserGrid();
+            MessageBox.Show($"User {newName} added successfully!");
+        }
+
+        private void UpdateUserbtn_Click(object sender, EventArgs e)
+        {
+            if (dgvUsers.SelectedRows.Count > 0)
+            {
+                User selectedUser = (User)dgvUsers.SelectedRows[0].DataBoundItem;
+                string oldName = selectedUser.Name;
+                string newName = Microsoft.VisualBasic.Interaction.InputBox("Enter new name:", "Update User", selectedUser.Name);
+
+                if (!string.IsNullOrEmpty(newName))
+                {
+                    selectedUser.Name = newName;
+                    repo.SaveUsers(userList);
+
+                    RecordAction("Update User", $"Changed name of {selectedUser.Email} from {oldName} to {newName}", "Success");
+
+                    RefreshUserGrid();
+                    MessageBox.Show("Update successful!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a full row first.");
+            }
+        }
+
+
+        private void DeleteUserbtn_Click(object sender, EventArgs e)
+        {
+            if (dgvUsers.SelectedRows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("Delete this user permanently?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    User selectedUser = (User)dgvUsers.SelectedRows[0].DataBoundItem;
+                    string deletedEmail = selectedUser.Email;
+
+                    userList.Remove(selectedUser);
+                    repo.SaveUsers(userList);
+
+                    RecordAction("Delete User", $"Permanently removed user: {deletedEmail}", "Success");
+
+                    RefreshUserGrid();
+                    MessageBox.Show("User deleted successfully!");
+                }
+            }
+        }
+
+        private void Tab2_Exportbtn_Click(object sender, EventArgs e)
+        {
+            if (dgvAuditLogs.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "CSV (*.csv)|*.csv";
+                sfd.FileName = $"AuditLogs_{DateTime.Now:yyyyMMdd_HHmm}.csv";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        StringBuilder sb = new StringBuilder();
+
+                        // 1. ADD THIS LINE: It tells Excel to use comma as the delimiter explicitly
+                        sb.AppendLine("sep=,");
+
+                        // 2. Get Column Headers
+                        string[] headers = dgvAuditLogs.Columns.Cast<DataGridViewColumn>()
+                                            .Select(column => $"\"{column.HeaderText}\"").ToArray();
+                        sb.AppendLine(string.Join(",", headers));
+
+                        // 3. Get Row Data
+                        foreach (DataGridViewRow row in dgvAuditLogs.Rows)
+                        {
+                            if (!row.IsNewRow)
+                            {
+                                // We wrap values in quotes ("") to handle spaces and special characters better
+                                string[] cells = row.Cells.Cast<DataGridViewCell>()
+                                                 .Select(cell => $"\"{cell.Value?.ToString().Replace("\"", "\"\"")}\"").ToArray();
+                                sb.AppendLine(string.Join(",", cells));
+                            }
+                        }
+
+                        File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+
+                        RecordAction("Export", $"Exported {dgvAuditLogs.Rows.Count} logs", "Success");
+                        MessageBox.Show("Exported successfully! Tip: In Excel, double-click the top column borders to expand them.", "Success");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
     }
 }
+

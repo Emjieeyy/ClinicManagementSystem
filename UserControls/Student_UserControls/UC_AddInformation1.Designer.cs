@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_AddInformation1));
             SaveRecordsbt = new ReaLTaiizor.Controls.HopeRoundButton();
-            label6 = new Label();
             SymptomsTxt = new TextBox();
             label4 = new Label();
             label3 = new Label();
@@ -41,7 +40,6 @@
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
             label5 = new Label();
             pictureBox1 = new PictureBox();
-            dateTimePicker1 = new DateTimePicker();
             Clearbt = new ReaLTaiizor.Controls.HopeRoundButton();
             label7 = new Label();
             CourseComboBox = new ComboBox();
@@ -67,16 +65,6 @@
             SaveRecordsbt.TextColor = Color.White;
             SaveRecordsbt.WarningColor = Color.FromArgb(230, 162, 60);
             SaveRecordsbt.Click += SaveRecordsbt_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(155, 438);
-            label6.Name = "label6";
-            label6.Size = new Size(106, 19);
-            label6.TabIndex = 32;
-            label6.Text = "DateVisited:";
             // 
             // SymptomsTxt
             // 
@@ -174,13 +162,6 @@
             pictureBox1.TabIndex = 38;
             pictureBox1.TabStop = false;
             // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(284, 429);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(360, 27);
-            dateTimePicker1.TabIndex = 39;
-            // 
             // Clearbt
             // 
             Clearbt.BackColor = Color.Gray;
@@ -230,12 +211,10 @@
             Controls.Add(CourseComboBox);
             Controls.Add(label7);
             Controls.Add(Clearbt);
-            Controls.Add(dateTimePicker1);
             Controls.Add(pictureBox1);
             Controls.Add(label5);
             Controls.Add(bigLabel1);
             Controls.Add(SaveRecordsbt);
-            Controls.Add(label6);
             Controls.Add(SymptomsTxt);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -253,7 +232,6 @@
         #endregion
 
         private ReaLTaiizor.Controls.HopeRoundButton SaveRecordsbt;
-        private Label label6;
         private TextBox SymptomsTxt;
         private Label label4;
         private Label label3;
@@ -264,7 +242,6 @@
         private ReaLTaiizor.Controls.BigLabel bigLabel1;
         private Label label5;
         private PictureBox pictureBox1;
-        private DateTimePicker dateTimePicker1;
         private ReaLTaiizor.Controls.HopeRoundButton Clearbt;
         private Label label7;
         private ComboBox CourseComboBox;

@@ -12,10 +12,10 @@ namespace ClinicManagementSystem.Data
     internal class InventoryData
     {
         private static string jsonFilePath = "inventory.json";
-        // In-memory BindingList for data binding (keeps UI updated)
+       
         public static BindingList<InventoryItems> InventoryItems { get; private set; } = new BindingList<InventoryItems>();
 
-        // Load JSON file into InventoryItems list
+        
         public static void LoadFromJson()
         {
             if (!File.Exists(jsonFilePath))
@@ -45,7 +45,7 @@ namespace ClinicManagementSystem.Data
 
         }
 
-        // Save current InventoryItems list to JSON file
+        
         public static void SaveToJson()
         {
             try

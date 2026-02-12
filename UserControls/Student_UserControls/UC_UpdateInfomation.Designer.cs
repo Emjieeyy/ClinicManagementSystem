@@ -32,8 +32,6 @@
             sDasboard = new ReaLTaiizor.Controls.BigLabel();
             label1 = new Label();
             txtDisplayID = new TextBox();
-            textBox1 = new TextBox();
-            hopeRoundButton9 = new ReaLTaiizor.Controls.HopeRoundButton();
             pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
             StudentID = new DataGridViewTextBoxColumn();
@@ -72,50 +70,18 @@
             // 
             txtDisplayID.BackColor = Color.White;
             txtDisplayID.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtDisplayID.Location = new Point(29, 161);
+            txtDisplayID.Location = new Point(29, 156);
             txtDisplayID.Name = "txtDisplayID";
             txtDisplayID.ReadOnly = true;
             txtDisplayID.Size = new Size(303, 26);
             txtDisplayID.TabIndex = 26;
             txtDisplayID.Text = "Student ID:";
             // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.White;
-            textBox1.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(374, 160);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(279, 26);
-            textBox1.TabIndex = 27;
-            textBox1.Text = "Search student ID";
-            // 
-            // hopeRoundButton9
-            // 
-            hopeRoundButton9.BackColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.BorderColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton9.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton9.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton9.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton9.ForeColor = Color.White;
-            hopeRoundButton9.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton9.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton9.Location = new Point(659, 151);
-            hopeRoundButton9.Name = "hopeRoundButton9";
-            hopeRoundButton9.PrimaryColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.Size = new Size(112, 41);
-            hopeRoundButton9.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton9.TabIndex = 28;
-            hopeRoundButton9.Text = "Fetch";
-            hopeRoundButton9.TextColor = Color.White;
-            hopeRoundButton9.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(711, 21);
+            pictureBox1.Location = new Point(711, 26);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(86, 61);
             pictureBox1.TabIndex = 39;
@@ -128,9 +94,8 @@
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.BackgroundColor = SystemColors.ControlLightLight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { StudentID, StudentName, Course, Symptoms, DateVisited });
             dataGridView1.GridColor = SystemColors.InactiveCaptionText;
-            dataGridView1.Location = new Point(29, 213);
+            dataGridView1.Location = new Point(29, 207);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -148,7 +113,7 @@
             StudentID.MinimumWidth = 6;
             StudentID.Name = "StudentID";
             StudentID.ReadOnly = true;
-            StudentID.Width = 104;
+            StudentID.Width = 125;
             // 
             // StudentName
             // 
@@ -156,6 +121,7 @@
             StudentName.MinimumWidth = 6;
             StudentName.Name = "StudentName";
             StudentName.ReadOnly = true;
+            StudentName.Width = 125;
             // 
             // Course
             // 
@@ -163,6 +129,7 @@
             Course.MinimumWidth = 6;
             Course.Name = "Course";
             Course.ReadOnly = true;
+            Course.Width = 125;
             // 
             // Symptoms
             // 
@@ -170,6 +137,7 @@
             Symptoms.MinimumWidth = 6;
             Symptoms.Name = "Symptoms";
             Symptoms.ReadOnly = true;
+            Symptoms.Width = 125;
             // 
             // DateVisited
             // 
@@ -177,6 +145,7 @@
             DateVisited.MinimumWidth = 6;
             DateVisited.Name = "DateVisited";
             DateVisited.ReadOnly = true;
+            DateVisited.Width = 125;
             // 
             // hopeRoundButton1
             // 
@@ -207,8 +176,6 @@
             Controls.Add(hopeRoundButton1);
             Controls.Add(dataGridView1);
             Controls.Add(pictureBox1);
-            Controls.Add(hopeRoundButton9);
-            Controls.Add(textBox1);
             Controls.Add(txtDisplayID);
             Controls.Add(label1);
             Controls.Add(sDasboard);
@@ -225,8 +192,6 @@
         private ReaLTaiizor.Controls.BigLabel sDasboard;
         private Label label1;
         private TextBox txtDisplayID;
-        private TextBox textBox1;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton9;
         private PictureBox pictureBox1;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn StudentID;
