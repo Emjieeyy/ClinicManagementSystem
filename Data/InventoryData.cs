@@ -50,7 +50,6 @@ namespace ClinicManagementSystem.Data
         {
             try
             {
-                // Use the InventoryItems property defined at the top of your class
                 string json = JsonConvert.SerializeObject(InventoryItems, Formatting.Indented);
                 File.WriteAllText(jsonFilePath, json);
             }

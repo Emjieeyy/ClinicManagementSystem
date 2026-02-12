@@ -64,7 +64,6 @@ namespace ClinicManagementSystem.Models
 
         public InventoryItems()
         {
-            // Initialize with defaults to avoid null reference issues
             _itemName = string.Empty;
             _expiryDate = DateTime.Now.AddYears(1);
             _quantity = 0;

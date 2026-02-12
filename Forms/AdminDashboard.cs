@@ -27,9 +27,6 @@ namespace ClinicManagementSystem.Forms
             UpdateRecentLogsCount();
         }
 
-        // -------------------------------
-        // SETUP
-        // -------------------------------
         private void SetupFilterComboBox()
         {
             cmbFilterActivity.Items.Clear();
@@ -42,9 +39,6 @@ namespace ClinicManagementSystem.Forms
             cmbFilterActivity.SelectedIndex = 0;
         }
 
-        // -------------------------------
-        // USER GRID
-        // -------------------------------
         private void RefreshUserGrid()
         {
             userList = repo.LoadUsers();
@@ -54,9 +48,6 @@ namespace ClinicManagementSystem.Forms
             TotalUserlabel_0.Text = userList.Count.ToString();
         }
 
-        // -------------------------------
-        // CENTRAL AUDIT LOG LOADER
-        // -------------------------------
         private void LoadAuditLogs(string searchTerm = "", string activityFilter = "All Activities")
         {
             if (!File.Exists(logFilePath))
@@ -108,9 +99,6 @@ namespace ClinicManagementSystem.Forms
             }
         }
 
-        // -------------------------------
-        // RECORD ACTION
-        // -------------------------------
         private void RecordAction(string activity, string description, string status)
         {
             List<AuditLog> logs = new List<AuditLog>();
@@ -137,17 +125,11 @@ namespace ClinicManagementSystem.Forms
             UpdateRecentLogsCount();
         }
 
-        // -------------------------------
-        // FILTER DROPDOWN
-        // -------------------------------
         private void cmbFilterActivity_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             LoadAuditLogs(Tab2_Searchtxtbx.Text, cmbFilterActivity.Text);
         }
 
-        // -------------------------------
-        // SEARCH BUTTON
-        // -------------------------------
         private void Tab2_Seachbtn_Click(object sender, EventArgs e)
         {
             LoadAuditLogs(Tab2_Searchtxtbx.Text, cmbFilterActivity.Text);
@@ -221,9 +203,6 @@ namespace ClinicManagementSystem.Forms
             }
         }
 
-        // -------------------------------
-        // 🔥 USER SEARCH - FIXED
-        // -------------------------------
         private void Searchbtn_Click(object sender, EventArgs e)
         {
             PerformUserSearch();
@@ -241,7 +220,6 @@ namespace ClinicManagementSystem.Forms
                 return;
             }
 
-            // Convert search term to lowercase for case-insensitive search
             string lowerTerm = term.ToLower();
 
             var results = userList.Where(u =>
@@ -255,15 +233,11 @@ namespace ClinicManagementSystem.Forms
             dgvUsers.DataSource = results;
         }
 
-        // ✅ FIXED: Now performs search on every text change
         private void txtSearchTab1_TextChanged_1(object sender, EventArgs e)
         {
             PerformUserSearch();
         }
 
-        // -------------------------------
-        // 🔥 ADDITIONAL FIX: Add refresh method for users
-        // -------------------------------
         private void RefreshUsersBtn_Click(object sender, EventArgs e)
         {
             txtSearchTab1.Clear();

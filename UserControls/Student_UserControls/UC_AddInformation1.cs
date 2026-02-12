@@ -64,7 +64,6 @@ namespace ClinicManagementSystem
                 return;
             }
 
-            // 2. Saving Logic with Error Handling
             try
             {
                 var record = new StudentRecord
@@ -76,7 +75,6 @@ namespace ClinicManagementSystem
                     DateVisited = dateTimePicker1.Value.Date
                 };
 
-                // Add to the list and save to JSON
                 ClinicData.StudentRecords.Add(record);
                 ClinicData.SaveData();
 
@@ -87,7 +85,6 @@ namespace ClinicManagementSystem
             }
             catch (Exception ex)
             {
-                // This will trigger if the file is locked, path is wrong, or JSON fails
                 MessageBox.Show($"Failed to save record: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
