@@ -237,11 +237,17 @@ namespace ClinicManagementSystem.Forms
             int newIdInt = users.Any() ? users.Max(u => int.Parse(u.UserID)) + 1 : 1001;
             string nextId = newIdInt.ToString();
 
+            // 1. Get Name
             string newName = Microsoft.VisualBasic.Interaction.InputBox("Enter Name:", "Add User " + nextId);
             if (string.IsNullOrEmpty(newName)) return;
 
+            // 2. Get Email
             string newEmail = Microsoft.VisualBasic.Interaction.InputBox("Enter Email:", "Add User " + nextId);
             if (string.IsNullOrEmpty(newEmail)) return;
+
+            // 3. Get Role (The missing piece!)
+            string newRole = Microsoft.VisualBasic.Interaction.InputBox("Enter Role (Staff or Student):", "Assign Role", "Student");
+            if (string.IsNullOrEmpty(newRole)) return;
 
             string autoPassword = "User" + nextId;
 
@@ -250,7 +256,7 @@ namespace ClinicManagementSystem.Forms
                 UserID = nextId,
                 Name = newName,
                 Email = newEmail,
-                Role = "Student",
+                Role = newRole, // Uses the variable instead of hardcoded "Student"
                 Password = autoPassword,
                 Status = "Offline"
             };
@@ -258,10 +264,11 @@ namespace ClinicManagementSystem.Forms
             users.Add(newUser);
             repo.SaveUsers(users);
 
-            RecordAction("Add User", $"Created student: {newName} ({newEmail})", "Success");
+            // Dynamic log description
+            RecordAction("Add User", $"Created {newRole}: {newName} ({newEmail})", "Success");
 
             RefreshUserGrid();
-            MessageBox.Show($"User {newName} added successfully!");
+            MessageBox.Show($"User {newName} added as {newRole} successfully!");
         }
 
         private void UpdateUserbtn_Click(object sender, EventArgs e)
