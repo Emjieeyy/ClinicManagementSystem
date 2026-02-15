@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Reports));
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
             panel1 = new Panel();
-            hopeRoundButton1 = new ReaLTaiizor.Controls.HopeRoundButton();
+            StudentReportsbtn = new ReaLTaiizor.Controls.HopeRoundButton();
             label4 = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
-            hopeRoundButton2 = new ReaLTaiizor.Controls.HopeRoundButton();
+            InventoryReportsbtn = new ReaLTaiizor.Controls.HopeRoundButton();
             label5 = new Label();
             label3 = new Label();
             pictureBox2 = new PictureBox();
@@ -63,7 +63,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(hopeRoundButton1);
+            panel1.Controls.Add(StudentReportsbtn);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
@@ -73,24 +73,25 @@
             panel1.Size = new Size(350, 265);
             panel1.TabIndex = 2;
             // 
-            // hopeRoundButton1
+            // StudentReportsbtn
             // 
-            hopeRoundButton1.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeRoundButton1.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton1.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton1.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton1.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton1.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton1.Location = new Point(53, 192);
-            hopeRoundButton1.Name = "hopeRoundButton1";
-            hopeRoundButton1.PrimaryColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton1.Size = new Size(240, 35);
-            hopeRoundButton1.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton1.TabIndex = 3;
-            hopeRoundButton1.Text = "Export Consultation ";
-            hopeRoundButton1.TextColor = Color.White;
-            hopeRoundButton1.WarningColor = Color.FromArgb(230, 162, 60);
+            StudentReportsbtn.BorderColor = Color.FromArgb(220, 223, 230);
+            StudentReportsbtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            StudentReportsbtn.DangerColor = Color.FromArgb(245, 108, 108);
+            StudentReportsbtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            StudentReportsbtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            StudentReportsbtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            StudentReportsbtn.InfoColor = Color.FromArgb(144, 147, 153);
+            StudentReportsbtn.Location = new Point(53, 192);
+            StudentReportsbtn.Name = "StudentReportsbtn";
+            StudentReportsbtn.PrimaryColor = Color.FromArgb(64, 158, 255);
+            StudentReportsbtn.Size = new Size(240, 35);
+            StudentReportsbtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            StudentReportsbtn.TabIndex = 3;
+            StudentReportsbtn.Text = "Export Consultation ";
+            StudentReportsbtn.TextColor = Color.White;
+            StudentReportsbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            StudentReportsbtn.Click += StudentReportsbtn_Click;
             // 
             // label4
             // 
@@ -129,7 +130,7 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(hopeRoundButton2);
+            panel2.Controls.Add(InventoryReportsbtn);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(pictureBox2);
@@ -140,24 +141,25 @@
             panel2.TabIndex = 3;
             panel2.Paint += panel2_Paint;
             // 
-            // hopeRoundButton2
+            // InventoryReportsbtn
             // 
-            hopeRoundButton2.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeRoundButton2.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton2.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton2.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton2.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton2.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton2.Location = new Point(53, 192);
-            hopeRoundButton2.Name = "hopeRoundButton2";
-            hopeRoundButton2.PrimaryColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton2.Size = new Size(240, 35);
-            hopeRoundButton2.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton2.TabIndex = 4;
-            hopeRoundButton2.Text = "Export Inventory";
-            hopeRoundButton2.TextColor = Color.White;
-            hopeRoundButton2.WarningColor = Color.FromArgb(230, 162, 60);
+            InventoryReportsbtn.BorderColor = Color.FromArgb(220, 223, 230);
+            InventoryReportsbtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            InventoryReportsbtn.DangerColor = Color.FromArgb(245, 108, 108);
+            InventoryReportsbtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            InventoryReportsbtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            InventoryReportsbtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            InventoryReportsbtn.InfoColor = Color.FromArgb(144, 147, 153);
+            InventoryReportsbtn.Location = new Point(53, 192);
+            InventoryReportsbtn.Name = "InventoryReportsbtn";
+            InventoryReportsbtn.PrimaryColor = Color.FromArgb(64, 158, 255);
+            InventoryReportsbtn.Size = new Size(240, 35);
+            InventoryReportsbtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            InventoryReportsbtn.TabIndex = 4;
+            InventoryReportsbtn.Text = "Export Inventory";
+            InventoryReportsbtn.TextColor = Color.White;
+            InventoryReportsbtn.WarningColor = Color.FromArgb(230, 162, 60);
+            InventoryReportsbtn.Click += InventoryReportsbtn_Click;
             // 
             // label5
             // 
@@ -215,6 +217,7 @@
             Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Name = "UC_Reports";
             Size = new Size(834, 591);
+            Load += UC_Reports_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -236,8 +239,8 @@
         private Label label2;
         private Label label3;
         private Label label5;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton1;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton2;
+        private ReaLTaiizor.Controls.HopeRoundButton StudentReportsbtn;
+        private ReaLTaiizor.Controls.HopeRoundButton InventoryReportsbtn;
         private ReaLTaiizor.Controls.BigLabel bigLabel3;
     }
 }
