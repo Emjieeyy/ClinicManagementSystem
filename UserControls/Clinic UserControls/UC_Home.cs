@@ -56,10 +56,6 @@ namespace ClinicManagementSystem
             dgvStudentRecords.DataBindingComplete -= dgvStudentRecords_DataBindingComplete;
         }
 
-        private void hopeRoundButton8_Click(object sender, EventArgs e)
-        {
-            RefreshDashboard();
-        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {

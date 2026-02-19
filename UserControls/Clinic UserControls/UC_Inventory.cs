@@ -16,9 +16,6 @@ namespace ClinicManagementSystem
         {
             InitializeComponent();
 
-            SetupGrid();
-            SetupStyle();
-
             // Load JSON FIRST
             InventoryData.LoadFromJson();
 
