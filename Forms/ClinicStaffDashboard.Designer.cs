@@ -64,7 +64,7 @@
             navbar.Location = new Point(0, 0);
             navbar.Margin = new Padding(3, 3, 3, 2);
             navbar.Name = "navbar";
-            navbar.Size = new Size(307, 723);
+            navbar.Size = new Size(307, 728);
             navbar.TabIndex = 0;
             // 
             // pictureBox7
@@ -219,7 +219,7 @@
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(307, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(836, 723);
+            mainPanel.Size = new Size(839, 728);
             mainPanel.TabIndex = 1;
             // 
             // ClinicStaffDashboard
@@ -227,7 +227,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1143, 723);
+            ClientSize = new Size(1146, 728);
             ControlBox = false;
             Controls.Add(mainPanel);
             Controls.Add(navbar);

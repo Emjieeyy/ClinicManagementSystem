@@ -55,7 +55,7 @@
             SaveRecordsbt.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SaveRecordsbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             SaveRecordsbt.InfoColor = Color.FromArgb(144, 147, 153);
-            SaveRecordsbt.Location = new Point(482, 505);
+            SaveRecordsbt.Location = new Point(500, 440);
             SaveRecordsbt.Name = "SaveRecordsbt";
             SaveRecordsbt.PrimaryColor = Color.FromArgb(64, 158, 255);
             SaveRecordsbt.Size = new Size(172, 39);
@@ -73,6 +73,7 @@
             SymptomsTxt.Name = "SymptomsTxt";
             SymptomsTxt.Size = new Size(360, 27);
             SymptomsTxt.TabIndex = 31;
+            SymptomsTxt.KeyDown += SymptomsTxt_KeyDown;
             // 
             // label4
             // 
@@ -111,6 +112,7 @@
             StudentNametxt.Name = "StudentNametxt";
             StudentNametxt.Size = new Size(360, 27);
             StudentNametxt.TabIndex = 26;
+            StudentNametxt.KeyDown += StudentNametxt_KeyDown;
             // 
             // label1
             // 
@@ -129,6 +131,7 @@
             StudentID.Name = "StudentID";
             StudentID.Size = new Size(360, 27);
             StudentID.TabIndex = 24;
+            StudentID.KeyDown += StudentID_KeyDown;
             // 
             // bigLabel1
             // 
@@ -172,7 +175,7 @@
             Clearbt.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Clearbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             Clearbt.InfoColor = Color.FromArgb(144, 147, 153);
-            Clearbt.Location = new Point(310, 506);
+            Clearbt.Location = new Point(294, 440);
             Clearbt.Name = "Clearbt";
             Clearbt.PrimaryColor = Color.Gainsboro;
             Clearbt.Size = new Size(161, 39);
@@ -202,6 +205,7 @@
             CourseComboBox.Name = "CourseComboBox";
             CourseComboBox.Size = new Size(360, 28);
             CourseComboBox.TabIndex = 42;
+            CourseComboBox.KeyDown += CourseComboBox_KeyDown;
             // 
             // UC_AddInformation1
             // 

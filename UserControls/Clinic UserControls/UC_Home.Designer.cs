@@ -1,4 +1,5 @@
-﻿namespace ClinicManagementSystem
+﻿
+namespace ClinicManagementSystem
 {
     partial class UC_Home
     {
@@ -29,19 +30,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
-            hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             btnAdd = new ReaLTaiizor.Controls.HopeRoundButton();
-            hopeRoundButton9 = new ReaLTaiizor.Controls.HopeRoundButton();
+            SearchBtn = new ReaLTaiizor.Controls.HopeRoundButton();
             btnUpdate = new ReaLTaiizor.Controls.HopeRoundButton();
             bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
-            hopeButton2 = new ReaLTaiizor.Controls.HopeButton();
-            btn_view = new ReaLTaiizor.Controls.HopeRoundButton();
+            LowInvAlertBtn = new ReaLTaiizor.Controls.HopeButton();
+            SaveBtn = new ReaLTaiizor.Controls.HopeRoundButton();
             btnDelete = new ReaLTaiizor.Controls.HopeRoundButton();
             bigLabel2 = new ReaLTaiizor.Controls.BigLabel();
             bigLabel3 = new ReaLTaiizor.Controls.BigLabel();
             pictureBox2 = new PictureBox();
-            label1 = new Label();
+            TotalConsultation = new Label();
             dgvStudentRecords = new DataGridView();
             StudentID = new DataGridViewTextBoxColumn();
             StudentName = new DataGridViewTextBoxColumn();
@@ -50,34 +51,11 @@
             Medicine = new DataGridViewTextBoxColumn();
             DateVisited = new DataGridViewTextBoxColumn();
             Total_0 = new Label();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudentRecords).BeginInit();
             SuspendLayout();
-            // 
-            // hopeTextBox1
-            // 
-            hopeTextBox1.BackColor = Color.White;
-            hopeTextBox1.BaseColor = Color.White;
-            hopeTextBox1.BorderColorA = Color.FromArgb(64, 158, 255);
-            hopeTextBox1.BorderColorB = Color.FromArgb(220, 223, 230);
-            hopeTextBox1.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            hopeTextBox1.ForeColor = Color.FromArgb(48, 49, 51);
-            hopeTextBox1.Hint = "";
-            hopeTextBox1.Location = new Point(468, 229);
-            hopeTextBox1.MaxLength = 32767;
-            hopeTextBox1.Multiline = false;
-            hopeTextBox1.Name = "hopeTextBox1";
-            hopeTextBox1.PasswordChar = '\0';
-            hopeTextBox1.ScrollBars = ScrollBars.None;
-            hopeTextBox1.SelectedText = "";
-            hopeTextBox1.SelectionLength = 0;
-            hopeTextBox1.SelectionStart = 0;
-            hopeTextBox1.Size = new Size(216, 35);
-            hopeTextBox1.TabIndex = 45;
-            hopeTextBox1.TabStop = false;
-            hopeTextBox1.Text = "Search Records...";
-            hopeTextBox1.UseSystemPasswordChar = false;
             // 
             // pictureBox1
             // 
@@ -109,27 +87,29 @@
             btnAdd.Text = "Add ";
             btnAdd.TextColor = Color.White;
             btnAdd.WarningColor = Color.FromArgb(230, 162, 60);
+            btnAdd.Click += btnAdd_Click;
             // 
-            // hopeRoundButton9
+            // SearchBtn
             // 
-            hopeRoundButton9.BackColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.BorderColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton9.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton9.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeRoundButton9.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeRoundButton9.ForeColor = Color.White;
-            hopeRoundButton9.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton9.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton9.Location = new Point(700, 226);
-            hopeRoundButton9.Name = "hopeRoundButton9";
-            hopeRoundButton9.PrimaryColor = Color.FromArgb(64, 158, 255);
-            hopeRoundButton9.Size = new Size(108, 41);
-            hopeRoundButton9.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton9.TabIndex = 46;
-            hopeRoundButton9.Text = "Search";
-            hopeRoundButton9.TextColor = Color.White;
-            hopeRoundButton9.WarningColor = Color.FromArgb(230, 162, 60);
+            SearchBtn.BackColor = Color.FromArgb(64, 158, 255);
+            SearchBtn.BorderColor = Color.FromArgb(64, 158, 255);
+            SearchBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            SearchBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            SearchBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            SearchBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchBtn.ForeColor = Color.White;
+            SearchBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            SearchBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            SearchBtn.Location = new Point(700, 226);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.PrimaryColor = Color.FromArgb(64, 158, 255);
+            SearchBtn.Size = new Size(108, 41);
+            SearchBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            SearchBtn.TabIndex = 46;
+            SearchBtn.Text = "Search";
+            SearchBtn.TextColor = Color.White;
+            SearchBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            SearchBtn.Click += SearchBtn_Click;
             // 
             // btnUpdate
             // 
@@ -165,46 +145,47 @@
             bigLabel1.TabIndex = 44;
             bigLabel1.Text = "Staff Dashboard";
             // 
-            // hopeButton2
+            // LowInvAlertBtn
             // 
-            hopeButton2.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton2.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton2.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton2.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton2.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton2.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton2.Location = new Point(335, 154);
-            hopeButton2.Name = "hopeButton2";
-            hopeButton2.PrimaryColor = Color.FromArgb(64, 158, 255);
-            hopeButton2.Size = new Size(236, 50);
-            hopeButton2.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton2.TabIndex = 55;
-            hopeButton2.Text = " Low inventory alert";
-            hopeButton2.TextColor = Color.White;
-            hopeButton2.WarningColor = Color.FromArgb(230, 162, 60);
+            LowInvAlertBtn.BorderColor = Color.FromArgb(220, 223, 230);
+            LowInvAlertBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            LowInvAlertBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            LowInvAlertBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            LowInvAlertBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LowInvAlertBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            LowInvAlertBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            LowInvAlertBtn.Location = new Point(335, 154);
+            LowInvAlertBtn.Name = "LowInvAlertBtn";
+            LowInvAlertBtn.PrimaryColor = Color.FromArgb(64, 158, 255);
+            LowInvAlertBtn.Size = new Size(236, 50);
+            LowInvAlertBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            LowInvAlertBtn.TabIndex = 55;
+            LowInvAlertBtn.Text = " Low inventory alert";
+            LowInvAlertBtn.TextColor = Color.White;
+            LowInvAlertBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            LowInvAlertBtn.Click += LowInvAlertBtn_Click;
             // 
-            // btn_view
+            // SaveBtn
             // 
-            btn_view.BackColor = Color.FromArgb(64, 158, 255);
-            btn_view.BorderColor = Color.FromArgb(64, 158, 255);
-            btn_view.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            btn_view.DangerColor = Color.FromArgb(245, 108, 108);
-            btn_view.DefaultColor = Color.FromArgb(255, 255, 255);
-            btn_view.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_view.ForeColor = Color.White;
-            btn_view.HoverTextColor = Color.FromArgb(48, 49, 51);
-            btn_view.InfoColor = Color.FromArgb(144, 147, 153);
-            btn_view.Location = new Point(635, 641);
-            btn_view.Name = "btn_view";
-            btn_view.PrimaryColor = Color.FromArgb(96, 125, 139);
-            btn_view.Size = new Size(171, 50);
-            btn_view.SuccessColor = Color.FromArgb(103, 194, 58);
-            btn_view.TabIndex = 51;
-            btn_view.Text = "View ";
-            btn_view.TextColor = Color.White;
-            btn_view.WarningColor = Color.FromArgb(230, 162, 60);
-            btn_view.Click += hopeRoundButton8_Click;
+            SaveBtn.BackColor = Color.FromArgb(64, 158, 255);
+            SaveBtn.BorderColor = Color.FromArgb(64, 158, 255);
+            SaveBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            SaveBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            SaveBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            SaveBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SaveBtn.ForeColor = Color.White;
+            SaveBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            SaveBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            SaveBtn.Location = new Point(635, 641);
+            SaveBtn.Name = "SaveBtn";
+            SaveBtn.PrimaryColor = Color.FromArgb(96, 125, 139);
+            SaveBtn.Size = new Size(171, 50);
+            SaveBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            SaveBtn.TabIndex = 51;
+            SaveBtn.Text = "Save";
+            SaveBtn.TextColor = Color.White;
+            SaveBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            SaveBtn.Click += SaveBtn_Click;
             // 
             // btnDelete
             // 
@@ -262,27 +243,28 @@
             pictureBox2.TabIndex = 60;
             pictureBox2.TabStop = false;
             // 
-            // label1
+            // TotalConsultation
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(74, 155, 250);
-            label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(56, 166);
-            label1.Name = "label1";
-            label1.Size = new Size(214, 19);
-            label1.TabIndex = 61;
-            label1.Text = "Total consultations today:";
+            TotalConsultation.AutoSize = true;
+            TotalConsultation.BackColor = Color.FromArgb(74, 155, 250);
+            TotalConsultation.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TotalConsultation.ForeColor = Color.White;
+            TotalConsultation.Location = new Point(56, 166);
+            TotalConsultation.Name = "TotalConsultation";
+            TotalConsultation.Size = new Size(219, 19);
+            TotalConsultation.TabIndex = 61;
+            TotalConsultation.Text = "Total consultations today: ";
             // 
             // dgvStudentRecords
             // 
             dgvStudentRecords.AllowUserToOrderColumns = true;
             dgvStudentRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvStudentRecords.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvStudentRecords.BackgroundColor = SystemColors.ControlLightLight;
+            dgvStudentRecords.BackgroundColor = Color.White;
             dgvStudentRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudentRecords.Columns.AddRange(new DataGridViewColumn[] { StudentID, StudentName, Course, Symptoms, Medicine, DateVisited });
-            dgvStudentRecords.GridColor = SystemColors.InactiveCaptionText;
+            dgvStudentRecords.EnableHeadersVisualStyles = false;
+            dgvStudentRecords.GridColor = Color.Gainsboro;
             dgvStudentRecords.Location = new Point(35, 285);
             dgvStudentRecords.MultiSelect = false;
             dgvStudentRecords.Name = "dgvStudentRecords";
@@ -297,6 +279,10 @@
             // 
             StudentID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             StudentID.DataPropertyName = "StudentID";
+            dataGridViewCellStyle2.Font = new Font("Segoe Fluent Icons", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
+            StudentID.DefaultCellStyle = dataGridViewCellStyle2;
             StudentID.HeaderText = "StudentID";
             StudentID.MinimumWidth = 6;
             StudentID.Name = "StudentID";
@@ -351,32 +337,40 @@
             Total_0.ForeColor = Color.White;
             Total_0.Location = new Point(271, 167);
             Total_0.Name = "Total_0";
-            Total_0.Size = new Size(19, 19);
+            Total_0.Size = new Size(0, 19);
             Total_0.TabIndex = 63;
-            Total_0.Text = "0";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(509, 226);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(173, 27);
+            textBox1.TabIndex = 64;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            BorderStyle = BorderStyle.Fixed3D;
+            Controls.Add(textBox1);
             Controls.Add(Total_0);
             Controls.Add(dgvStudentRecords);
-            Controls.Add(label1);
+            Controls.Add(TotalConsultation);
             Controls.Add(bigLabel3);
             Controls.Add(bigLabel2);
-            Controls.Add(hopeTextBox1);
             Controls.Add(pictureBox1);
             Controls.Add(btnAdd);
-            Controls.Add(hopeRoundButton9);
+            Controls.Add(SearchBtn);
             Controls.Add(btnUpdate);
             Controls.Add(bigLabel1);
-            Controls.Add(hopeButton2);
-            Controls.Add(btn_view);
+            Controls.Add(LowInvAlertBtn);
+            Controls.Add(SaveBtn);
             Controls.Add(btnDelete);
             Controls.Add(pictureBox2);
             Name = "UC_Home";
-            Size = new Size(831, 704);
+            Size = new Size(827, 700);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvStudentRecords).EndInit();
@@ -385,21 +379,19 @@
         }
 
         #endregion
-
-        private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
         private PictureBox pictureBox1;
         private ReaLTaiizor.Controls.HopeRoundButton btnAdd;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton9;
+        private ReaLTaiizor.Controls.HopeRoundButton SearchBtn;
         private ReaLTaiizor.Controls.HopeRoundButton btnUpdate;
         private ReaLTaiizor.Controls.BigLabel bigLabel1;
-        private ReaLTaiizor.Controls.HopeButton hopeButton2;
-        private ReaLTaiizor.Controls.HopeRoundButton btn_view;
+        private ReaLTaiizor.Controls.HopeButton LowInvAlertBtn;
+        private ReaLTaiizor.Controls.HopeRoundButton SaveBtn;
         private ReaLTaiizor.Controls.HopeRoundButton btnDelete;
         private ReaLTaiizor.Controls.BigLabel bigLabel2;
         private Label Total_0;
         private ReaLTaiizor.Controls.BigLabel bigLabel3;
         private PictureBox pictureBox2;
-        private Label label1;
+        private Label TotalConsultation;
         private DataGridView dgvStudentRecords;
         private DataGridViewTextBoxColumn StudentID;
         private DataGridViewTextBoxColumn StudentName;
@@ -407,5 +399,6 @@
         private DataGridViewTextBoxColumn Symptoms;
         private DataGridViewTextBoxColumn Medicine;
         private DataGridViewTextBoxColumn DateVisited;
+        private TextBox textBox1;
     }
 }

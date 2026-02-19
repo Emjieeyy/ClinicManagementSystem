@@ -1,10 +1,8 @@
 ﻿using ClinicManagementSystem.Data;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
+using System.Linq; // Added for .Where and .ToList
 using System.Windows.Forms;
 
 namespace ClinicManagementSystem
@@ -22,6 +20,10 @@ namespace ClinicManagementSystem
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ReadOnly = false;
 
+            SearchInfo.Enabled = true;
+            SearchInfo.ReadOnly = false;
+            SearchInfo.TabStop = true;
+
             dataGridView1.MultiSelect = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -33,7 +35,48 @@ namespace ClinicManagementSystem
                 if (dataGridView1.Columns.Contains("StudentID"))
                     dataGridView1.Columns["StudentID"].ReadOnly = true;
             };
+
         }
+
+        // --- SEARCH FEATURE LOGIC (Copied from your AdminDashboard style) ---
+
+        private void PerformStudentSearch()
+        {
+            string term = SearchInfo.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(term))
+            {
+                // Reset to full list if search is empty
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = ClinicData.StudentRecords;
+                return;
+            }
+
+            string lowerTerm = term.ToLower();
+
+            // Filtering logic using the same Null-Conditional and Null-Coalescing pattern
+            var results = ClinicData.StudentRecords.Where(s =>
+                (s.StudentID?.ToLower().Contains(lowerTerm) ?? false) ||
+                (s.StudentName?.ToLower().Contains(lowerTerm) ?? false) ||
+                (s.Symptoms?.ToLower().Contains(lowerTerm) ?? false) ||
+                (s.Course?.ToLower().Contains(lowerTerm) ?? false)
+            ).ToList();
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = results;
+        }
+
+        private void SearchInfo_TextChanged(object sender, EventArgs e)
+        {
+            PerformStudentSearch();
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            PerformStudentSearch();
+        }
+
+        // --- EXISTING GRID LOGIC ---
 
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
@@ -61,15 +104,11 @@ namespace ClinicManagementSystem
         private void applyChanges_Click(object sender, EventArgs e)
         {
             dataGridView1.EndEdit();
-            ClinicData.SaveData(); // 🔥 Save after editing
+            ClinicData.SaveData();
             MessageBox.Show("Record updated successfully!");
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
     }
 }
-
-

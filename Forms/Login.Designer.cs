@@ -139,6 +139,7 @@
             txtPassword.Text = "Please enter Password";
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.Enter += txtPassword_Enter;
+            txtPassword.KeyDown += txtPassword_KeyDown;
             txtPassword.Leave += txtPassword_Leave;
             // 
             // txtEmail
@@ -165,6 +166,7 @@
             txtEmail.Text = "Please enter Username";
             txtEmail.UseSystemPasswordChar = false;
             txtEmail.Enter += txtEmail_Enter;
+            txtEmail.KeyDown += txtEmail_KeyDown;
             txtEmail.Leave += txtEmail_Leave;
             // 
             // showpasswordcb

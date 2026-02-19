@@ -1,5 +1,7 @@
 ﻿using ClinicManagementSystem.Data;
+using ClinicManagementSystem.Models;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,79 +9,153 @@ namespace ClinicManagementSystem
 {
     public partial class UC_Home : UserControl
     {
+        public static UC_Home Instance { get; private set; }
+        public const int LowStockThreshold = 3;
+
         public UC_Home()
         {
             InitializeComponent();
+            // 2. ADD THIS LINE: Initialize the instance
+            Instance = this;
+
+            InventoryData.LoadFromJson();
+
+            // --- MANDATORY INITIAL DESIGN ---
+            dgvStudentRecords.EnableHeadersVisualStyles = false; // Required for custom header colors
+            dgvStudentRecords.BackgroundColor = Color.White;
+            dgvStudentRecords.BorderStyle = BorderStyle.FixedSingle;
+            dgvStudentRecords.RowHeadersVisible = false; // Removes the left arrow column
+
+            dgvStudentRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStudentRecords.MultiSelect = false;
+            dgvStudentRecords.ReadOnly = true;
+            dgvStudentRecords.AllowUserToAddRows = false;
+
+            // Wire up the styling event
+            dgvStudentRecords.DataBindingComplete += DgvStudentRecords_DataBindingComplete;
+
             RefreshDashboard();
+            this.Load += (s, e) => UpdateLowInventoryAlert();
+        }
+
+        private void DgvStudentRecords_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // 1. HEADER: SteelBlue, White text, NO BOLD (Clean Look)
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular); // Regular makes it clean
+
+            // 2. FIX THE YELLOW HEADER: Keep headers Blue even when the row is selected
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+
+            // 3. ROWS: White background, Yellow highlight when clicked
+            dgvStudentRecords.DefaultCellStyle.BackColor = Color.White;
+            dgvStudentRecords.DefaultCellStyle.ForeColor = Color.Black;
+            dgvStudentRecords.DefaultCellStyle.SelectionBackColor = Color.Yellow;
+            dgvStudentRecords.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvStudentRecords.DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+
+            // 4. CLEANUP: No extra gray bars or arrows
+            dgvStudentRecords.RowHeadersVisible = false;
+            dgvStudentRecords.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvStudentRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvStudentRecords.BackgroundColor = Color.White;
+
+
+            // 5. CLEAR SELECTION: Stops the first row from being yellow immediately on load
+            dgvStudentRecords.ClearSelection();
         }
 
         public void RefreshDashboard()
         {
-            // 1. Calculate Today's Total
-            int todayCount = ClinicData.StudentRecords
-                .Count(r => r.DateVisited.Date == DateTime.Today);
+            // 1. Temporarily unbind the event to stop styling logic from firing during the reset
+            dgvStudentRecords.DataBindingComplete -= DgvStudentRecords_DataBindingComplete;
 
-            // 2. Update your Label named "Total_0"
-            Total_0.Text = todayCount.ToString();
+            try
+            {
+                int todayCount = ClinicData.StudentRecords.Count(r => r.DateVisited.Date == DateTime.Today);
+                Total_0.Text = todayCount.ToString();
 
-            // 3. Connect the table to the shared data list
-            // We clear it first to force a fresh bind
-            dgvStudentRecords.DataSource = null;
+                // 2. Clear the source completely
+                dgvStudentRecords.DataSource = null;
+                dgvStudentRecords.Rows.Clear(); // Force clear any residual rows
 
-            // --- THE BULLETPROOF FIX ---
-            // We tell the grid: "Wait until you are 100% finished building columns, then run this formatting."
-            dgvStudentRecords.DataBindingComplete += dgvStudentRecords_DataBindingComplete;
-
-            dgvStudentRecords.DataSource = ClinicData.StudentRecords;
+                if (ClinicData.StudentRecords != null)
+                {
+                    // 3. Use a BindingSource for smoother transitions (Recommended)
+                    dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
+                }
+            }
+            finally
+            {
+                // 4. Re-bind the styling event and clean up
+                dgvStudentRecords.DataBindingComplete += DgvStudentRecords_DataBindingComplete;
+                dgvStudentRecords.ClearSelection();
+                UpdateLowInventoryAlert();
+            }
+            ;
         }
 
-        // This event only fires AFTER the columns physically exist in memory
-        private void dgvStudentRecords_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            if (dgvStudentRecords.Columns.Contains("DateVisited"))
-            {
-                // 1. Fix the width and format first
-                dgvStudentRecords.Columns["DateVisited"].Width = 160;
-                dgvStudentRecords.Columns["DateVisited"].DefaultCellStyle.Format = "MM/dd/yyyy hh:mm tt";
 
-                // 2. REORDER COLUMNS (0 is far left, 5 is far right)
-                // This puts Medicine exactly between Symptoms and Date
-                dgvStudentRecords.Columns["StudentID"].DisplayIndex = 0;
-                dgvStudentRecords.Columns["StudentName"].DisplayIndex = 1;
-                dgvStudentRecords.Columns["Course"].DisplayIndex = 2;
-                dgvStudentRecords.Columns["Symptoms"].DisplayIndex = 3;
-                dgvStudentRecords.Columns["Medicine"].DisplayIndex = 4; // Right beside Symptoms
-                dgvStudentRecords.Columns["DateVisited"].DisplayIndex = 5; // At the end
+        // --- BUTTON LOGIC ---
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            string studentId = Microsoft.VisualBasic.Interaction.InputBox("Enter Student ID:", "New Record", "");
+            if (string.IsNullOrWhiteSpace(studentId)) return;
+
+            if (ClinicData.StudentRecords.Any(r => r.StudentID == studentId))
+            {
+                MessageBox.Show("This Student ID already exists.");
+                return;
             }
 
-            // Remove the event handler to prevent loops
-            dgvStudentRecords.DataBindingComplete -= dgvStudentRecords_DataBindingComplete;
-        }
+            string name = Microsoft.VisualBasic.Interaction.InputBox($"ID: {studentId}\nEnter Name:", "New Record", "");
+            if (string.IsNullOrWhiteSpace(name)) return;
 
+            string course = Microsoft.VisualBasic.Interaction.InputBox("Enter Course:", "New Record", "");
+            string symptoms = Microsoft.VisualBasic.Interaction.InputBox("Enter Symptoms:", "New Record", "");
+            string medicine = Microsoft.VisualBasic.Interaction.InputBox("Enter Medicine:", "New Record", "None");
+
+            var newRecord = new StudentRecord
+            {
+                StudentID = studentId,
+                StudentName = name,
+                Course = course,
+                Symptoms = symptoms,
+                Medicine = medicine,
+                DateVisited = DateTime.Now
+            };
+
+            try
+            {
+                ClinicData.StudentRecords.Add(newRecord);
+                ClinicData.SaveData();
+                MessageBox.Show("Record added successfully!");
+                RefreshDashboard();
+            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvStudentRecords.SelectedRows.Count > 0)
             {
-                // Get the ID of the selected row
-                string selectedId = dgvStudentRecords.SelectedRows[0].Cells["StudentID"].Value.ToString();
+                var record = (StudentRecord)dgvStudentRecords.SelectedRows[0].DataBoundItem;
+                string choice = Microsoft.VisualBasic.Interaction.InputBox(
+                    "1: Name, 2: Course, 3: Symptoms, 4: Medicine", "Update", "1");
 
-                // Find the record in the shared list
-                var record = ClinicData.StudentRecords.FirstOrDefault(r => r.StudentID == selectedId);
-
-                if (record != null)
+                switch (choice)
                 {
-                    // Use a simple InputBox to get the medicine name
-                    string prescribedMed = Microsoft.VisualBasic.Interaction.InputBox(
-                        "Prescribe medicine for " + record.StudentName, "Update Record", record.Medicine);
-
-                    if (!string.IsNullOrWhiteSpace(prescribedMed))
-                    {
-                        record.Medicine = prescribedMed; // Save to the record
-                        RefreshDashboard(); // Update grid and "Total_0" label
-                        MessageBox.Show("Medicine prescribed successfully!");
-                    }
+                    case "1": record.StudentName = Microsoft.VisualBasic.Interaction.InputBox("New Name:", "Update", record.StudentName); break;
+                    case "2": record.Course = Microsoft.VisualBasic.Interaction.InputBox("New Course:", "Update", record.Course); break;
+                    case "3": record.Symptoms = Microsoft.VisualBasic.Interaction.InputBox("New Symptoms:", "Update", record.Symptoms); break;
+                    case "4": record.Medicine = Microsoft.VisualBasic.Interaction.InputBox("New Medicine:", "Update", record.Medicine); break;
                 }
+
+                ClinicData.SaveData();
+                RefreshDashboard();
             }
         }
 
@@ -87,20 +163,100 @@ namespace ClinicManagementSystem
         {
             if (dgvStudentRecords.SelectedRows.Count > 0)
             {
-                var confirm = MessageBox.Show("Delete this record permanently?", "Confirm", MessageBoxButtons.YesNo);
-                if (confirm == DialogResult.Yes)
+                if (MessageBox.Show("Delete permanently?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    string id = dgvStudentRecords.SelectedRows[0].Cells["StudentID"].Value.ToString();
-                    var record = ClinicData.StudentRecords.FirstOrDefault(r => r.StudentID == id);
-
-                    if (record != null)
-                    {
-                        ClinicData.StudentRecords.Remove(record); // Remove from shared data
-                        RefreshDashboard(); // Updates "Total_0" and Grid
-                    }
+                    var record = (StudentRecord)dgvStudentRecords.SelectedRows[0].DataBoundItem;
+                    ClinicData.StudentRecords.Remove(record);
+                    ClinicData.SaveData();
+                    RefreshDashboard();
                 }
             }
         }
+
+        public void UpdateLowInventoryAlert()
+        {
+
+            InventoryData.LoadFromJson();
+            // Add "i.ItemName != "New Item"" so the count is the same on both screens
+            int lowCount = InventoryData.InventoryItems
+                .Count(i => i.ItemName != "New Item" && (i.Quantity ?? 0) <= LowStockThreshold);
+
+            LowInvAlertBtn.ButtonType = lowCount > 0
+                ? ReaLTaiizor.Util.HopeButtonType.Danger
+                : ReaLTaiizor.Util.HopeButtonType.Primary;
+
+            LowInvAlertBtn.Text = lowCount > 0
+                ? $"      Low Inventory ({lowCount})"
+                : "      Low Inventory";
+
+            LowInvAlertBtn.Refresh();
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            ClinicData.SaveData();
+
+            MessageBox.Show("All data saved.");
+        }
+
+        private void LowInvAlertBtn_Click(object sender, EventArgs e)
+        {
+            // 1. Find the main dashboard form
+            var mainDashboard = this.ParentForm as ClinicStaffDashboard;
+
+            if (mainDashboard != null)
+            {
+                // 2. Call your new public navigation method
+                mainDashboard.ShowInventoryPage();
+
+                // 3. Tell the inventory control to highlight the low stock items
+                // Note: Ensure 'inventoryControl' is public in your Dashboard code
+                if (mainDashboard.inventoryControl != null)
+                {
+                    mainDashboard.inventoryControl.HighlightLowStock();
+                }
+            }
+        }
+
+        
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            PerformStudentSearch();
+        }
+        private void PerformStudentSearch()
+        {
+            // 1. Get the term from textBox1
+            string term = textBox1.Text.Trim().ToLower();
+
+            // 2. Filter the data
+            if (string.IsNullOrWhiteSpace(term))
+            {
+                // If empty, show everything
+                dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
+            }
+            else
+            {
+                var results = ClinicData.StudentRecords.Where(r =>
+                    (r.StudentID?.ToLower().Contains(term) ?? false) ||
+                    (r.StudentName?.ToLower().Contains(term) ?? false) ||
+                    (r.Course?.ToLower().Contains(term) ?? false) ||
+                    (r.Symptoms?.ToLower().Contains(term) ?? false) ||
+                    (r.Medicine?.ToLower().Contains(term) ?? false)
+                ).ToList();
+
+                dgvStudentRecords.DataSource = results;
+            }
+
+            // 3. Optional: Clear selection so the first row isn't yellow immediately
+            dgvStudentRecords.ClearSelection();
+        
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            PerformStudentSearch();
+        }
     }
 }
-    

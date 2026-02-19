@@ -7,7 +7,7 @@
         public string Course { get; set; } = string.Empty;
         public string Symptoms { get; set; } = string.Empty;
 
-        public string Medicine { get; set; }
+        public string Medicine { get; set; } = string.Empty;
 
         // Add this missing property
         public DateTime DateVisited { get; set; }

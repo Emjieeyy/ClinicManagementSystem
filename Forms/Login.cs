@@ -153,5 +153,25 @@ namespace ClinicManagementSystem
         {
             Application.Exit();
         }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPassword.Focus(); // Jump to password
+                e.SuppressKeyPress = true; // Stop the "ding" sound
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginbt_Click(null, null);
+                e.SuppressKeyPress = true; // Stop the "ding" sound
+            }
+        }
+
+       
     }
 }

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using ClinicManagementSystem.Data;
+using ClinicManagementSystem.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using Newtonsoft.Json;
-using ClinicManagementSystem.Models;
 
 namespace ClinicManagementSystem
 {
@@ -19,6 +20,12 @@ namespace ClinicManagementSystem
         {
             InitializeComponent();
             ShowPage(new UC_StudentRecords());
+            this.FormClosing += StudentDashboard_FormClosing; // Save on exit
+        }
+
+        private void StudentDashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ClinicData.SaveData(); // ✅ Save all data
         }
 
         // --- STEP 1: ADD THE METHOD HERE ---

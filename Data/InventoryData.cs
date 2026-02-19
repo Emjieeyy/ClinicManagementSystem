@@ -12,10 +12,10 @@ namespace ClinicManagementSystem.Data
     internal class InventoryData
     {
         private static string jsonFilePath = "inventory.json";
-       
+
         public static BindingList<InventoryItems> InventoryItems { get; private set; } = new BindingList<InventoryItems>();
 
-        
+
         public static void LoadFromJson()
         {
             if (!File.Exists(jsonFilePath))
@@ -44,14 +44,24 @@ namespace ClinicManagementSystem.Data
             }
 
         }
+        public static int GetLowStockCount(int threshold = 5)
+        {
+            return InventoryItems
+                .Where(i => (i.Quantity ?? 0) <= threshold)
+                .Count();
+        }
 
-        
+
+
         public static void SaveToJson()
         {
             try
             {
                 string json = JsonConvert.SerializeObject(InventoryItems, Formatting.Indented);
                 File.WriteAllText(jsonFilePath, json);
+
+                // 🔥 ADD THIS LINE
+                UC_Home.Instance?.UpdateLowInventoryAlert();
             }
             catch (Exception ex)
             {
@@ -60,3 +70,6 @@ namespace ClinicManagementSystem.Data
         }
     }
 }
+
+
+

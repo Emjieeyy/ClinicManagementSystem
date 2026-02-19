@@ -89,5 +89,41 @@ namespace ClinicManagementSystem
 
             StudentID.Focus();
         }
+
+        private void StudentID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                StudentNametxt.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void StudentNametxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CourseComboBox.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void CourseComboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SymptomsTxt.Focus();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void SymptomsTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SaveRecordsbt_Click(null, null);
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }
