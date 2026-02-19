@@ -14,69 +14,66 @@ namespace ClinicManagementSystem
             // 1. Load from JSON immediately
             ClinicData.LoadData();
 
-            // 2. Setup Grid Behavior
-            dataGridView1.ReadOnly = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
+            dgvUCStudentRecords.ReadOnly = true;
+            dgvUCStudentRecords.AllowUserToAddRows = false;
+            dgvUCStudentRecords.AllowUserToDeleteRows = false;
+            dgvUCStudentRecords.EditMode = DataGridViewEditMode.EditProgrammatically;
             LoadData();
         }
 
         // Call this to sync with student entries and fix the UI
         public void LoadData()
         {// 1. Set the data source
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = ClinicData.StudentRecords;
+            dgvUCStudentRecords.DataSource = null;
+            dgvUCStudentRecords.DataSource = ClinicData.StudentRecords;
 
             // Attach the styling logic to the event that fires once data is finished loading
-            dataGridView1.DataBindingComplete += DataGridView1_DataBindingComplete;
+            dgvUCStudentRecords.DataBindingComplete += DataGridView1_DataBindingComplete;
         }
 
         private void DataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            // --- EXACT COPY OF YOUR SETUP ---
-            dataGridView1.DefaultCellStyle.BackColor = Color.White;
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Yellow;
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            // Required for custom header color
+            dgvUCStudentRecords.EnableHeadersVisualStyles = false;
 
-            // Header styling
-            dataGridView1.EnableHeadersVisualStyles = false; // Required to show custom header colors
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            // =========================
+            // HEADER STYLE
+            // =========================
+            dgvUCStudentRecords.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvUCStudentRecords.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvUCStudentRecords.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.SteelBlue;
+            dgvUCStudentRecords.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dgvUCStudentRecords.ColumnHeadersDefaultCellStyle.Font =
+                new Font("Segoe UI", 9, FontStyle.Regular);
 
-            // Row-specific styling (Adapted loop from your inventory setup)
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            // =========================
+            // ROW STYLE (NO HIGHLIGHT)
+            // =========================
+            dgvUCStudentRecords.DefaultCellStyle.BackColor = Color.White;
+            dgvUCStudentRecords.DefaultCellStyle.ForeColor = Color.Black;
+            dgvUCStudentRecords.DefaultCellStyle.SelectionBackColor = Color.White;
+            dgvUCStudentRecords.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvUCStudentRecords.DefaultCellStyle.Font =
+                new Font("Segoe UI", 9, FontStyle.Regular);
+
+            // =========================
+            // CLEAN LOOK SETTINGS
+            // =========================
+            dgvUCStudentRecords.RowHeadersVisible = false;
+            dgvUCStudentRecords.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvUCStudentRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUCStudentRecords.BackgroundColor = Color.White;
+            dgvUCStudentRecords.BorderStyle = BorderStyle.None;
+
+            // Optional: Fix Date Column Format
+            if (dgvUCStudentRecords.Columns.Contains("DateVisited"))
             {
-                // Note: Replace 'YourItemType' with your actual class name (e.g., Student)
-                // and 'Condition' with your logic (e.g., item.IsUrgent)
-                if (row.DataBoundItem is var item)
-                {
-                    // if (Condition == true) 
-                    // {
-                    // Highlighting logic for danger items
-                    row.DefaultCellStyle.BackColor = Color.MistyRose;
-                    row.DefaultCellStyle.ForeColor = Color.DarkRed;
-                    row.DefaultCellStyle.SelectionBackColor = Color.IndianRed;
-                    row.DefaultCellStyle.SelectionForeColor = Color.White;
-                    // }
-                    // else
-                    // {
-                    // Ensure normal rows stay black
-                    row.DefaultCellStyle.ForeColor = Color.Black;
-                    row.DefaultCellStyle.BackColor = Color.White;
-                    // }
-                }
-                // Check specifically for your column name
-                if (dataGridView1.Columns.Contains("DateVisited"))
-                {
-                    // Fix the "split" time by widening the column
-                    dataGridView1.Columns["DateVisited"].Width = 160;
-                    dataGridView1.Columns["DateVisited"].DefaultCellStyle.Format = "MM/dd/yyyy hh:mm tt";
-                }
-
-                // Remove the event so it doesn't keep firing
-                dataGridView1.DataBindingComplete -= DataGridView1_DataBindingComplete;
+                dgvUCStudentRecords.Columns["DateVisited"].DefaultCellStyle.Format =
+                    "MM/dd/yyyy hh:mm tt";
             }
+
+            // Remove initial selection
+            dgvUCStudentRecords.ClearSelection();
         }
 
         private void hopeTextBox1_Click(object sender, EventArgs e)
@@ -94,8 +91,8 @@ namespace ClinicManagementSystem
             // If empty or placeholder, show everything
             if (string.IsNullOrEmpty(term) || term == "search records...")
             {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = ClinicData.StudentRecords.ToList();
+                dgvUCStudentRecords.DataSource = null;
+                dgvUCStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
                 return;
             }
 
@@ -108,8 +105,8 @@ namespace ClinicManagementSystem
                 (s.Medicine?.ToLower().Contains(term) ?? false)
             ).ToList();
 
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = filtered;
+            dgvUCStudentRecords.DataSource = null;
+            dgvUCStudentRecords.DataSource = filtered;
         }
 
         private void hopeTextBox1_TextAlignChanged(object sender, EventArgs e)
@@ -120,6 +117,11 @@ namespace ClinicManagementSystem
         private void hopeTextBox1_TextChanged(object sender, EventArgs e)
         {
             PerformStudentSearch();
+        }
+
+        private void dgvUCStudentRecords_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_UpdateInfomation));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             sDasboard = new ReaLTaiizor.Controls.BigLabel();
             label1 = new Label();
             SearchInfo = new TextBox();
@@ -39,8 +40,8 @@
             Symptoms = new DataGridViewTextBoxColumn();
             DateVisited = new DataGridViewTextBoxColumn();
             hopeRoundButton1 = new ReaLTaiizor.Controls.HopeRoundButton();
-            dataGridView1 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dgvUCupdateInfo = new DataGridView();
+            dgv_StudentUpdateInfo = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
@@ -49,7 +50,7 @@
             label2 = new Label();
             SearchBtn = new ReaLTaiizor.Controls.HopeRoundButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUCupdateInfo).BeginInit();
             SuspendLayout();
             // 
             // sDasboard
@@ -81,7 +82,7 @@
             SearchInfo.Location = new Point(23, 159);
             SearchInfo.Name = "SearchInfo";
             SearchInfo.ReadOnly = true;
-            SearchInfo.Size = new Size(186, 26);
+            SearchInfo.Size = new Size(209, 26);
             SearchInfo.TabIndex = 26;
             SearchInfo.Text = "Search...";
             SearchInfo.TextChanged += SearchInfo_TextChanged;
@@ -157,35 +158,41 @@
             hopeRoundButton1.Text = "Apply Changes";
             hopeRoundButton1.TextColor = Color.White;
             hopeRoundButton1.WarningColor = Color.FromArgb(230, 162, 60);
+            hopeRoundButton1.Click += applyChanges_Click;
             // 
-            // dataGridView1
+            // dgvUCupdateInfo
             // 
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.BackgroundColor = SystemColors.ControlLightLight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, Medicine, dataGridViewTextBoxColumn5 });
-            dataGridView1.GridColor = SystemColors.InactiveCaptionText;
-            dataGridView1.Location = new Point(23, 207);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(761, 355);
-            dataGridView1.TabIndex = 42;
+            dgvUCupdateInfo.AllowUserToOrderColumns = true;
+            dgvUCupdateInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUCupdateInfo.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvUCupdateInfo.BackgroundColor = SystemColors.ControlLightLight;
+            dgvUCupdateInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUCupdateInfo.Columns.AddRange(new DataGridViewColumn[] { dgv_StudentUpdateInfo, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, Medicine, dataGridViewTextBoxColumn5 });
+            dgvUCupdateInfo.GridColor = SystemColors.InactiveCaptionText;
+            dgvUCupdateInfo.Location = new Point(23, 207);
+            dgvUCupdateInfo.MultiSelect = false;
+            dgvUCupdateInfo.Name = "dgvUCupdateInfo";
+            dgvUCupdateInfo.ReadOnly = true;
+            dgvUCupdateInfo.RowHeadersVisible = false;
+            dgvUCupdateInfo.RowHeadersWidth = 51;
+            dgvUCupdateInfo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUCupdateInfo.Size = new Size(761, 355);
+            dgvUCupdateInfo.TabIndex = 42;
+          
             // 
-            // dataGridViewTextBoxColumn1
+            // dgv_StudentUpdateInfo
             // 
-            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewTextBoxColumn1.DataPropertyName = "StudentID";
-            dataGridViewTextBoxColumn1.HeaderText = "StudentID";
-            dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Width = 104;
+            dgv_StudentUpdateInfo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_StudentUpdateInfo.DataPropertyName = "StudentID";
+            dataGridViewCellStyle1.Font = new Font("Segoe Fluent Icons", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle1.SelectionBackColor = Color.Blue;
+            dgv_StudentUpdateInfo.DefaultCellStyle = dataGridViewCellStyle1;
+            dgv_StudentUpdateInfo.HeaderText = "StudentID";
+            dgv_StudentUpdateInfo.MinimumWidth = 6;
+            dgv_StudentUpdateInfo.Name = "dgv_StudentUpdateInfo";
+            dgv_StudentUpdateInfo.ReadOnly = true;
+            dgv_StudentUpdateInfo.Width = 104;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -234,7 +241,7 @@
             label2.Name = "label2";
             label2.Size = new Size(0, 20);
             label2.TabIndex = 43;
-            label2.Click += label2_Click;
+          
             // 
             // SearchBtn
             // 
@@ -246,7 +253,7 @@
             SearchBtn.Font = new Font("Century Gothic", 9F, FontStyle.Bold);
             SearchBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             SearchBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            SearchBtn.Location = new Point(232, 151);
+            SearchBtn.Location = new Point(240, 151);
             SearchBtn.Name = "SearchBtn";
             SearchBtn.PrimaryColor = Color.FromArgb(64, 158, 255);
             SearchBtn.Size = new Size(108, 38);
@@ -264,7 +271,7 @@
             BackColor = Color.White;
             Controls.Add(SearchBtn);
             Controls.Add(label2);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvUCupdateInfo);
             Controls.Add(hopeRoundButton1);
             Controls.Add(pictureBox1);
             Controls.Add(SearchInfo);
@@ -273,7 +280,7 @@
             Name = "UC_UpdateInfomation";
             Size = new Size(812, 639);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUCupdateInfo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -292,13 +299,14 @@
         private DataGridViewTextBoxColumn DateVisited;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private Label label2;
+        private ReaLTaiizor.Controls.HopeRoundButton SearchBtn;
+        private DataGridViewTextBoxColumn dgv_StudentUpdateInfo;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn Medicine;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private Label label2;
-        private ReaLTaiizor.Controls.HopeRoundButton SearchBtn;
+        private DataGridView dgvUCupdateInfo;
     }
 }

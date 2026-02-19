@@ -15,28 +15,41 @@ namespace ClinicManagementSystem
         public UC_Home()
         {
             InitializeComponent();
-            // 2. ADD THIS LINE: Initialize the instance
             Instance = this;
 
-            InventoryData.LoadFromJson();
+            // --- THE FIX: FORCE UPDATE ON EVERY POSSIBLE VIEW CHANGE ---
+            this.VisibleChanged += (s, e) => { if (this.Visible) UpdateLowInventoryAlert(); };
+            this.Load += (s, e) => UpdateLowInventoryAlert();
+            this.ParentChanged += (s, e) => UpdateLowInventoryAlert();
 
-            // --- MANDATORY INITIAL DESIGN ---
-            dgvStudentRecords.EnableHeadersVisualStyles = false; // Required for custom header colors
+            // Initialize Grid
+            dgvStudentRecords.EnableHeadersVisualStyles = false;
             dgvStudentRecords.BackgroundColor = Color.White;
-            dgvStudentRecords.BorderStyle = BorderStyle.FixedSingle;
-            dgvStudentRecords.RowHeadersVisible = false; // Removes the left arrow column
-
+            dgvStudentRecords.RowHeadersVisible = false;
             dgvStudentRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStudentRecords.MultiSelect = false;
             dgvStudentRecords.ReadOnly = true;
             dgvStudentRecords.AllowUserToAddRows = false;
-
-            // Wire up the styling event
             dgvStudentRecords.DataBindingComplete += DgvStudentRecords_DataBindingComplete;
 
             RefreshDashboard();
-            this.Load += (s, e) => UpdateLowInventoryAlert();
         }
+
+        public void UpdateLowInventoryAlert()
+        {
+
+
+            int lowCount = InventoryData.InventoryItems
+                 .Count(i => (i.Quantity ?? 0) <= LowStockThreshold);
+
+            LowInvAlertBtn.ButtonType = lowCount > 0
+                ? ReaLTaiizor.Util.HopeButtonType.Danger
+                : ReaLTaiizor.Util.HopeButtonType.Primary;
+
+            LowInvAlertBtn.Text = lowCount > 0
+                ? $"      Low Inventory ({lowCount})"
+                : "      Low Inventory";
+        }
+
         private void DgvStudentRecords_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             // 1. HEADER: SteelBlue, White text, NO BOLD (Clean Look)
@@ -68,36 +81,45 @@ namespace ClinicManagementSystem
 
         public void RefreshDashboard()
         {
-            // 1. Temporarily unbind the event to stop styling logic from firing during the reset
-            dgvStudentRecords.DataBindingComplete -= DgvStudentRecords_DataBindingComplete;
+            int todayCount = ClinicData.StudentRecords.Count(r => r.DateVisited.Date == DateTime.Today);
+            Total_0.Text = todayCount.ToString();
 
-            try
+            dgvStudentRecords.DataSource = null;
+            if (ClinicData.StudentRecords != null)
             {
-                int todayCount = ClinicData.StudentRecords.Count(r => r.DateVisited.Date == DateTime.Today);
-                Total_0.Text = todayCount.ToString();
-
-                // 2. Clear the source completely
-                dgvStudentRecords.DataSource = null;
-                dgvStudentRecords.Rows.Clear(); // Force clear any residual rows
-
-                if (ClinicData.StudentRecords != null)
-                {
-                    // 3. Use a BindingSource for smoother transitions (Recommended)
-                    dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
-                }
+                dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
             }
-            finally
-            {
-                // 4. Re-bind the styling event and clean up
-                dgvStudentRecords.DataBindingComplete += DgvStudentRecords_DataBindingComplete;
-                dgvStudentRecords.ClearSelection();
-                UpdateLowInventoryAlert();
-            }
-            ;
+            UpdateLowInventoryAlert();
         }
 
+        private void LowInvAlertBtn_Click(object sender, EventArgs e)
+        {
+            var mainDashboard = this.ParentForm as ClinicStaffDashboard;
+            if (mainDashboard != null)
+            {
+                mainDashboard.ShowInventoryPage();
+                if (mainDashboard.inventoryControl != null)
+                {
+                    mainDashboard.inventoryControl.HighlightLowStock();
+                }
+            }
+        }
 
-        // --- BUTTON LOGIC ---
+        // Search and Record logic remains the same
+        private void SearchBtn_Click(object sender, EventArgs e) => PerformStudentSearch();
+        private void textBox1_TextChanged(object sender, EventArgs e) => PerformStudentSearch();
+
+        private void PerformStudentSearch()
+        {
+            string term = textBox1.Text.Trim().ToLower();
+            if (string.IsNullOrWhiteSpace(term))
+                dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
+            else
+                dgvStudentRecords.DataSource = ClinicData.StudentRecords.Where(r =>
+                    (r.StudentID?.ToLower().Contains(term) ?? false) ||
+                    (r.StudentName?.ToLower().Contains(term) ?? false)).ToList();
+            dgvStudentRecords.ClearSelection();
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -135,6 +157,14 @@ namespace ClinicManagementSystem
                 RefreshDashboard();
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+
+            RefreshDashboard();
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            ClinicData.SaveData();
+            MessageBox.Show("All data saved.");
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -172,90 +202,7 @@ namespace ClinicManagementSystem
             }
         }
 
-        public void UpdateLowInventoryAlert()
-        {
-
-            InventoryData.LoadFromJson();
-            // Add "i.ItemName != "New Item"" so the count is the same on both screens
-            int lowCount = InventoryData.InventoryItems
-                .Count(i => i.ItemName != "New Item" && (i.Quantity ?? 0) <= LowStockThreshold);
-
-            LowInvAlertBtn.ButtonType = lowCount > 0
-                ? ReaLTaiizor.Util.HopeButtonType.Danger
-                : ReaLTaiizor.Util.HopeButtonType.Primary;
-
-            LowInvAlertBtn.Text = lowCount > 0
-                ? $"      Low Inventory ({lowCount})"
-                : "      Low Inventory";
-
-            LowInvAlertBtn.Refresh();
-        }
-
-        private void SaveBtn_Click(object sender, EventArgs e)
-        {
-            ClinicData.SaveData();
-
-            MessageBox.Show("All data saved.");
-        }
-
-        private void LowInvAlertBtn_Click(object sender, EventArgs e)
-        {
-            // 1. Find the main dashboard form
-            var mainDashboard = this.ParentForm as ClinicStaffDashboard;
-
-            if (mainDashboard != null)
-            {
-                // 2. Call your new public navigation method
-                mainDashboard.ShowInventoryPage();
-
-                // 3. Tell the inventory control to highlight the low stock items
-                // Note: Ensure 'inventoryControl' is public in your Dashboard code
-                if (mainDashboard.inventoryControl != null)
-                {
-                    mainDashboard.inventoryControl.HighlightLowStock();
-                }
-            }
-        }
-
         
 
-        private void SearchBtn_Click(object sender, EventArgs e)
-        {
-            PerformStudentSearch();
-        }
-        private void PerformStudentSearch()
-        {
-            // 1. Get the term from textBox1
-            string term = textBox1.Text.Trim().ToLower();
-
-            // 2. Filter the data
-            if (string.IsNullOrWhiteSpace(term))
-            {
-                // If empty, show everything
-                dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
-            }
-            else
-            {
-                var results = ClinicData.StudentRecords.Where(r =>
-                    (r.StudentID?.ToLower().Contains(term) ?? false) ||
-                    (r.StudentName?.ToLower().Contains(term) ?? false) ||
-                    (r.Course?.ToLower().Contains(term) ?? false) ||
-                    (r.Symptoms?.ToLower().Contains(term) ?? false) ||
-                    (r.Medicine?.ToLower().Contains(term) ?? false)
-                ).ToList();
-
-                dgvStudentRecords.DataSource = results;
-            }
-
-            // 3. Optional: Clear selection so the first row isn't yellow immediately
-            dgvStudentRecords.ClearSelection();
-        
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-            PerformStudentSearch();
         }
     }
-}

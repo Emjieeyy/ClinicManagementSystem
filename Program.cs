@@ -1,3 +1,4 @@
+using ClinicManagementSystem.Data;
 using ClinicManagementSystem.Forms;
 
 namespace ClinicManagementSystem
@@ -13,6 +14,7 @@ namespace ClinicManagementSystem
             
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            InventoryData.LoadFromJson();
             Application.Run(new LandingPage());
         }
     }

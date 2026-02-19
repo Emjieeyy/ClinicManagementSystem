@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq; // Added for .Where and .ToList
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace ClinicManagementSystem
 {
@@ -13,48 +14,55 @@ namespace ClinicManagementSystem
         {
             InitializeComponent();
 
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = ClinicData.StudentRecords;
+            // Safety check: Using the name from your Properties window to avoid NullReference
+            if (dgvUCupdateInfo == null) return;
 
-            dataGridView1.AllowUserToOrderColumns = false;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ReadOnly = false;
+            // MANUAL WIRING: Ensures search and validation work even if Designer is empty
+            dgvUCupdateInfo.CellValidating += dataGridView1_CellValidating;
+            SearchInfo.TextChanged += SearchInfo_TextChanged;
+            if (SearchBtn != null) SearchBtn.Click += SearchBtn_Click;
+
+            // INITIAL GRID SETUP
+            dgvUCupdateInfo.AutoGenerateColumns = true;
+            dgvUCupdateInfo.DataSource = ClinicData.StudentRecords;
+
+            dgvUCupdateInfo.AllowUserToOrderColumns = false;
+            dgvUCupdateInfo.AllowUserToAddRows = false;
+            dgvUCupdateInfo.ReadOnly = false;
 
             SearchInfo.Enabled = true;
             SearchInfo.ReadOnly = false;
             SearchInfo.TabStop = true;
 
-            dataGridView1.MultiSelect = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUCupdateInfo.MultiSelect = false;
+            dgvUCupdateInfo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            dataGridView1.DataBindingComplete += (s, e) =>
+            dgvUCupdateInfo.DataBindingComplete += (s, e) =>
             {
-                if (dataGridView1.Columns.Contains("Medicine"))
-                    dataGridView1.Columns["Medicine"].Visible = false;
+                if (dgvUCupdateInfo.Columns.Contains("Medicine"))
+                    dgvUCupdateInfo.Columns["Medicine"].Visible = false;
 
-                if (dataGridView1.Columns.Contains("StudentID"))
-                    dataGridView1.Columns["StudentID"].ReadOnly = true;
+                if (dgvUCupdateInfo.Columns.Contains("StudentID"))
+                    dgvUCupdateInfo.Columns["StudentID"].ReadOnly = true;
             };
-
         }
 
-        // --- SEARCH FEATURE LOGIC (Copied from your AdminDashboard style) ---
+        // --- SEARCH FEATURE LOGIC ---
 
         private void PerformStudentSearch()
         {
+            if (dgvUCupdateInfo == null) return;
             string term = SearchInfo.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(term))
             {
-                // Reset to full list if search is empty
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = ClinicData.StudentRecords;
+                dgvUCupdateInfo.DataSource = null;
+                dgvUCupdateInfo.DataSource = ClinicData.StudentRecords;
                 return;
             }
 
             string lowerTerm = term.ToLower();
 
-            // Filtering logic using the same Null-Conditional and Null-Coalescing pattern
             var results = ClinicData.StudentRecords.Where(s =>
                 (s.StudentID?.ToLower().Contains(lowerTerm) ?? false) ||
                 (s.StudentName?.ToLower().Contains(lowerTerm) ?? false) ||
@@ -62,8 +70,8 @@ namespace ClinicManagementSystem
                 (s.Course?.ToLower().Contains(lowerTerm) ?? false)
             ).ToList();
 
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = results;
+            dgvUCupdateInfo.DataSource = null;
+            dgvUCupdateInfo.DataSource = results;
         }
 
         private void SearchInfo_TextChanged(object sender, EventArgs e)
@@ -76,11 +84,12 @@ namespace ClinicManagementSystem
             PerformStudentSearch();
         }
 
-        // --- EXISTING GRID LOGIC ---
+        // --- GRID VALIDATION LOGIC ---
 
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if (dgvUCupdateInfo == null) return;
+            string columnName = dgvUCupdateInfo.Columns[e.ColumnIndex].Name;
 
             if (columnName == "StudentName" && string.IsNullOrWhiteSpace(e.FormattedValue?.ToString()))
             {
@@ -103,7 +112,8 @@ namespace ClinicManagementSystem
 
         private void applyChanges_Click(object sender, EventArgs e)
         {
-            dataGridView1.EndEdit();
+            if (dgvUCupdateInfo == null) return;
+            dgvUCupdateInfo.EndEdit();
             ClinicData.SaveData();
             MessageBox.Show("Record updated successfully!");
         }

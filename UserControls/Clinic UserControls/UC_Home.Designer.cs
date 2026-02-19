@@ -273,6 +273,7 @@ namespace ClinicManagementSystem
             dgvStudentRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvStudentRecords.Size = new Size(761, 340);
             dgvStudentRecords.TabIndex = 62;
+           
             // 
             // StudentID
             // 

@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_StudentRecords));
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            dgvUCStudentRecords = new DataGridView();
             StudentID = new DataGridViewTextBoxColumn();
             StudentName = new DataGridViewTextBoxColumn();
             Course = new DataGridViewTextBoxColumn();
@@ -42,7 +42,7 @@
             hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
             pictureBox1 = new PictureBox();
             sDasboard = new ReaLTaiizor.Controls.BigLabel();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUCStudentRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -56,25 +56,29 @@
             label1.TabIndex = 24;
             label1.Text = "Wellness Made Simple for Students.";
             // 
-            // dataGridView1
+            // dgvUCStudentRecords
             // 
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.BackgroundColor = SystemColors.ControlLightLight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { StudentID, StudentName, Course, Symptoms, Medicine, DateVisited });
-            dataGridView1.GridColor = SystemColors.InactiveCaptionText;
-            dataGridView1.Location = new Point(23, 216);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(761, 355);
-            dataGridView1.TabIndex = 23;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dgvUCStudentRecords.AllowUserToAddRows = false;
+            dgvUCStudentRecords.AllowUserToDeleteRows = false;
+            dgvUCStudentRecords.AllowUserToResizeColumns = false;
+            dgvUCStudentRecords.AllowUserToResizeRows = false;
+            dgvUCStudentRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUCStudentRecords.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvUCStudentRecords.BackgroundColor = SystemColors.ControlLightLight;
+            dgvUCStudentRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUCStudentRecords.Columns.AddRange(new DataGridViewColumn[] { StudentID, StudentName, Course, Symptoms, Medicine, DateVisited });
+            dgvUCStudentRecords.GridColor = SystemColors.InactiveCaptionText;
+            dgvUCStudentRecords.Location = new Point(23, 216);
+            dgvUCStudentRecords.MultiSelect = false;
+            dgvUCStudentRecords.Name = "dgvUCStudentRecords";
+            dgvUCStudentRecords.ReadOnly = true;
+            dgvUCStudentRecords.RowHeadersVisible = false;
+            dgvUCStudentRecords.RowHeadersWidth = 51;
+            dgvUCStudentRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUCStudentRecords.Size = new Size(761, 355);
+            dgvUCStudentRecords.TabIndex = 23;
+            dgvUCStudentRecords.CellContentClick += dataGridView1_CellContentClick;
+            dgvUCStudentRecords.CellValidating += dgvUCStudentRecords_CellValidating;
             // 
             // StudentID
             // 
@@ -213,7 +217,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(label1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvUCStudentRecords);
             Controls.Add(bigLabel2);
             Controls.Add(hopeRoundButton9);
             Controls.Add(hopeTextBox1);
@@ -221,7 +225,7 @@
             Controls.Add(sDasboard);
             Name = "UC_StudentRecords";
             Size = new Size(813, 601);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUCStudentRecords).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -230,7 +234,7 @@
         #endregion
 
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView dgvUCStudentRecords;
         private ReaLTaiizor.Controls.BigLabel bigLabel2;
         private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton9;
         private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
