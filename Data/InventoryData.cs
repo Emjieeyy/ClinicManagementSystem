@@ -51,8 +51,6 @@ namespace ClinicManagementSystem.Data
                 .Count();
         }
 
-
-
         public static void SaveToJson()
         {
             try
