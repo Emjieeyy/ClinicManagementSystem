@@ -126,7 +126,7 @@
             hopeRoundButton4.ForeColor = Color.DodgerBlue;
             hopeRoundButton4.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeRoundButton4.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton4.Location = new Point(26, 455);
+            hopeRoundButton4.Location = new Point(27, 457);
             hopeRoundButton4.Name = "hopeRoundButton4";
             hopeRoundButton4.PrimaryColor = Color.FromArgb(189, 233, 255);
             hopeRoundButton4.Size = new Size(250, 50);
@@ -148,7 +148,7 @@
             AddInformationbt.ForeColor = Color.DodgerBlue;
             AddInformationbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             AddInformationbt.InfoColor = Color.FromArgb(144, 147, 153);
-            AddInformationbt.Location = new Point(26, 275);
+            AddInformationbt.Location = new Point(27, 277);
             AddInformationbt.Name = "AddInformationbt";
             AddInformationbt.PrimaryColor = Color.FromArgb(189, 233, 255);
             AddInformationbt.Size = new Size(250, 50);
@@ -170,7 +170,7 @@
             updatebt.ForeColor = Color.DodgerBlue;
             updatebt.HoverTextColor = Color.FromArgb(48, 49, 51);
             updatebt.InfoColor = Color.FromArgb(144, 147, 153);
-            updatebt.Location = new Point(26, 362);
+            updatebt.Location = new Point(27, 364);
             updatebt.Name = "updatebt";
             updatebt.PrimaryColor = Color.FromArgb(189, 233, 255);
             updatebt.Size = new Size(250, 50);
@@ -202,7 +202,7 @@
             myRecordsbt.ForeColor = Color.DodgerBlue;
             myRecordsbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             myRecordsbt.InfoColor = Color.FromArgb(144, 147, 153);
-            myRecordsbt.Location = new Point(26, 184);
+            myRecordsbt.Location = new Point(27, 186);
             myRecordsbt.Name = "myRecordsbt";
             myRecordsbt.PrimaryColor = Color.FromArgb(189, 233, 255);
             myRecordsbt.Size = new Size(250, 50);

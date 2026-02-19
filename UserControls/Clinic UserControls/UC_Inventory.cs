@@ -143,7 +143,6 @@ namespace ClinicManagementSystem
                 MessageBox.Show("Please select an item first.");
                 return;
             }
-
             var item = dtgInventory.CurrentRow.DataBoundItem as InventoryItems;
             if (item == null) return;
 

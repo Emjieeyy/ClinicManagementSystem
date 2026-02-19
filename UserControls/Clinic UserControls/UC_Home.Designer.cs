@@ -20,7 +20,6 @@ namespace ClinicManagementSystem
             }
             base.Dispose(disposing);
         }
-
         #region Component Designer generated code
 
         /// <summary> 
@@ -30,7 +29,7 @@ namespace ClinicManagementSystem
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             btnAdd = new ReaLTaiizor.Controls.HopeRoundButton();
             SearchBtn = new ReaLTaiizor.Controls.HopeRoundButton();
@@ -61,7 +60,7 @@ namespace ClinicManagementSystem
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(712, 23);
+            pictureBox1.Location = new Point(716, 23);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(103, 62);
             pictureBox1.TabIndex = 43;
@@ -279,10 +278,10 @@ namespace ClinicManagementSystem
             // 
             StudentID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             StudentID.DataPropertyName = "StudentID";
-            dataGridViewCellStyle2.Font = new Font("Segoe Fluent Icons", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
-            StudentID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new Font("Segoe Fluent Icons", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Blue;
+            StudentID.DefaultCellStyle = dataGridViewCellStyle1;
             StudentID.HeaderText = "StudentID";
             StudentID.MinimumWidth = 6;
             StudentID.Name = "StudentID";

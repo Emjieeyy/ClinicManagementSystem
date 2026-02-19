@@ -78,10 +78,10 @@
             // 
             SearchInfo.BackColor = Color.White;
             SearchInfo.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            SearchInfo.Location = new Point(45, 163);
+            SearchInfo.Location = new Point(23, 159);
             SearchInfo.Name = "SearchInfo";
             SearchInfo.ReadOnly = true;
-            SearchInfo.Size = new Size(164, 26);
+            SearchInfo.Size = new Size(186, 26);
             SearchInfo.TabIndex = 26;
             SearchInfo.Text = "Search...";
             SearchInfo.TextChanged += SearchInfo_TextChanged;

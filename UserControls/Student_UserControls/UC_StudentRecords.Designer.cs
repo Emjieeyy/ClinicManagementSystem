@@ -132,7 +132,7 @@
             bigLabel2.BackColor = Color.Transparent;
             bigLabel2.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bigLabel2.ForeColor = Color.DodgerBlue;
-            bigLabel2.Location = new Point(23, 156);
+            bigLabel2.Location = new Point(16, 155);
             bigLabel2.Name = "bigLabel2";
             bigLabel2.Size = new Size(228, 44);
             bigLabel2.TabIndex = 22;

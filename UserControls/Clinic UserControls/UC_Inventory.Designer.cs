@@ -156,7 +156,7 @@
             SearchBtn.ForeColor = Color.White;
             SearchBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             SearchBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            SearchBtn.Location = new Point(636, 40);
+            SearchBtn.Location = new Point(639, 39);
             SearchBtn.Name = "SearchBtn";
             SearchBtn.PrimaryColor = Color.FromArgb(64, 158, 255);
             SearchBtn.Size = new Size(106, 41);
@@ -267,7 +267,7 @@
             SearchTxt.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             SearchTxt.ForeColor = Color.FromArgb(48, 49, 51);
             SearchTxt.Hint = "";
-            SearchTxt.Location = new Point(414, 43);
+            SearchTxt.Location = new Point(417, 42);
             SearchTxt.MaxLength = 32767;
             SearchTxt.Multiline = false;
             SearchTxt.Name = "SearchTxt";
@@ -289,7 +289,7 @@
             bigLabel1.BackColor = Color.Transparent;
             bigLabel1.Font = new Font("Century Gothic", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bigLabel1.ForeColor = Color.DodgerBlue;
-            bigLabel1.Location = new Point(20, 29);
+            bigLabel1.Location = new Point(16, 29);
             bigLabel1.Name = "bigLabel1";
             bigLabel1.Size = new Size(235, 56);
             bigLabel1.TabIndex = 27;
@@ -334,7 +334,7 @@
             bigLabel3.BackColor = Color.Transparent;
             bigLabel3.Font = new Font("Century Gothic", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             bigLabel3.ForeColor = SystemColors.ActiveCaptionText;
-            bigLabel3.Location = new Point(33, 91);
+            bigLabel3.Location = new Point(26, 94);
             bigLabel3.Name = "bigLabel3";
             bigLabel3.Size = new Size(352, 18);
             bigLabel3.TabIndex = 65;

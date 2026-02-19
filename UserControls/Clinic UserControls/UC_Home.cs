@@ -37,7 +37,6 @@ namespace ClinicManagementSystem
             RefreshDashboard();
             this.Load += (s, e) => UpdateLowInventoryAlert();
         }
-
         private void DgvStudentRecords_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             // 1. HEADER: SteelBlue, White text, NO BOLD (Clean Look)

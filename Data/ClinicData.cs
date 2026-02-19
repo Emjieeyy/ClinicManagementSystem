@@ -30,7 +30,6 @@ namespace ClinicManagementSystem.Data
             }
 
         }
-
         public static void SaveData()
         {
             try
@@ -44,7 +43,6 @@ namespace ClinicManagementSystem.Data
                 System.Windows.Forms.MessageBox.Show("File Error: " + ex.Message);
             }
         }
-
 
         public static string GetNextID()
         {

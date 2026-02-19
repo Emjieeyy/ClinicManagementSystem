@@ -55,7 +55,7 @@
             SaveRecordsbt.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SaveRecordsbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             SaveRecordsbt.InfoColor = Color.FromArgb(144, 147, 153);
-            SaveRecordsbt.Location = new Point(500, 440);
+            SaveRecordsbt.Location = new Point(500, 447);
             SaveRecordsbt.Name = "SaveRecordsbt";
             SaveRecordsbt.PrimaryColor = Color.FromArgb(64, 158, 255);
             SaveRecordsbt.Size = new Size(172, 39);
@@ -69,7 +69,7 @@
             // SymptomsTxt
             // 
             SymptomsTxt.BackColor = Color.White;
-            SymptomsTxt.Location = new Point(284, 367);
+            SymptomsTxt.Location = new Point(284, 374);
             SymptomsTxt.Name = "SymptomsTxt";
             SymptomsTxt.Size = new Size(360, 27);
             SymptomsTxt.TabIndex = 31;
@@ -79,7 +79,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(149, 376);
+            label4.Location = new Point(149, 383);
             label4.Name = "label4";
             label4.Size = new Size(104, 19);
             label4.TabIndex = 30;
@@ -89,7 +89,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(152, 311);
+            label3.Location = new Point(152, 318);
             label3.Name = "label3";
             label3.Size = new Size(72, 19);
             label3.TabIndex = 28;
@@ -99,7 +99,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(148, 258);
+            label2.Location = new Point(148, 265);
             label2.Name = "label2";
             label2.Size = new Size(129, 19);
             label2.TabIndex = 27;
@@ -108,7 +108,7 @@
             // StudentNametxt
             // 
             StudentNametxt.BackColor = Color.White;
-            StudentNametxt.Location = new Point(284, 247);
+            StudentNametxt.Location = new Point(284, 254);
             StudentNametxt.Name = "StudentNametxt";
             StudentNametxt.Size = new Size(360, 27);
             StudentNametxt.TabIndex = 26;
@@ -118,7 +118,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(154, 196);
+            label1.Location = new Point(154, 203);
             label1.Name = "label1";
             label1.Size = new Size(90, 19);
             label1.TabIndex = 25;
@@ -127,7 +127,7 @@
             // StudentID
             // 
             StudentID.BackColor = Color.White;
-            StudentID.Location = new Point(284, 188);
+            StudentID.Location = new Point(284, 195);
             StudentID.Name = "StudentID";
             StudentID.Size = new Size(360, 27);
             StudentID.TabIndex = 24;
@@ -175,7 +175,7 @@
             Clearbt.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Clearbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             Clearbt.InfoColor = Color.FromArgb(144, 147, 153);
-            Clearbt.Location = new Point(294, 440);
+            Clearbt.Location = new Point(294, 447);
             Clearbt.Name = "Clearbt";
             Clearbt.PrimaryColor = Color.Gainsboro;
             Clearbt.Size = new Size(161, 39);
@@ -191,7 +191,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(263, 194);
+            label7.Location = new Point(263, 201);
             label7.Name = "label7";
             label7.Size = new Size(16, 19);
             label7.TabIndex = 41;
@@ -201,7 +201,7 @@
             // 
             CourseComboBox.FormattingEnabled = true;
             CourseComboBox.Items.AddRange(new object[] { "BSIT ", "BSHM ", "BSTM ", "BSBA ", "BSED", "SHS" });
-            CourseComboBox.Location = new Point(284, 307);
+            CourseComboBox.Location = new Point(284, 314);
             CourseComboBox.Name = "CourseComboBox";
             CourseComboBox.Size = new Size(360, 28);
             CourseComboBox.TabIndex = 42;

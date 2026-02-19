@@ -51,7 +51,6 @@ namespace ClinicManagementSystem
 
             File.WriteAllText(logFilePath, JsonConvert.SerializeObject(logs, Formatting.Indented));
         }
-
         public void ShowPage(UserControl page)
         {
             student_UC_container.Controls.Clear();

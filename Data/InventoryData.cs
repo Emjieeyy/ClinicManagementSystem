@@ -15,7 +15,6 @@ namespace ClinicManagementSystem.Data
 
         public static BindingList<InventoryItems> InventoryItems { get; private set; } = new BindingList<InventoryItems>();
 
-
         public static void LoadFromJson()
         {
             if (!File.Exists(jsonFilePath))
