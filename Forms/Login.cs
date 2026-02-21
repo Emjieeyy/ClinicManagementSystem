@@ -27,6 +27,12 @@ namespace ClinicManagementSystem
 
         private void Login_Load(object sender, EventArgs e)
         {
+
+            // This ensures no data from a previous user stays in memory
+            SessionManager.CurrentID = null;
+            SessionManager.CurrentName = null;
+            SessionManager.Role = null;
+
             this.ActiveControl = loginbt;
             txtEmail.Text = "please enter email";
             txtEmail.ForeColor = Color.Silver;
@@ -73,7 +79,14 @@ namespace ClinicManagementSystem
 
             if (user != null)
             {
-                // Consistent category: Authentication
+                // --- ADDED SESSION LOGIC START ---
+                // We capture the user's details into our static SessionManager
+                SessionManager.CurrentID = user.UserID; // Use UserID from your model
+                SessionManager.CurrentName = user.Name; // Use Name from your model
+                SessionManager.Role = user.Role;        // Matches "Admin", "Staff", or "Student"
+                                                        // ----------------------------------------
+                                                        // --- ADDED SESSION LOGIC END ---
+
                 RecordAction(user.Email, "Authentication", $"{user.Role} logged in successfully", "Success");
 
                 this.Hide();
@@ -97,7 +110,6 @@ namespace ClinicManagementSystem
             }
             else
             {
-                // Updated: Activity is now "Authentication" so the filter catches failed attempts too
                 RecordAction(email, "Authentication", "Failed login attempt: Invalid credentials", "Failed");
                 MessageBox.Show("Invalid Email or Password.");
             }

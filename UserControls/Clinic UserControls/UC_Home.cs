@@ -17,6 +17,9 @@ namespace ClinicManagementSystem
             InitializeComponent();
             Instance = this;
 
+            // --- THE FIX: LOAD DATA FROM JSON IMMEDIATELY ---
+            ClinicData.LoadData();
+
             // --- THE FIX: FORCE UPDATE ON EVERY POSSIBLE VIEW CHANGE ---
             this.VisibleChanged += (s, e) => { if (this.Visible) UpdateLowInventoryAlert(); };
             this.Load += (s, e) => UpdateLowInventoryAlert();
@@ -81,14 +84,20 @@ namespace ClinicManagementSystem
 
         public void RefreshDashboard()
         {
-            int todayCount = ClinicData.StudentRecords.Count(r => r.DateVisited.Date == DateTime.Today);
-            Total_0.Text = todayCount.ToString();
+            // 1. Get the total count
+            int totalCount = ClinicData.StudentRecords.Count;
 
+            // 2. THE FIX: Only set the number here to prevent overlapping
+            // Make sure you have "Total Consultations:" written in the Designer properties
+            Total_0.Text = totalCount.ToString();
+
+            // 3. Refresh Grid
             dgvStudentRecords.DataSource = null;
             if (ClinicData.StudentRecords != null)
             {
                 dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
             }
+
             UpdateLowInventoryAlert();
         }
 

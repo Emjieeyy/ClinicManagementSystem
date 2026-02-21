@@ -1,56 +1,44 @@
 ﻿using ClinicManagementSystem.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq; // Added this for .FirstOrDefault()
+using System.Linq;
 using System.Text;
 
 namespace ClinicManagementSystem.Data
 {
-    // Removed the redundant outer class
     public static class ClinicService
     {
-      public static void AddOrUpdateConsultation(
-      string studentNumber,
-      string studentName,
-      string course,
-      string symptoms,
-      string medicine,
-      string role) // Removed DateTime parameter
+        public static void AddOrUpdateConsultation(
+        string studentNumber,
+        string studentName,
+        string course,
+        string symptoms,
+        string medicine,
+        string role)
         {
-            var record = ClinicData.StudentRecords
-                .FirstOrDefault(r => r.StudentID == studentNumber);
+            // 1. Force a fresh load of the JSON file so we have the latest list
+            ClinicData.LoadData();
 
-            // Capture the running time right now
-            DateTime currentTime = DateTime.Now;
-
-            if (record == null)
+            // 2. Always create a BRAND NEW record for a new visit
+            var newRecord = new StudentRecord
             {
-                record = new StudentRecord
-                {
-                    StudentID = studentNumber,
-                    StudentName = studentName,
-                    Course = course,
-                    Symptoms = symptoms,
-                    DateVisited = currentTime // Uses system time
-                };
+                StudentID = studentNumber,
+                StudentName = studentName,
+                Course = course,
+                Symptoms = symptoms,
+                DateVisited = DateTime.Now // Automatically captures the visit time
+            };
 
-                if (role == "Staff")
-                    record.UpdateMedicine(medicine);
-
-                ClinicData.StudentRecords.Add(record);
-            }
-            else
+            // 3. Add medicine ONLY if the user is Staff
+            if (role == "Staff")
             {
-                record.Symptoms = symptoms;
-                record.DateVisited = currentTime; // Updates to latest visit time
-
-                if (role == "Staff")
-                {
-                    record.UpdateMedicine(medicine);
-                    // ... (rest of your existing logic)
-                }
+                newRecord.UpdateMedicine(medicine);
             }
 
+            // 4. Add this new visit to the collection
+            ClinicData.StudentRecords.Add(newRecord);
+
+            // 5. Save the updated list back to the JSON file
             ClinicData.SaveData();
         }
     }

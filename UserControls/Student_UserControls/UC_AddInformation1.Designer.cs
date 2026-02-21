@@ -43,6 +43,7 @@
             Clearbt = new ReaLTaiizor.Controls.HopeRoundButton();
             label7 = new Label();
             CourseComboBox = new ComboBox();
+            lblTimestamp = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             SaveRecordsbt.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SaveRecordsbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             SaveRecordsbt.InfoColor = Color.FromArgb(144, 147, 153);
-            SaveRecordsbt.Location = new Point(500, 447);
+            SaveRecordsbt.Location = new Point(504, 486);
             SaveRecordsbt.Name = "SaveRecordsbt";
             SaveRecordsbt.PrimaryColor = Color.FromArgb(64, 158, 255);
             SaveRecordsbt.Size = new Size(172, 39);
@@ -69,9 +70,9 @@
             // SymptomsTxt
             // 
             SymptomsTxt.BackColor = Color.White;
-            SymptomsTxt.Location = new Point(284, 374);
+            SymptomsTxt.Location = new Point(284, 413);
             SymptomsTxt.Name = "SymptomsTxt";
-            SymptomsTxt.Size = new Size(360, 27);
+            SymptomsTxt.Size = new Size(388, 27);
             SymptomsTxt.TabIndex = 31;
             SymptomsTxt.KeyDown += SymptomsTxt_KeyDown;
             // 
@@ -79,7 +80,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(149, 383);
+            label4.Location = new Point(149, 420);
             label4.Name = "label4";
             label4.Size = new Size(104, 19);
             label4.TabIndex = 30;
@@ -89,7 +90,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(152, 318);
+            label3.Location = new Point(152, 358);
             label3.Name = "label3";
             label3.Size = new Size(72, 19);
             label3.TabIndex = 28;
@@ -99,7 +100,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(148, 265);
+            label2.Location = new Point(147, 303);
             label2.Name = "label2";
             label2.Size = new Size(129, 19);
             label2.TabIndex = 27;
@@ -108,9 +109,9 @@
             // StudentNametxt
             // 
             StudentNametxt.BackColor = Color.White;
-            StudentNametxt.Location = new Point(284, 254);
+            StudentNametxt.Location = new Point(284, 293);
             StudentNametxt.Name = "StudentNametxt";
-            StudentNametxt.Size = new Size(360, 27);
+            StudentNametxt.Size = new Size(388, 27);
             StudentNametxt.TabIndex = 26;
             StudentNametxt.KeyDown += StudentNametxt_KeyDown;
             // 
@@ -118,7 +119,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(154, 203);
+            label1.Location = new Point(151, 245);
             label1.Name = "label1";
             label1.Size = new Size(90, 19);
             label1.TabIndex = 25;
@@ -127,9 +128,9 @@
             // StudentID
             // 
             StudentID.BackColor = Color.White;
-            StudentID.Location = new Point(284, 195);
+            StudentID.Location = new Point(284, 234);
             StudentID.Name = "StudentID";
-            StudentID.Size = new Size(360, 27);
+            StudentID.Size = new Size(388, 27);
             StudentID.TabIndex = 24;
             StudentID.KeyDown += StudentID_KeyDown;
             // 
@@ -139,7 +140,7 @@
             bigLabel1.BackColor = Color.Transparent;
             bigLabel1.Font = new Font("Century Gothic", 25.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bigLabel1.ForeColor = Color.DodgerBlue;
-            bigLabel1.Location = new Point(145, 41);
+            bigLabel1.Location = new Point(145, 53);
             bigLabel1.Name = "bigLabel1";
             bigLabel1.Size = new Size(568, 49);
             bigLabel1.TabIndex = 36;
@@ -149,7 +150,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(154, 103);
+            label5.Location = new Point(154, 115);
             label5.Name = "label5";
             label5.Size = new Size(301, 21);
             label5.TabIndex = 37;
@@ -159,7 +160,7 @@
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(66, 37);
+            pictureBox1.Location = new Point(66, 49);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(86, 61);
             pictureBox1.TabIndex = 38;
@@ -175,7 +176,7 @@
             Clearbt.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Clearbt.HoverTextColor = Color.FromArgb(48, 49, 51);
             Clearbt.InfoColor = Color.FromArgb(144, 147, 153);
-            Clearbt.Location = new Point(294, 447);
+            Clearbt.Location = new Point(318, 486);
             Clearbt.Name = "Clearbt";
             Clearbt.PrimaryColor = Color.Gainsboro;
             Clearbt.Size = new Size(161, 39);
@@ -191,7 +192,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(263, 201);
+            label7.Location = new Point(263, 240);
             label7.Name = "label7";
             label7.Size = new Size(16, 19);
             label7.TabIndex = 41;
@@ -201,17 +202,29 @@
             // 
             CourseComboBox.FormattingEnabled = true;
             CourseComboBox.Items.AddRange(new object[] { "BSIT ", "BSHM ", "BSTM ", "BSBA ", "BSED", "SHS" });
-            CourseComboBox.Location = new Point(284, 314);
+            CourseComboBox.Location = new Point(284, 353);
             CourseComboBox.Name = "CourseComboBox";
-            CourseComboBox.Size = new Size(360, 28);
+            CourseComboBox.Size = new Size(388, 28);
             CourseComboBox.TabIndex = 42;
             CourseComboBox.KeyDown += CourseComboBox_KeyDown;
+            // 
+            // lblTimestamp
+            // 
+            lblTimestamp.AutoSize = true;
+            lblTimestamp.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTimestamp.ForeColor = SystemColors.Highlight;
+            lblTimestamp.Location = new Point(149, 198);
+            lblTimestamp.Name = "lblTimestamp";
+            lblTimestamp.Size = new Size(89, 19);
+            lblTimestamp.TabIndex = 43;
+            lblTimestamp.Text = "Visit Time:";
             // 
             // UC_AddInformation1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(lblTimestamp);
             Controls.Add(CourseComboBox);
             Controls.Add(label7);
             Controls.Add(Clearbt);
@@ -228,6 +241,7 @@
             Controls.Add(StudentID);
             Name = "UC_AddInformation1";
             Size = new Size(786, 588);
+            Load += UC_AddInformation1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -249,5 +263,6 @@
         private ReaLTaiizor.Controls.HopeRoundButton Clearbt;
         private Label label7;
         private ComboBox CourseComboBox;
+        private Label lblTimestamp;
     }
 }

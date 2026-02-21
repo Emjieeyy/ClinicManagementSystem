@@ -44,35 +44,32 @@ namespace ClinicManagementSystem
         // ----------------------------
         public void RefreshInventory()
         {
-            // 1. PULL DATA FROM CLINICDATA (The Student Records source)
-            // This counts students who visited today, exactly like your Staff Dashboard does
-            int todayCount = ClinicData.StudentRecords.Count(r => r.DateVisited.Date == DateTime.Today);
+            // 1. CHANGE THIS: Remove the Date filter to count ALL student visits
+            int totalCount = ClinicData.StudentRecords.Count;
 
-            // 2. UPDATE THE CORRECT LABEL NAME
-            // We are now using 'Inventory_label_0' as identified in your designer
-            Inventory_label_0.Text = todayCount.ToString();
+            // 2. UPDATE THE LABEL: Use the same naming convention as UC_Home
+            // Make sure 'Inventory_label_0' is the correct name for your blue badge here
+            Inventory_label_0.Text = totalCount.ToString();
 
             // 3. REFRESH THE INVENTORY GRID
             dtgInventory.DataSource = null;
             if (InventoryData.InventoryItems != null)
             {
-                dtgInventory.DataSource = InventoryData.InventoryItems;
+                dtgInventory.DataSource = InventoryData.InventoryItems.ToList();
             }
 
-            // 4. UPDATE ALERTS AND VISUALS
+            // 4. SYNC WITH HOME PAGE
             UpdateLowInventoryAlert();
-            dtgInventory.Invalidate();
 
             if (UC_Home.Instance != null)
             {
-                // Tell the dashboard to reload data from the JSON file you just saved
-                InventoryData.LoadFromJson();
-
-                // Tell the dashboard to update its red button
+                // This ensures the red alert button on the Home screen updates too
                 UC_Home.Instance.UpdateLowInventoryAlert();
-
+                // This ensures the blue button on the Home screen updates too
+                UC_Home.Instance.RefreshDashboard();
             }
         }
+        
         // ----------------------------
         // ALL STYLING GOES HERE
         // ----------------------------

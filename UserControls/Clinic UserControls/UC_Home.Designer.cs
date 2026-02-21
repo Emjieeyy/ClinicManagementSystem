@@ -263,7 +263,7 @@ namespace ClinicManagementSystem
             dgvStudentRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudentRecords.Columns.AddRange(new DataGridViewColumn[] { StudentID, StudentName, Course, Symptoms, Medicine, DateVisited });
             dgvStudentRecords.EnableHeadersVisualStyles = false;
-            dgvStudentRecords.GridColor = Color.Gainsboro;
+            dgvStudentRecords.GridColor = Color.WhiteSmoke;
             dgvStudentRecords.Location = new Point(35, 285);
             dgvStudentRecords.MultiSelect = false;
             dgvStudentRecords.Name = "dgvStudentRecords";
@@ -273,7 +273,6 @@ namespace ClinicManagementSystem
             dgvStudentRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvStudentRecords.Size = new Size(761, 340);
             dgvStudentRecords.TabIndex = 62;
-           
             // 
             // StudentID
             // 

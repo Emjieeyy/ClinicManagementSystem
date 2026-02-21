@@ -85,6 +85,7 @@
             SearchInfo.Size = new Size(209, 26);
             SearchInfo.TabIndex = 26;
             SearchInfo.Text = "Search...";
+            SearchInfo.Click += SearchInfo_TextChanged;
             SearchInfo.TextChanged += SearchInfo_TextChanged;
             // 
             // pictureBox1
@@ -178,7 +179,8 @@
             dgvUCupdateInfo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUCupdateInfo.Size = new Size(761, 355);
             dgvUCupdateInfo.TabIndex = 42;
-          
+            dgvUCupdateInfo.CellContentClick += dataGridView1_CellContentClick;
+            dgvUCupdateInfo.CellValidating += dataGridView1_CellValidating;
             // 
             // dgv_StudentUpdateInfo
             // 
@@ -241,7 +243,6 @@
             label2.Name = "label2";
             label2.Size = new Size(0, 20);
             label2.TabIndex = 43;
-          
             // 
             // SearchBtn
             // 

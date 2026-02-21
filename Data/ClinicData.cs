@@ -16,20 +16,31 @@ namespace ClinicManagementSystem.Data
 
         public static void LoadData()
         {
-            if (File.Exists(filePath))
+            try
             {
-                string json = File.ReadAllText(filePath);
-                var list = JsonSerializer.Deserialize<List<StudentRecord>>(json);
-
-                if (list != null)
+                if (File.Exists(filePath))
                 {
-                    StudentRecords.Clear();
-                    foreach (var record in list)
-                        StudentRecords.Add(record);
+                    string json = File.ReadAllText(filePath);
+                    if (string.IsNullOrWhiteSpace(json)) return; // Don't parse empty files
+
+                    var list = JsonSerializer.Deserialize<List<StudentRecord>>(json);
+
+                    if (list != null)
+                    {
+                        StudentRecords.Clear();
+                        foreach (var record in list)
+                        {
+                            StudentRecords.Add(record);
+                        }
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data: " + ex.Message);
+            }
         }
+
         public static void SaveData()
         {
             try
@@ -42,17 +53,6 @@ namespace ClinicManagementSystem.Data
             {
                 System.Windows.Forms.MessageBox.Show("File Error: " + ex.Message);
             }
-        }
-
-        public static string GetNextID()
-        {
-            int maxId = 1000;
-            if (StudentRecords.Any())
-            {
-                int maxClinic = StudentRecords.Max(r => int.TryParse(r.StudentID, out int id) ? id : 0);
-                if (maxClinic > maxId) maxId = maxClinic;
-            }
-            return (maxId + 1).ToString();
         }
     }
 }
