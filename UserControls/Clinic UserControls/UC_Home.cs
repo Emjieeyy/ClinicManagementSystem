@@ -4,6 +4,10 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
+// These are essential for the HopeButton and UI components
+using ReaLTaiizor.Controls;
+using ReaLTaiizor.Util;
 
 namespace ClinicManagementSystem
 {
@@ -12,95 +16,121 @@ namespace ClinicManagementSystem
         public static UC_Home Instance { get; private set; }
         public const int LowStockThreshold = 3;
 
+        // This keeps the Grid and your JSON list perfectly synced
+        private BindingSource recordBindingSource = new BindingSource();
+
         public UC_Home()
         {
             InitializeComponent();
             Instance = this;
 
-            // --- THE FIX: LOAD DATA FROM JSON IMMEDIATELY ---
             ClinicData.LoadData();
 
-            // --- THE FIX: FORCE UPDATE ON EVERY POSSIBLE VIEW CHANGE ---
+            // Force alerts to update when the view changes
             this.VisibleChanged += (s, e) => { if (this.Visible) UpdateLowInventoryAlert(); };
             this.Load += (s, e) => UpdateLowInventoryAlert();
-            this.ParentChanged += (s, e) => UpdateLowInventoryAlert();
 
-            // Initialize Grid
+            SetupGridProperties();
+            RefreshDashboard();
+        }
+
+        private void SetupGridProperties()
+        {
             dgvStudentRecords.EnableHeadersVisualStyles = false;
             dgvStudentRecords.BackgroundColor = Color.White;
             dgvStudentRecords.RowHeadersVisible = false;
             dgvStudentRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Grid starts locked to prevent accidental typing
             dgvStudentRecords.ReadOnly = true;
             dgvStudentRecords.AllowUserToAddRows = false;
+            dgvStudentRecords.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+
             dgvStudentRecords.DataBindingComplete += DgvStudentRecords_DataBindingComplete;
-
-            RefreshDashboard();
-        }
-
-        public void UpdateLowInventoryAlert()
-        {
-
-
-            int lowCount = InventoryData.InventoryItems
-                 .Count(i => (i.Quantity ?? 0) <= LowStockThreshold);
-
-            LowInvAlertBtn.ButtonType = lowCount > 0
-                ? ReaLTaiizor.Util.HopeButtonType.Danger
-                : ReaLTaiizor.Util.HopeButtonType.Primary;
-
-            LowInvAlertBtn.Text = lowCount > 0
-                ? $"      Low Inventory ({lowCount})"
-                : "      Low Inventory";
-        }
-
-        private void DgvStudentRecords_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            // 1. HEADER: SteelBlue, White text, NO BOLD (Clean Look)
-            dgvStudentRecords.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
-            dgvStudentRecords.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvStudentRecords.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular); // Regular makes it clean
-
-            // 2. FIX THE YELLOW HEADER: Keep headers Blue even when the row is selected
-            dgvStudentRecords.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.SteelBlue;
-            dgvStudentRecords.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
-
-            // 3. ROWS: White background, Yellow highlight when clicked
-            dgvStudentRecords.DefaultCellStyle.BackColor = Color.White;
-            dgvStudentRecords.DefaultCellStyle.ForeColor = Color.Black;
-            dgvStudentRecords.DefaultCellStyle.SelectionBackColor = Color.Yellow;
-            dgvStudentRecords.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvStudentRecords.DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular);
-
-            // 4. CLEANUP: No extra gray bars or arrows
-            dgvStudentRecords.RowHeadersVisible = false;
-            dgvStudentRecords.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvStudentRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvStudentRecords.BackgroundColor = Color.White;
-
-
-            // 5. CLEAR SELECTION: Stops the first row from being yellow immediately on load
-            dgvStudentRecords.ClearSelection();
         }
 
         public void RefreshDashboard()
         {
-            // 1. Get the total count
-            int totalCount = ClinicData.StudentRecords.Count;
+            Total_0.Text = ClinicData.StudentRecords.Count.ToString();
 
-            // 2. THE FIX: Only set the number here to prevent overlapping
-            // Make sure you have "Total Consultations:" written in the Designer properties
-            Total_0.Text = totalCount.ToString();
+            // Link the list to the grid via the BindingSource
+            recordBindingSource.DataSource = ClinicData.StudentRecords;
+            dgvStudentRecords.DataSource = recordBindingSource;
 
-            // 3. Refresh Grid
-            dgvStudentRecords.DataSource = null;
-            if (ClinicData.StudentRecords != null)
-            {
-                dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
-            }
-
+            recordBindingSource.ResetBindings(false);
             UpdateLowInventoryAlert();
         }
 
+        // --- ADD BUTTON (IN-PLACE) ---
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            dgvStudentRecords.ReadOnly = false;
+            btnUpdate.Text = "Editing Mode...";
+            btnUpdate.BackColor = Color.Orange;
+
+            var newRec = new StudentRecord
+            {
+                StudentID = "NEW",
+                StudentName = "",
+                DateVisited = DateTime.Now
+            };
+            ClinicData.StudentRecords.Add(newRec);
+
+            recordBindingSource.ResetBindings(false);
+
+            // Focus the new row automatically
+            int lastRow = dgvStudentRecords.Rows.Count - 1;
+            dgvStudentRecords.CurrentCell = dgvStudentRecords.Rows[lastRow].Cells[0];
+            dgvStudentRecords.BeginEdit(true);
+        }
+
+        // --- UPDATE BUTTON (TOGGLE EDIT MODE) ---
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dgvStudentRecords.ReadOnly)
+            {
+                dgvStudentRecords.ReadOnly = false;
+                btnUpdate.Text = "Editing Mode...";
+                btnUpdate.BackColor = Color.Orange;
+                MessageBox.Show("Editing Enabled: Click any cell to change details.");
+            }
+            else
+            {
+                dgvStudentRecords.ReadOnly = true;
+                btnUpdate.Text = "Update";
+                btnUpdate.BackColor = Color.DodgerBlue;
+            }
+        }
+
+        // --- SAVE BUTTON (JSON SYNC) ---
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            dgvStudentRecords.EndEdit(); // Commit current typing
+            ClinicData.SaveData();
+
+            dgvStudentRecords.ReadOnly = true;
+            btnUpdate.Text = "Update";
+            btnUpdate.BackColor = Color.DodgerBlue;
+
+            MessageBox.Show("Changes saved successfully!");
+            RefreshDashboard();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvStudentRecords.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Delete selected record?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var record = (StudentRecord)dgvStudentRecords.SelectedRows[0].DataBoundItem;
+                    ClinicData.StudentRecords.Remove(record);
+                    ClinicData.SaveData();
+                    RefreshDashboard();
+                }
+            }
+        }
+
+        // --- NAVIGATION TO INVENTORY ---
         private void LowInvAlertBtn_Click(object sender, EventArgs e)
         {
             var mainDashboard = this.ParentForm as ClinicStaffDashboard;
@@ -114,104 +144,64 @@ namespace ClinicManagementSystem
             }
         }
 
-        // Search and Record logic remains the same
-        private void SearchBtn_Click(object sender, EventArgs e) => PerformStudentSearch();
-        private void textBox1_TextChanged(object sender, EventArgs e) => PerformStudentSearch();
+        // --- UI STYLING & SEARCH ---
+        private void DgvStudentRecords_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Header Style
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvStudentRecords.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+
+            // Standard Row Style (Ensures info is black on white)
+            dgvStudentRecords.DefaultCellStyle.BackColor = Color.White;
+            dgvStudentRecords.DefaultCellStyle.ForeColor = Color.Black;
+            dgvStudentRecords.DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Regular);
+
+            // Selected Row Style (Ensures text stays black when highlighted yellow)
+            dgvStudentRecords.DefaultCellStyle.SelectionBackColor = Color.Yellow;
+            dgvStudentRecords.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            dgvStudentRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
+            // This forces the grid to repaint so the info "appears"
+            dgvStudentRecords.Invalidate();
+        }
 
         private void PerformStudentSearch()
         {
             string term = textBox1.Text.Trim().ToLower();
             if (string.IsNullOrWhiteSpace(term))
-                dgvStudentRecords.DataSource = ClinicData.StudentRecords.ToList();
+            {
+                recordBindingSource.DataSource = ClinicData.StudentRecords;
+            }
             else
-                dgvStudentRecords.DataSource = ClinicData.StudentRecords.Where(r =>
+            {
+                var filtered = ClinicData.StudentRecords.Where(r =>
                     (r.StudentID?.ToLower().Contains(term) ?? false) ||
                     (r.StudentName?.ToLower().Contains(term) ?? false)).ToList();
-            dgvStudentRecords.ClearSelection();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            string studentId = Microsoft.VisualBasic.Interaction.InputBox("Enter Student ID:", "New Record", "");
-            if (string.IsNullOrWhiteSpace(studentId)) return;
-
-            if (ClinicData.StudentRecords.Any(r => r.StudentID == studentId))
-            {
-                MessageBox.Show("This Student ID already exists.");
-                return;
-            }
-
-            string name = Microsoft.VisualBasic.Interaction.InputBox($"ID: {studentId}\nEnter Name:", "New Record", "");
-            if (string.IsNullOrWhiteSpace(name)) return;
-
-            string course = Microsoft.VisualBasic.Interaction.InputBox("Enter Course:", "New Record", "");
-            string symptoms = Microsoft.VisualBasic.Interaction.InputBox("Enter Symptoms:", "New Record", "");
-            string medicine = Microsoft.VisualBasic.Interaction.InputBox("Enter Medicine:", "New Record", "None");
-
-            var newRecord = new StudentRecord
-            {
-                StudentID = studentId,
-                StudentName = name,
-                Course = course,
-                Symptoms = symptoms,
-                Medicine = medicine,
-                DateVisited = DateTime.Now
-            };
-
-            try
-            {
-                ClinicData.StudentRecords.Add(newRecord);
-                ClinicData.SaveData();
-                MessageBox.Show("Record added successfully!");
-                RefreshDashboard();
-            }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
-
-            RefreshDashboard();
-        }
-
-        private void SaveBtn_Click(object sender, EventArgs e)
-        {
-            ClinicData.SaveData();
-            MessageBox.Show("All data saved.");
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (dgvStudentRecords.SelectedRows.Count > 0)
-            {
-                var record = (StudentRecord)dgvStudentRecords.SelectedRows[0].DataBoundItem;
-                string choice = Microsoft.VisualBasic.Interaction.InputBox(
-                    "1: Name, 2: Course, 3: Symptoms, 4: Medicine", "Update", "1");
-
-                switch (choice)
-                {
-                    case "1": record.StudentName = Microsoft.VisualBasic.Interaction.InputBox("New Name:", "Update", record.StudentName); break;
-                    case "2": record.Course = Microsoft.VisualBasic.Interaction.InputBox("New Course:", "Update", record.Course); break;
-                    case "3": record.Symptoms = Microsoft.VisualBasic.Interaction.InputBox("New Symptoms:", "Update", record.Symptoms); break;
-                    case "4": record.Medicine = Microsoft.VisualBasic.Interaction.InputBox("New Medicine:", "Update", record.Medicine); break;
-                }
-
-                ClinicData.SaveData();
-                RefreshDashboard();
+                recordBindingSource.DataSource = filtered;
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void SearchBtn_Click(object sender, EventArgs e) => PerformStudentSearch();
+        private void textBox1_TextChanged(object sender, EventArgs e) => PerformStudentSearch();
+
+        public void UpdateLowInventoryAlert()
         {
-            if (dgvStudentRecords.SelectedRows.Count > 0)
+            int lowCount = InventoryData.InventoryItems.Count(i => (i.Quantity ?? 0) <= LowStockThreshold);
+
+            // This logic updates the HopeButton style based on stock levels
+            if (lowCount > 0)
             {
-                if (MessageBox.Show("Delete permanently?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    var record = (StudentRecord)dgvStudentRecords.SelectedRows[0].DataBoundItem;
-                    ClinicData.StudentRecords.Remove(record);
-                    ClinicData.SaveData();
-                    RefreshDashboard();
-                }
+                LowInvAlertBtn.ButtonType = HopeButtonType.Danger;
+                LowInvAlertBtn.Text = $"      Low Inventory ({lowCount})";
             }
-        }
-
-        
-
+            else
+            {
+                LowInvAlertBtn.ButtonType = HopeButtonType.Primary;
+                LowInvAlertBtn.Text = "      Low Inventory";
+            }
         }
     }
+}
